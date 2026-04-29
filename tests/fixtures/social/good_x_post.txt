@@ -1,0 +1,7 @@
+Most "AI moats" are just expensive prompts in a trench coat.
+
+Real moat = proprietary data, workflow lock-in, distribution.
+
+Everything else evaporates the second OpenAI ships a feature.
+
+#AIstrategy

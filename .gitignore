@@ -1,0 +1,44 @@
+# Trace files (may contain sensitive draft content)
+.aero/traces/
+traces/
+
+# Review state (regenerated each run)
+review-stage/REVIEW_STATE.json
+**/REVIEW_STATE.json
+
+# Local environment
+.env
+.env.local
+*.key
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# Node
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build outputs
+dist/
+build/
+*.log
+
+# User drafts (never commit user content)
+drafts/
+*.draft.md

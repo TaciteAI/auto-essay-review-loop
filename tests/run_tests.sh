@@ -128,6 +128,33 @@ assert_flag_contains "market_size_check fantasy TAM flag" "fantasy_tam" \
 assert_passed "market_size_check strong plan" "true" \
   "$PYTHON" tools/market_size_check.py tests/fixtures/business-plan/strong.md
 
+# --- Application: per-answer verification ---
+assert_passed "verify_application strong draft" "true" \
+  "$PYTHON" tools/verify_application.py tests/fixtures/application/strong.md
+assert_passed "verify_application weak draft" "false" \
+  "$PYTHON" tools/verify_application.py tests/fixtures/application/weak.md
+
+# --- Regression: count_chars must not crash on unknown platform.
+# Before the fix, --format=mastodon raised ValueError and produced a
+# Python traceback (no JSON), breaking Phase B verification when a
+# typo'd platform reached the tool. Should now produce passed:false JSON.
+assert_passed "count_chars bad platform yields JSON error (not traceback)" "false" \
+  "$PYTHON" tools/count_chars.py tests/fixtures/social/good_x_post.txt --format=mastodon
+
+# --- Regression: tools/run.sh wrapper picks the right interpreter and
+# forwards arguments. Before this wrapper, SKILL.md hardcoded
+# `python tools/...` and broke on Windows boxes where only `py` is on
+# PATH. Verify the wrapper produces equivalent JSON for a known-good
+# input — same fixture as the count_chars test above.
+assert_passed "tools/run.sh wraps count_chars correctly" "true" \
+  bash tools/run.sh count_chars.py tests/fixtures/social/good_x_post.txt --format=x
+
+# --- CV: structural verification ---
+assert_passed "verify_cv strong CV" "true" \
+  bash tools/run.sh verify_cv.py tests/fixtures/cv/strong.md --target-pages=1
+assert_passed "verify_cv weak CV (cliches, weak verbs, no numbers, mixed dates)" "false" \
+  bash tools/run.sh verify_cv.py tests/fixtures/cv/weak.md --target-pages=1
+
 # --- Summary ---
 echo
 echo "Results:"

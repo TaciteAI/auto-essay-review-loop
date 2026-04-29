@@ -55,7 +55,7 @@ All four share an explicit allergy: **broetry, humble-brags, and "agree?" engage
 Run after personas, before termination check. Hard rejections; bypass persona consensus.
 
 ```bash
-python tools/count_chars.py review-stage/draft.md --format=linkedin > review-stage/verify_linkedin.json
+bash tools/run.sh count_chars.py review-stage/draft.md --format=linkedin > review-stage/verify_linkedin.json
 ```
 
 `count_chars.py --format=linkedin` returns:

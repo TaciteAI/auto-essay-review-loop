@@ -51,11 +51,17 @@ check). Failures are reported as hard rejections in the round's
 
 ## Calling verification from a skill
 
+Always invoke Python tools through `bash tools/run.sh <script.py>`, never
+through bare `python tools/...`. The wrapper picks an interpreter that
+exists on the host (`python3` / `python` / `py`) and forwards arguments
+unchanged. This keeps the loop working on Windows installs where only the
+`py` launcher is on PATH.
+
 ```bash
 # Phase B.7 in a format skill
 bash tools/verify_links.sh review-stage/draft.md > review-stage/verify_links.json
-python tools/count_chars.py review-stage/draft.md --format=social > review-stage/count_chars.json
-python tools/market_size_check.py review-stage/draft.md > review-stage/market_size.json
+bash tools/run.sh count_chars.py review-stage/draft.md --format=social > review-stage/count_chars.json
+bash tools/run.sh market_size_check.py review-stage/draft.md > review-stage/market_size.json
 ```
 
 Each tool emits JSON to stdout (or to a file if `>` is used). Skills parse
@@ -92,7 +98,7 @@ the resulting fact base. Currently:
 
 | Artifact | Producer | Validator | Consumed by |
 |----------|----------|-----------|-------------|
-| `MARKET_RESEARCH.md` | [/market-research](../market-research/SKILL.md) | `python tools/market_research_fetch.py validate ...` | `auto-business-plan-review-loop` Phase B (appended to reviewer prompt as `<MARKET_DATA>`) |
+| `MARKET_RESEARCH.md` | [/market-research](../market-research/SKILL.md) | `bash tools/run.sh market_research_fetch.py validate ...` | `auto-business-plan-review-loop` Phase B (appended to reviewer prompt as `<MARKET_DATA>`) |
 
 The validator emits the same JSON schema as the gate tools (above) so
 that any future enrichment artifact can be checked uniformly. The

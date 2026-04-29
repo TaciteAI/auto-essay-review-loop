@@ -227,6 +227,38 @@ reader — not "a generic VC" or "an SEO expert."
 
 **Termination:** all personas ≥6/10 AND `vc-partner` says "would take meeting" AND `unit-economics-skeptic` says "math holds" AND verification passes (market sanity, financials).
 
+### Application (`personas/application/`)
+
+For job, YC/accelerator, grant, fellowship, grad-school, MBA, undergrad, and scholarship applications. Input is a markdown file of `## Q: <question>` headings with the user's drafted answers in the body. The skill **requires** a `--target=<type>` flag so the personas calibrate to the right reviewer (a YC partner is not a graduate admissions committee is not a hiring manager).
+
+| Persona | What they do |
+|---------|--------------|
+| `selection-committee-skeptic` | Partner reading 200 apps in a weekend. Would they shortlist this? |
+| `domain-bar-raiser` | Knows the claimed domain (ex-founder for YC, faculty for grad school, hiring manager for jobs). Can this person actually do what they claim? |
+| `narrative-coherence` | Reads ALL answers as one document. Catches contradictions across questions. Does the application have a thesis? |
+| `red-flag-detector` | Pattern-matches AI-slop, cliches ("passionate about", "ever since I was a child"), unanchored numbers, manufactured story arcs. |
+
+**Targets supported:** `job`, `yc`, `accelerator`, `grant`, `fellowship`, `grad-school`, `mba`, `undergrad`, `scholarship`. Without `--target`, the skill asks once and refuses to default — silent defaults produce miscalibrated reviews.
+
+**Termination:** ≥75% personas score ≥7/10 AND `selection-committee-skeptic` says `would_shortlist=true` AND verification passes (all answers present, within length limits, first sentence does not restate the question).
+
+**Verification tool:** [`tools/verify_application.py`](tools/verify_application.py) — parses `## Q: ...` headings, optional `[max=N chars]` or `[max=N words]` annotations, and runs three structural checks per answer.
+
+### CV / resume (`personas/cv/`)
+
+For markdown CVs and resumes. Standard sections (`## Summary`, `## Experience`, `## Education`, `## Skills`, optional `## Projects`, `## Publications`).
+
+| Persona | What they do |
+|---------|--------------|
+| `recruiter-6sec-scan` | 6-second scan in a stack of 80. What's the one thing they remember? |
+| `hiring-manager-domain` | Knows the role. Can this candidate do the job, or did the work happen around them? |
+| `ats-parser` | Greenhouse/Lever/Workday-style parsing. Catches table layouts, missing keywords, broken date formats. |
+| `interview-prep-thief` | Picks the strongest claim and asks "ok, prove it in interview." Catches over-claiming. |
+
+**Termination:** ≥75% personas score ≥7/10 AND `recruiter-6sec-scan` says `would_shortlist=true` AND verification passes.
+
+**Verification tool:** [`tools/verify_cv.py`](tools/verify_cv.py) — checks page-length estimate, action-verb-first bullets, quantified-bullet ratio, cliche density, date-format consistency, tense consistency.
+
 → Full schema and authoring guide: [docs/PERSONA_AUTHORING.md](docs/PERSONA_AUTHORING.md)
 
 ## Example output
@@ -362,7 +394,7 @@ auto-essay-review-loop/
 
 ## Roadmap
 
-- **v0.1.0** (now) — Codex MCP backend. 4 formats. 17 personas. Verification
+- **v0.1.0** (now) — Codex MCP backend. 6 formats (blog, social, linkedin, business-plan, application, cv). 25 personas. Verification
   layer. State recovery. Brand voice protocol.
 - **v0.2.0** — Multi-backend (DeepSeek, MiniMax, OpenAI direct). Reviewer
   difficulty modes (`hard`, `nightmare`).

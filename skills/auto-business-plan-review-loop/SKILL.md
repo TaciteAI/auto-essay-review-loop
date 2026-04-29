@@ -235,7 +235,7 @@ Missing section → CRITICAL fix in Phase C: insert a section stub with TODOs an
 ### 2. Market sizing sanity
 
 ```bash
-python tools/market_size_check.py review-stage/draft.md > review-stage/market_size.json
+bash tools/run.sh market_size_check.py review-stage/draft.md > review-stage/market_size.json
 ```
 
 The tool emits a JSON document per [verification-protocols.md](../shared-references/verification-protocols.md) schema. Veto-relevant flags:

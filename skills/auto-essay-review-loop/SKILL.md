@@ -10,12 +10,14 @@ This is the front door. The user hands you a draft. You decide which format
 it is, then dispatch to the format-specific loop skill. You do not run the
 loop yourself.
 
-The four format-specific skills are:
+The six format-specific skills are:
 
 - `auto-blog-review-loop` — markdown long-form (500–4000 words, H2/H3 structure)
 - `auto-social-review-loop` — X / Threads / IG-caption short posts (≤2200 chars)
 - `auto-linkedin-review-loop` — LinkedIn posts (≤3000 chars, hook + hashtags)
 - `auto-business-plan-review-loop` — pitch decks, executive summaries, full plans
+- `auto-application-review-loop` — job, YC/accelerator, grant, fellowship, grad-school, MBA, undergrad applications (Q&A markdown). Requires `--target=<type>`.
+- `auto-cv-review-loop` — CVs and resumes (markdown)
 
 All four follow the same loop contract — see
 `skills/shared-references/loop-contract.md`. v0.1 backend is Codex MCP
@@ -29,6 +31,8 @@ local Ollama — see `docs/BACKEND_CONFIG.md`.
 /auto-essay-review-loop <path/to/draft>
 /auto-essay-review-loop <path/to/draft> --format=blog
 /auto-essay-review-loop <path/to/draft> --format=social --platform=x
+/auto-essay-review-loop <path/to/draft> --format=application --target=yc
+/auto-essay-review-loop <path/to/draft> --format=cv
 /auto-essay-review-loop <path/to/draft> --difficulty=hard
 /auto-essay-review-loop <path/to/draft> --reviewer=codex      # v0.1 default and only option
 ```
@@ -70,6 +74,25 @@ Match if ANY of these:
 - Filename matches `(?i)(business[_-]?plan|pitch|deck|exec[_-]?summary|memo)`
 
 → dispatch `auto-business-plan-review-loop`
+
+### Rule 2.5 — application signals (Q&A document)
+
+Match if ANY of these:
+
+- File contains 2+ headings matching `(?i)^## *Q: ` (the application Q&A pattern). This is the strongest signal — the user has already structured their draft as questions and answers.
+- Filename matches `(?i)(application|app[_-]?(yc|ycombinator|grant|fellowship|grad|mba|undergrad|scholarship)?|cover[_-]?letter|sop|statement[_-]?of[_-]?purpose|personal[_-]?statement|essay[_-]?(common[_-]?app|hbs|gsb))`
+
+→ dispatch `auto-application-review-loop`. The application skill REQUIRES a `--target` flag (job, yc, accelerator, grant, fellowship, grad-school, mba, undergrad, scholarship) — if the user did not pass one, the umbrella forwards `--target=<missing>` and the format skill asks the user once before dispatching personas. Do not guess the target from filename heuristics; an `app_yc.md` filename hint is suggestive but not authoritative (a user might be reusing the file for a different target).
+
+### Rule 2.7 — CV / resume signals
+
+Match if ANY of these:
+
+- Filename matches `(?i)(resume|cv|curriculum[_-]?vitae)`
+- File contains at least 2 of these H2 sections (case-insensitive): `## Experience`, `## Education`, `## Skills`, `## Summary`, `## Profile`, `## Work History`, `## Employment`, `## Publications`, `## Projects` (where projects co-occurs with at least one of Experience or Education, to avoid matching a generic blog with a Projects heading)
+- File starts with a name + contact-line pattern (line 1: `# <Name>`; line 2: short contact line containing email or phone)
+
+→ dispatch `auto-cv-review-loop`.
 
 ### Rule 3 — social signals
 
@@ -114,10 +137,14 @@ Which is it?
   2. social (X/Threads/IG)
   3. LinkedIn
   4. business-plan
+  5. application (job/YC/grant/fellowship/grad-school/MBA/undergrad)
+  6. cv / resume
 ```
 
-Accept `1`/`2`/`3`/`4` or the literal name. If the user types `cancel` or
-`stop`, exit cleanly.
+Accept `1`/`2`/`3`/`4`/`5`/`6` or the literal name. If the user types `cancel` or
+`stop`, exit cleanly. If they pick `5`, ask the follow-up: "Application target?
+job, yc, accelerator, grant, fellowship, grad-school, mba, undergrad, scholarship?"
+and pass through as `--target=<value>`.
 
 ## Phase 2 — dispatch
 
@@ -129,6 +156,8 @@ Once format is decided, invoke the matching skill via the Skill tool:
 | social | `auto-social-review-loop` |
 | linkedin | `auto-linkedin-review-loop` |
 | business-plan | `auto-business-plan-review-loop` |
+| application | `auto-application-review-loop` (also pass `--target=<type>`) |
+| cv | `auto-cv-review-loop` |
 
 Pass through the original draft path AND any user-provided flags. Example:
 
@@ -221,6 +250,35 @@ User: /auto-essay-review-loop investor_memo.md
 You read: contains "## Problem", "## Solution", "$2B TAM"
 You print: Detected: business-plan ($2B TAM, exec-summary structure) — dispatching to auto-business-plan-review-loop.
 You call:  Skill auto-business-plan-review-loop with args "investor_memo.md"
+```
+
+### Example 3.5 — YC application
+
+```
+User: /auto-essay-review-loop yc_w26.md --target=yc
+You read: 4 headings starting with "## Q:", 1842 words
+You print: Detected: application/yc (5 questions, Q&A structure) — dispatching to auto-application-review-loop.
+You call:  Skill auto-application-review-loop with args "yc_w26.md --target=yc"
+```
+
+### Example 3.7 — resume
+
+```
+User: /auto-essay-review-loop my_resume.md
+You read: name + contact line, ## Experience, ## Education, ## Skills sections
+You print: Detected: cv (resume sections present) — dispatching to auto-cv-review-loop.
+You call:  Skill auto-cv-review-loop with args "my_resume.md"
+```
+
+### Example 3.8 — application without target
+
+```
+User: /auto-essay-review-loop common_app.md
+You read: 6 headings starting with "## Q:"
+You print: Detected: application (Q&A structure). Application target?
+            job, yc, accelerator, grant, fellowship, grad-school, mba, undergrad, scholarship?
+User: undergrad
+You call:  Skill auto-application-review-loop with args "common_app.md --target=undergrad"
 ```
 
 ### Example 4 — explicit override

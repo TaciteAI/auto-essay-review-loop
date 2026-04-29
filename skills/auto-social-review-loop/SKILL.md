@@ -69,7 +69,7 @@ it from the draft (first noun-phrase heuristic; user can override).
 Run `tools/count_chars.py` once per round, after personas review:
 
 ```bash
-python tools/count_chars.py review-stage/draft.txt --format={x|threads|ig} > review-stage/count_chars.json
+bash tools/run.sh count_chars.py review-stage/draft.txt --format={x|threads|ig} > review-stage/count_chars.json
 ```
 
 The tool emits the JSON schema from
@@ -160,7 +160,7 @@ See loop-contract.md. Skipped at default `medium`.
 #### Phase B.7: Verification
 
 ```bash
-python tools/count_chars.py review-stage/draft.txt --format={{PLATFORM}} \
+bash tools/run.sh count_chars.py review-stage/draft.txt --format={{PLATFORM}} \
   > review-stage/count_chars.json
 ```
 

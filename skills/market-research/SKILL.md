@@ -66,7 +66,7 @@ This skill follows a five-phase contract: **Phase 0 (intake) → Phase 1 (plan) 
 Invoke the helper to extract structured signals from the input and emit a query plan:
 
 ```bash
-python tools/market_research_fetch.py plan \
+bash tools/run.sh market_research_fetch.py plan \
   --input "$INPUT" \
   --geo "$GEO" \
   --icp "$ICP" \
@@ -250,7 +250,7 @@ If Phase 4 validation flags missing sections or under-cited claims, send ONE fol
 Before publishing, run the validator:
 
 ```bash
-python tools/market_research_fetch.py validate \
+bash tools/run.sh market_research_fetch.py validate \
   --input market-research/MARKET_RESEARCH.md \
   --plan market-research/RESEARCH_PLAN.json \
   > market-research/MARKET_RESEARCH.json

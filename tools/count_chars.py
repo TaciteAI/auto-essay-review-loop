@@ -4,8 +4,12 @@ count_chars.py — verification tool for social-post character/link/hashtag/ment
 
 Stdlib-only. Cross-platform (Windows + Unix). No external deps.
 
-Usage:
-    python tools/count_chars.py <draft_path> --format=<x|threads|ig|linkedin>
+Usage (from a skill):
+    bash tools/run.sh count_chars.py <draft_path> --format=<x|threads|ig|linkedin>
+
+Direct invocation (Windows uses `py`; Unix uses `python3`):
+    py  tools/count_chars.py <draft_path> --format=<x|threads|ig|linkedin>
+    python3 tools/count_chars.py <draft_path> --format=<x|threads|ig|linkedin>
 
 Emits a JSON object to stdout matching the schema in
 shared-references/verification-protocols.md.
@@ -235,7 +239,23 @@ def parse_args(argv: list[str]) -> tuple[str, str]:
 
 
 def main(argv: list[str]) -> int:
-    draft_path, platform = parse_args(argv)
+    try:
+        draft_path, platform = parse_args(argv)
+    except (ValueError, SystemExit) as exc:
+        err = {
+            "tool": TOOL_NAME,
+            "schema_version": SCHEMA_VERSION,
+            "timestamp": now_iso(),
+            "input_file": argv[1] if len(argv) > 1 else "",
+            "platform": "",
+            "passed": False,
+            "checks": [],
+            "summary": str(exc).strip() or "argument error",
+            "error": type(exc).__name__,
+        }
+        sys.stdout.write(json.dumps(err, ensure_ascii=False, indent=2))
+        sys.stdout.write("\n")
+        return 2
     p = Path(draft_path)
     if not p.exists():
         err = {

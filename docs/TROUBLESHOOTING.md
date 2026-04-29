@@ -4,6 +4,63 @@ Common failure modes and what to do. If your symptom is not here, open an
 issue with: the format, the round it failed at, the relevant slice of
 `AUTO_REVIEW.md`, and the offending `traces/.../*.response.txt`.
 
+## Verification step crashes with "python: command not found"
+
+**Symptom:** Phase B fires, you see something like:
+
+```
+/usr/bin/bash: line 1: python: command not found
+```
+
+and the round logs `INCONCLUSIVE` or hangs waiting for verification JSON.
+
+**Why:** older skill instructions called `python tools/...` directly. On
+Windows the only Python on PATH is often the `py` launcher, not `python`.
+Linux distros sometimes only ship `python3`. Either way, the call fails.
+
+**Fix:** all v0.1+ skills route Python invocations through
+`bash tools/run.sh <script.py> ...`. The wrapper picks the first of
+`python3 / python / py` that exists. If you see this error, you are running
+against a stale checkout. Pull the latest, or grep for the offending call:
+
+```bash
+grep -rn 'python tools/' skills/ docs/
+```
+
+and replace with `bash tools/run.sh ...`.
+
+If `tools/run.sh` itself reports `no python interpreter found on PATH`,
+install Python 3.10+ (any of `python3`, `python`, or `py` is fine) and
+re-run.
+
+## Format detection asks "which is it?" on a clearly blog draft
+
+**Symptom:** you invoke `/auto-essay-review-loop my_draft.md` on a long
+markdown post and the dispatcher comes back with:
+
+```
+Couldn't auto-detect (650 words, 0 H2s, no hashtags). Which is it?
+  1) blog  2) social  3) linkedin  4) business-plan
+```
+
+**Why:** Rule 5 (blog) requires at least one `^## ` H2 heading
+(see [skills/auto-essay-review-loop/SKILL.md](../skills/auto-essay-review-loop/SKILL.md)).
+A rough draft that has not been structured yet, or a personal-essay style
+post that uses single H1 + prose, fails the rule and falls into the
+ambiguous bucket.
+
+**This is by design** — the H2 check is the strongest signal that a
+markdown file is a structured blog post and not, for example, a
+README. If you want to skip the prompt, pass the format explicitly:
+
+```
+/auto-essay-review-loop my_draft.md --format=blog
+```
+
+If you find yourself doing this often, the Rule 5 condition can be
+relaxed — file an issue with the draft profile (word count, structure,
+filename pattern) so we can tune it.
+
 ## Reviewer returns malformed JSON
 
 **Symptom:** `traces/.../persona-X-round-N.response.txt` contains prose,

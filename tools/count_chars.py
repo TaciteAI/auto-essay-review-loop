@@ -274,7 +274,23 @@ def main(argv: list[str]) -> int:
         return 2
 
     # Use utf-8 explicitly for cross-platform consistency (Windows defaults to cp1252).
-    text = p.read_text(encoding="utf-8")
+    try:
+        text = p.read_text(encoding="utf-8")
+    except (UnicodeDecodeError, OSError) as exc:
+        err = {
+            "tool": TOOL_NAME,
+            "schema_version": SCHEMA_VERSION,
+            "timestamp": now_iso(),
+            "input_file": draft_path,
+            "platform": platform,
+            "passed": False,
+            "checks": [],
+            "summary": f"could not read draft: {exc}",
+            "error": type(exc).__name__,
+        }
+        sys.stdout.write(json.dumps(err, ensure_ascii=False, indent=2))
+        sys.stdout.write("\n")
+        return 2
     result = build_result(input_file=str(p), platform=platform, text=text)
     sys.stdout.write(json.dumps(result, ensure_ascii=False, indent=2))
     sys.stdout.write("\n")

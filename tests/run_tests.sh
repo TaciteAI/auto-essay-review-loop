@@ -155,6 +155,21 @@ assert_passed "verify_cv strong CV" "true" \
 assert_passed "verify_cv weak CV (cliches, weak verbs, no numbers, mixed dates)" "false" \
   bash tools/run.sh verify_cv.py tests/fixtures/cv/weak.md --target-pages=1
 
+# --- Regression: verification tools must not crash on non-UTF8 input.
+# Before this fix, count_chars.py and verify_application.py raised
+# UnicodeDecodeError and printed a Python traceback when handed a cp1252
+# or otherwise non-UTF8 draft. Should now produce passed:false JSON like
+# verify_cv.py already did.
+_BAD_ENC_FILE="$(mktemp -t auto-essay-bad-enc.XXXXXX 2>/dev/null || mktemp)"
+printf '\xff\xfe\x00garbage\xff' > "$_BAD_ENC_FILE"
+assert_passed "count_chars handles non-UTF8 input gracefully" "false" \
+  "$PYTHON" tools/count_chars.py "$_BAD_ENC_FILE" --format=x
+assert_passed "verify_application handles non-UTF8 input gracefully" "false" \
+  "$PYTHON" tools/verify_application.py "$_BAD_ENC_FILE"
+assert_passed "verify_cv handles non-UTF8 input gracefully" "false" \
+  "$PYTHON" tools/verify_cv.py "$_BAD_ENC_FILE" --target-pages=1
+rm -f "$_BAD_ENC_FILE" 2>/dev/null || true
+
 # --- Summary ---
 echo
 echo "Results:"

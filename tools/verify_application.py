@@ -460,8 +460,24 @@ def main(argv: list[str]) -> int:
         sys.stdout.write("\n")
         return 2
 
-    # Use utf-8 explicitly for cross-platform consistency.
-    text = p.read_text(encoding="utf-8")
+    # Use utf-8 explicitly for cross-platform consistency. Catch decode/OS errors
+    # so a non-UTF8 draft yields a JSON error instead of a Python traceback.
+    try:
+        text = p.read_text(encoding="utf-8")
+    except (UnicodeDecodeError, OSError) as exc:
+        err = {
+            "tool": TOOL_NAME,
+            "schema_version": SCHEMA_VERSION,
+            "timestamp": now_iso(),
+            "input_file": draft_path,
+            "passed": False,
+            "checks": [],
+            "summary": f"could not read draft: {exc}",
+            "error": type(exc).__name__,
+        }
+        sys.stdout.write(json.dumps(err, ensure_ascii=False, indent=2))
+        sys.stdout.write("\n")
+        return 2
     result = build_result(input_file=str(p), text=text)
     sys.stdout.write(json.dumps(result, ensure_ascii=False, indent=2))
     sys.stdout.write("\n")

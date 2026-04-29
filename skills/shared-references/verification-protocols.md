@@ -82,3 +82,21 @@ the JSON and merge results into the round's `AUTO_REVIEW.md` entry.
 If `verify_links.sh` says a link is broken, the link is broken. The persona
 that says "looks great to me" doesn't override that. The fix list MUST
 include the broken link before the round can pass.
+
+## Enrichment artifacts (not gates)
+
+Some tools produce evidence that is fed back to reviewers as ammunition,
+not as a hard gate on the draft. They run BEFORE the loop, not inside
+Phase B.7, and their failures don't block termination — they only weaken
+the resulting fact base. Currently:
+
+| Artifact | Producer | Validator | Consumed by |
+|----------|----------|-----------|-------------|
+| `MARKET_RESEARCH.md` | [/market-research](../market-research/SKILL.md) | `python tools/market_research_fetch.py validate ...` | `auto-business-plan-review-loop` Phase B (appended to reviewer prompt as `<MARKET_DATA>`) |
+
+The validator emits the same JSON schema as the gate tools (above) so
+that any future enrichment artifact can be checked uniformly. The
+distinction is **where the result is used**: gate-tool failures block
+round termination; enrichment-validator failures only mean "this
+evidence base is thin — surface it to the user before they trust the
+review."

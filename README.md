@@ -259,6 +259,46 @@ For markdown CVs and resumes. Standard sections (`## Summary`, `## Experience`, 
 
 **Verification tool:** [`tools/verify_cv.py`](tools/verify_cv.py) — checks page-length estimate, action-verb-first bullets, quantified-bullet ratio, cliche density, date-format consistency, tense consistency.
 
+### Slides (`personas/slides/`)
+
+For slide decks. Two input formats: **markdown slides** (Marp / Slidev / reveal.js convention — slides separated by `---` thematic breaks or by H1/H2 headings, speaker notes inside `<!-- ... -->` comments) and **`.pptx`** (parsed directly via stdlib `zipfile` + XML; no `python-pptx` dependency).
+
+Requires a `--scenario=pitch|academic|internal` flag — the persona panel and thresholds differ sharply by audience. Without `--scenario`, the skill asks once and refuses to default.
+
+**Pitch panel** (`--scenario=pitch`, e.g. seed-stage startup deck for investors):
+
+| Persona | What they do |
+|---------|--------------|
+| `vc-partner-skim` | Partner reading 100+ decks/week. 90-second skim. Veto: would they forward this internally? |
+| `exec-30s-skim` | Reads only the slide titles in order. If the title sequence does not deliver the wedge + ask, fails. |
+| `density-skeptic` | Death-by-PowerPoint detector. Catches walls of text, "(cont.)" titles, slide-to-minute mismatch. |
+| `presenter-coach` | Live-pitch dry run. Hook on slide 1, arc, notes on load-bearing slides, clean close. |
+
+**Academic panel** (`--scenario=academic`, e.g. NeurIPS/SOSP/CHI talk, qualifying exam, dissertation defense):
+
+| Persona | What they do |
+|---------|--------------|
+| `program-committee-skim` | Senior researcher / PC member. Veto: contribution clear by slide 3 AND evidence supports claims AND limitations named. |
+| `back-of-room-reader` | Audience member in row 14 of the conference hall. Can the room read each slide in the time it's up? |
+| `density-skeptic` | Slide-to-minute ratio against `--talk-length`. Equation overload, baseline omission. |
+| `presenter-coach` | Talk-quality dry run. Contribution-stating opener and a memorable close. |
+
+**Internal panel** (`--scenario=internal`, e.g. exec status, all-hands, team review):
+
+| Persona | What they do |
+|---------|--------------|
+| `exec-30s-skim` | VP skim. Veto: title sequence delivers the thesis. |
+| `back-of-room-reader` | All-hands or conference-room readability. |
+| `density-skeptic` | Death-by-PowerPoint detector. |
+| `presenter-coach` | Live-meeting dry run. |
+
+**Termination** (per scenario):
+- Pitch: `>=75%` personas at `>=7/10` AND `vc-partner-skim` says `would_forward_internally=true` AND `exec-30s-skim` says `title_story_holds=true` AND verification passes.
+- Academic: `>=75%` personas at `>=7/10` AND `program-committee-skim` says contribution+evidence+limitations all hold AND verification passes.
+- Internal: `>=75%` personas at `>=7/10` AND `exec-30s-skim` says `title_story_holds=true` AND verification passes.
+
+**Verification tool:** [`tools/verify_slides.py`](tools/verify_slides.py) — slide count, max words/bullets per slide, title length, title uniqueness (catches "Background (cont.)"), speaker-notes coverage, agenda-or-close presence, claim-title ratio (claim-titles like "Latency dropped 40%" vs noun-titles like "Latency Improvements"). Stdlib-only; supports `.md`/`.txt` and `.pptx`.
+
 → Full schema and authoring guide: [docs/PERSONA_AUTHORING.md](docs/PERSONA_AUTHORING.md)
 
 ## Example output
@@ -373,12 +413,18 @@ auto-essay-review-loop/
 │   ├── auto-social-review-loop/
 │   ├── auto-linkedin-review-loop/
 │   ├── auto-business-plan-review-loop/
+│   ├── auto-application-review-loop/
+│   ├── auto-cv-review-loop/
+│   ├── auto-slides-review-loop/
 │   └── shared-references/          # loop contract, persona schema, etc.
 ├── personas/
 │   ├── blog/
 │   ├── social/
 │   ├── linkedin/
-│   └── business-plan/
+│   ├── business-plan/
+│   ├── application/
+│   ├── cv/
+│   └── slides/
 ├── tools/                          # verification scripts
 ├── templates/
 │   └── BRAND_VOICE.template.md
@@ -394,8 +440,8 @@ auto-essay-review-loop/
 
 ## Roadmap
 
-- **v0.1.0** (now) — Codex MCP backend. 6 formats (blog, social, linkedin, business-plan, application, cv). 25 personas. Verification
-  layer. State recovery. Brand voice protocol.
+- **v0.1.0** (now) — Codex MCP backend. 7 formats (blog, social, linkedin, business-plan, application, cv, slides). 31 personas. Verification
+  layer (incl. `.pptx` parser via stdlib zipfile/XML). State recovery. Brand voice protocol.
 - **v0.2.0** — Multi-backend (DeepSeek, MiniMax, OpenAI direct). Reviewer
   difficulty modes (`hard`, `nightmare`).
 - **v0.3.0** — Local Ollama backend. Offline mode. Persona contribution

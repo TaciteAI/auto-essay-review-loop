@@ -104,6 +104,36 @@ except Exception:
   fi
 }
 
+# assert_metric <name> <metric.dot.path> <expected_value> <command...>
+# Pulls a numeric/string metric out of the tool's JSON. Supports dotted paths like
+# "metrics.slide_count" or top-level keys like "passed".
+assert_metric() {
+  local name="$1"; shift
+  local path="$1"; shift
+  local expected="$1"; shift
+  local out
+  out="$("$@" 2>&1)" || true
+  local got
+  got="$("$PYTHON" -c "
+import sys, json
+try:
+    data = json.loads(sys.stdin.read())
+    cur = data
+    for part in '$path'.split('.'):
+        cur = cur[part]
+    print(cur)
+except Exception as e:
+    print('error:'+str(e))
+" <<< "$out")"
+  if [ "$got" = "$expected" ]; then
+    RESULTS+=("PASS  $name  ($path=$expected)")
+    PASS=$((PASS+1))
+  else
+    RESULTS+=("FAIL  $name  (expected $path=$expected, got $got)")
+    FAIL=$((FAIL+1))
+  fi
+}
+
 echo "Running auto-essay-review-loop v0.1 smoke tests"
 echo "================================================"
 echo
@@ -154,6 +184,40 @@ assert_passed "verify_cv strong CV" "true" \
   bash tools/run.sh verify_cv.py tests/fixtures/cv/strong.md --target-pages=1
 assert_passed "verify_cv weak CV (cliches, weak verbs, no numbers, mixed dates)" "false" \
   bash tools/run.sh verify_cv.py tests/fixtures/cv/weak.md --target-pages=1
+
+# --- Slides: structural verification ---
+assert_passed "verify_slides strong deck (Marp markdown)" "true" \
+  bash tools/run.sh verify_slides.py tests/fixtures/slides/strong.md
+assert_passed "verify_slides weak deck (walls of text, dup titles, no notes, no close)" "false" \
+  bash tools/run.sh verify_slides.py tests/fixtures/slides/weak.md
+assert_passed "verify_slides weak deck fails under pitch tighter limits" "false" \
+  bash tools/run.sh verify_slides.py tests/fixtures/slides/weak.md --max-words-per-slide=40 --slide-count-max=15 --claim-title-target=40
+
+# Regression: pitch deck with positioning-style titles ("Stripe for X", "From X to Y",
+# "X: Y" colon claims) should pass under pitch-tightened thresholds. Before
+# expanding is_claim_title(), this fixture would fail claim_title_ratio.
+assert_passed "verify_slides good pitch deck under pitch limits" "true" \
+  bash tools/run.sh verify_slides.py tests/fixtures/slides/pitch_strong.md --max-words-per-slide=40 --slide-count-max=15 --claim-title-target=40
+
+# Regression: code-fence-aware splitting. The fixture has 3 `---` lines inside
+# fenced YAML/python blocks AND 4 real slide separators (5 slides total). Without
+# fence masking, the parser would have produced 8 slides.
+assert_metric "verify_slides ignores fenced-block --- lines (code_fence fixture)" "metrics.slide_count" "5" \
+  bash tools/run.sh verify_slides.py tests/fixtures/slides/code_fence.md
+
+# Regression: a deck whose first content is a slide separator (no real frontmatter)
+# must NOT have its first slide consumed as YAML frontmatter. Before the fix,
+# strip_frontmatter() ate any opening `---...---` block; now it requires a YAML
+# key:value line inside.
+assert_metric "verify_slides preserves first slide when no real frontmatter" "metrics.slide_count" "5" \
+  bash tools/run.sh verify_slides.py tests/fixtures/slides/no_frontmatter.md
+
+# Regression: verify_slides handles non-UTF8 markdown gracefully.
+_BAD_ENC_SLIDES="$(mktemp -t auto-essay-bad-slides-enc.XXXXXX 2>/dev/null || mktemp)"
+printf '\xff\xfe\x00garbage\xff' > "$_BAD_ENC_SLIDES"
+assert_passed "verify_slides handles non-UTF8 input gracefully" "false" \
+  bash tools/run.sh verify_slides.py "$_BAD_ENC_SLIDES"
+rm -f "$_BAD_ENC_SLIDES" 2>/dev/null || true
 
 # --- Regression: verification tools must not crash on non-UTF8 input.
 # Before this fix, count_chars.py and verify_application.py raised

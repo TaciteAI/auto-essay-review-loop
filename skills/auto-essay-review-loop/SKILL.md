@@ -1,6 +1,6 @@
 ---
 name: auto-essay-review-loop
-description: Umbrella dispatcher for persona-adversarial review loops on non-academic writing. Auto-detects format (blog, social, LinkedIn, business plan) from the input file and dispatches to the format-specific skill. Use when user says "review my draft", "auto review my post", "run the loop on this", or invokes /auto-essay-review-loop with a file path. v0.1 backend = Codex MCP (gpt-5.4, model_reasoning_effort=xhigh).
+description: Umbrella dispatcher for persona-adversarial review loops on non-academic writing. Auto-detects format (blog, social, LinkedIn, business plan, application, CV, slides) from the input file and dispatches to the format-specific skill. Use when user says "review my draft", "auto review my post", "run the loop on this", or invokes /auto-essay-review-loop with a file path. v0.1 backend = Codex MCP (gpt-5.4, model_reasoning_effort=xhigh).
 allowed-tools: Skill, Read, Bash, Glob, Grep
 ---
 
@@ -10,14 +10,15 @@ This is the front door. The user hands you a draft. You decide which format
 it is, then dispatch to the format-specific loop skill. You do not run the
 loop yourself.
 
-The six format-specific skills are:
+The seven format-specific skills are:
 
 - `auto-blog-review-loop` — markdown long-form (500–4000 words, H2/H3 structure)
 - `auto-social-review-loop` — X / Threads / IG-caption short posts (≤2200 chars)
 - `auto-linkedin-review-loop` — LinkedIn posts (≤3000 chars, hook + hashtags)
-- `auto-business-plan-review-loop` — pitch decks, executive summaries, full plans
+- `auto-business-plan-review-loop` — pitch decks (text), executive summaries, full plans
 - `auto-application-review-loop` — job, YC/accelerator, grant, fellowship, grad-school, MBA, undergrad applications (Q&A markdown). Requires `--target=<type>`.
 - `auto-cv-review-loop` — CVs and resumes (markdown)
+- `auto-slides-review-loop` — slide decks: pitch decks, academic talks, internal presentations (markdown slides via Marp/Slidev convention OR `.pptx` files). Requires `--scenario=pitch|academic|internal`.
 
 All four follow the same loop contract — see
 `skills/shared-references/loop-contract.md`. v0.1 backend is Codex MCP
@@ -33,6 +34,8 @@ local Ollama — see `docs/BACKEND_CONFIG.md`.
 /auto-essay-review-loop <path/to/draft> --format=social --platform=x
 /auto-essay-review-loop <path/to/draft> --format=application --target=yc
 /auto-essay-review-loop <path/to/draft> --format=cv
+/auto-essay-review-loop <path/to/deck.md> --format=slides --scenario=pitch --stage=seed
+/auto-essay-review-loop <path/to/deck.pptx> --format=slides --scenario=academic --talk-length=15
 /auto-essay-review-loop <path/to/draft> --difficulty=hard
 /auto-essay-review-loop <path/to/draft> --reviewer=codex      # v0.1 default and only option
 ```
@@ -51,9 +54,10 @@ the format skill owns those.
 Refuse politely if:
 
 - Path doesn't exist.
-- File is binary (PDF, DOCX) — we only handle markdown / plain text in v0.1.
-  Tell the user: "v0.1 only handles `.md` and `.txt`. Convert to markdown first."
+- File is binary AND extension is not `.pptx` — we handle markdown / plain text and (for slides only) PowerPoint in v0.1. Tell the user: "v0.1 handles `.md`, `.txt`, and `.pptx`. For `.pdf` / `.docx`, convert first."
 - File is empty.
+
+For `.pptx` input: skip the first-8KB peek; the file is a zip. Detection short-circuits to `slides` (see Rule 2.3 below).
 
 ## Phase 1 — format detection
 
@@ -61,8 +65,19 @@ Run the rules in order. First match wins.
 
 ### Rule 1 — explicit override
 
-If the user passed `--format=blog|social|linkedin|business-plan`, skip
-detection and use it. This is the escape hatch for misclassification.
+If the user passed `--format=blog|social|linkedin|business-plan|application|cv|slides`,
+skip detection and use it. This is the escape hatch for misclassification.
+
+### Rule 2.3 — slides signals (run before all others)
+
+Match if ANY of these:
+
+- File extension is `.pptx`. Hard match — the file is a PowerPoint, no other format matches.
+- Filename matches `(?i)(slides?|deck|presentation|talk|pitch[_-]?deck|keynote)` AND extension is `.md` or `.txt`.
+- The file (markdown) contains 3+ thematic-break separators (`^---\s*$` outside YAML frontmatter) — Marp / Slidev / reveal.js convention.
+- The file contains a Marp / Slidev frontmatter marker (`marp: true` or `theme:` inside the YAML frontmatter, or a `## Slide` repeating heading pattern).
+
+→ dispatch `auto-slides-review-loop`. The slides skill REQUIRES a `--scenario=pitch|academic|internal` flag — if the user did not pass one, the umbrella forwards `--scenario=<missing>` and the format skill asks the user once before dispatching personas. For `--scenario=pitch`, also forward `--stage=` if provided. For `--scenario=academic`, forward `--talk-length=` and `--venue=` if provided.
 
 ### Rule 2 — business-plan signals
 
@@ -139,12 +154,15 @@ Which is it?
   4. business-plan
   5. application (job/YC/grant/fellowship/grad-school/MBA/undergrad)
   6. cv / resume
+  7. slides (pitch deck / academic talk / internal presentation)
 ```
 
-Accept `1`/`2`/`3`/`4`/`5`/`6` or the literal name. If the user types `cancel` or
-`stop`, exit cleanly. If they pick `5`, ask the follow-up: "Application target?
+Accept `1`/`2`/`3`/`4`/`5`/`6`/`7` or the literal name. If the user types `cancel`
+or `stop`, exit cleanly. If they pick `5`, ask the follow-up: "Application target?
 job, yc, accelerator, grant, fellowship, grad-school, mba, undergrad, scholarship?"
-and pass through as `--target=<value>`.
+and pass through as `--target=<value>`. If they pick `7`, ask: "Slides scenario?
+pitch (startup deck), academic (talk/defense), or internal (corporate)?" and
+pass through as `--scenario=<value>`.
 
 ## Phase 2 — dispatch
 
@@ -158,6 +176,7 @@ Once format is decided, invoke the matching skill via the Skill tool:
 | business-plan | `auto-business-plan-review-loop` |
 | application | `auto-application-review-loop` (also pass `--target=<type>`) |
 | cv | `auto-cv-review-loop` |
+| slides | `auto-slides-review-loop` (also pass `--scenario=<type>`) |
 
 Pass through the original draft path AND any user-provided flags. Example:
 
@@ -279,6 +298,35 @@ You print: Detected: application (Q&A structure). Application target?
             job, yc, accelerator, grant, fellowship, grad-school, mba, undergrad, scholarship?
 User: undergrad
 You call:  Skill auto-application-review-loop with args "common_app.md --target=undergrad"
+```
+
+### Example 3.9 — pitch deck (markdown slides)
+
+```
+User: /auto-essay-review-loop drafts/seed_deck.md --scenario=pitch --stage=seed
+You read: 11 thematic breaks, "marp: true" in frontmatter, filename hints "deck"
+You print: Detected: slides (Marp deck, 12 slides) — dispatching to auto-slides-review-loop with --scenario=pitch.
+You call:  Skill auto-slides-review-loop with args "drafts/seed_deck.md --scenario=pitch --stage=seed"
+```
+
+### Example 3.95 — PowerPoint file
+
+```
+User: /auto-essay-review-loop drafts/q4_review.pptx --scenario=internal
+You read: extension is .pptx (binary; skip 8KB peek)
+You print: Detected: slides (.pptx) — dispatching to auto-slides-review-loop with --scenario=internal.
+You call:  Skill auto-slides-review-loop with args "drafts/q4_review.pptx --scenario=internal"
+```
+
+### Example 3.97 — academic talk without scenario
+
+```
+User: /auto-essay-review-loop drafts/talk.md
+You read: 14 thematic breaks, no "marp" frontmatter, filename "talk"
+You print: Detected: slides (14 thematic breaks, filename hint). Slides scenario?
+            pitch (startup deck), academic (talk/defense), or internal (corporate)?
+User: academic
+You call:  Skill auto-slides-review-loop with args "drafts/talk.md --scenario=academic"
 ```
 
 ### Example 4 — explicit override

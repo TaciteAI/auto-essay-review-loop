@@ -49,6 +49,21 @@ check). Failures are reported as hard rejections in the round's
 | Unit economics presence | inline (regex for CAC/LTV/payback) | At least 2 of {CAC, LTV, payback, gross margin, churn} mentioned with numbers |
 | Financial completeness | inline | 12-month and 3-year projections, named line items |
 
+### Slides
+
+Supports both markdown slides (Marp / Slidev / reveal.js convention) and `.pptx` input. Stdlib-only parser; no `python-pptx` dependency.
+
+| Check | Tool | Pass criteria |
+|-------|------|---------------|
+| Slide count | `tools/verify_slides.py` | Within `[--slide-count-min, --slide-count-max]` (defaults 5–30; pitch tightens to 5–15) |
+| Words per slide max | `tools/verify_slides.py` | No slide exceeds `--max-words-per-slide` (default 50; pitch tightens to 40) |
+| Bullets per slide max | `tools/verify_slides.py` | No slide exceeds `--max-bullets-per-slide` (default 7) |
+| Title length | `tools/verify_slides.py` | All titles ≤ `--max-title-words` (default 12) |
+| Title uniqueness | `tools/verify_slides.py` | No duplicate titles outside boilerplate (catches "Background" repeated) |
+| Speaker-notes coverage | `tools/verify_slides.py` | ≥ `--notes-coverage-target`% of slides have notes (default 50; academic 70) |
+| Agenda or close | `tools/verify_slides.py` | Front-2 or back-2 slides include an agenda / outline / summary / questions / takeaways slide |
+| Claim-title ratio | `tools/verify_slides.py` | ≥ `--claim-title-target`% of non-boilerplate titles are claims (verb or number); default 30; pitch 40 |
+
 ## Calling verification from a skill
 
 Always invoke Python tools through `bash tools/run.sh <script.py>`, never

@@ -31,6 +31,23 @@ file in `personas/{format}/{name}.md` with a fixed schema (see
 - [target-customer](../../personas/business-plan/target-customer.md) — would they actually buy this?
 - [competitor](../../personas/business-plan/competitor.md) — incumbent CEO; how do they kill this?
 
+### Slides (`personas/slides/`)
+
+Loaded as a four-persona panel chosen by `--scenario`:
+
+| Scenario | Panel |
+|----------|-------|
+| `pitch` | vc-partner-skim, exec-30s-skim, density-skeptic, presenter-coach |
+| `academic` | program-committee-skim, back-of-room-reader, density-skeptic, presenter-coach |
+| `internal` | exec-30s-skim, back-of-room-reader, density-skeptic, presenter-coach |
+
+- [vc-partner-skim](../../personas/slides/vc-partner-skim.md) — early-stage VC partner; 90-second skim; veto: would they forward internally?
+- [program-committee-skim](../../personas/slides/program-committee-skim.md) — senior researcher / PC member; veto: contribution + evidence + limitations all hold?
+- [exec-30s-skim](../../personas/slides/exec-30s-skim.md) — title-sequence-only audit; would the titles alone deliver the thesis?
+- [back-of-room-reader](../../personas/slides/back-of-room-reader.md) — audience member in row 14 of a conference hall; can the room read each slide?
+- [density-skeptic](../../personas/slides/density-skeptic.md) — Death-by-PowerPoint detector; words/bullets/titles density auditor
+- [presenter-coach](../../personas/slides/presenter-coach.md) — speaker's dry-run partner; hook, arc, notes, close
+
 ## Persona schema
 
 Every persona file uses this YAML frontmatter + body structure:
@@ -79,7 +96,7 @@ The exact JSON schema this persona must return:
 ## Schema fields
 
 - `name` — kebab-case, must match filename
-- `format` — `blog` / `social` / `linkedin` / `business-plan`
+- `format` — `blog` / `social` / `linkedin` / `business-plan` / `application` / `cv` / `slides`
 - `schema_version` — currently `1`
 - `weight` — used in weighted-consensus calculations (default 1.0)
 - `veto` — array of verification flags this persona auto-fails on (e.g., `vc-partner` vetoes if market_size_check returns "fantasy")

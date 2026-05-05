@@ -1,0 +1,50 @@
+{
+  "draft": "cn/13-friction-elimination.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 8,
+    "seo_skeptic": 8,
+    "h2_skimmer": 8,
+    "target_icp": 7
+  },
+  "verdicts": {
+    "mobile_first_reader": "ready",
+    "seo_skeptic": "ready",
+    "h2_skimmer": "ready",
+    "target_icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "The 'McKinsey PPT' paragraph (~430 chars) is a single wall on a 300px column — it covers savings flow, wage chain breaking, and the Yale link in one paragraph.",
+      "fix": "Split into 2-3 paragraphs at '这部分工资就这么没了。' and again at '资金链一断,...'.",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "All three H2s lead with '真正…' — the rhythmic repetition reads as template/口头禅 and reduces SERP/keyword variety.",
+      "fix": "Vary at least two: e.g. '去中介化的四个动作：查询、填表、议价、签署' and '平台估值的错假设：必经之路变可绕行'.",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "First 80 chars of body open with the markdown link to Citrini, so the CJK SERP snippet truncates before the '6%->1%' payoff.",
+      "fix": "Lead with the compression claim ('智能体把查房源、填表、议价、签字自动化后,交易摩擦费会从 6% 压到 1% 以下。'); move the Citrini citation to sentence 2.",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Outsourced-to-Citrini stats (Mastercard 3.4%, ServiceNow 23->14%, 白领招聘 -15%) and the food-delivery agent scenario ('批量取餐、合并配送') skip over real-world blockers (商家系统、监管、履约/责任), so HN/即刻 commenters can pick at the example chain.",
+      "fix": "Hedge once ('Citrini 推演里...') and add a single sentence acknowledging the blockers (商家集成 / 履约责任 / 监管) so the share-vector reader's reflex objection is pre-empted.",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Anchor texts 'Citrini Research 的 2028 推演场景' and '耶鲁与 Sonnenfeld 团队对入门岗位消失的研究' are descriptive but not conclusion-bearing.",
+      "fix": "Re-anchor as 'Citrini：智能体交易将房产佣金压到 1% 以下' and '耶鲁团队：AI 智能体让入门岗位加速消失'.",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "Best-scoring CN draft in the batch on structure: three of four personas score 8 / ready, the spine ('摩擦=商业模式') travels well, and the H2 outline tells the story. ICP would 'maybe share' on 即刻 — pending one borrowed-stats hedge and a paragraph split in the long McKinsey graf."
+}

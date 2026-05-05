@@ -1,0 +1,482 @@
+[
+  {
+    "draft": "cn/01-compute-moat.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 7
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/01-compute-moat.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 9,
+      "target-icp": 7
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 3
+  },
+  {
+    "draft": "cn/02-on-ramp-collapse.cn.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 8,
+      "h2-skimmer": 7,
+      "target-icp": 7
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/02-on-ramp-collapse.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 7,
+      "h2-skimmer": 8,
+      "target-icp": 7
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/03-so-so-automation.cn.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 8,
+      "h2-skimmer": 6,
+      "target-icp": 8
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/03-so-so-automation.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 6,
+      "target-icp": 8
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/04-algorithmic-management.cn.md",
+    "scores": {
+      "mobile-first-reader": 8,
+      "seo-skeptic": 7,
+      "h2-skimmer": 8,
+      "target-icp": 8
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/04-algorithmic-management.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 9,
+      "target-icp": 8
+    },
+    "avg": 8.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/05-surveillance-pricing.cn.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 8,
+      "h2-skimmer": 6,
+      "target-icp": 8
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/05-surveillance-pricing.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 8
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/06-antitrust-lag.cn.md",
+    "scores": {
+      "mobile-first-reader": 8,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 8
+    },
+    "avg": 8.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/06-antitrust-lag.en.md",
+    "scores": {
+      "mobile-first-reader": 8,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 8
+    },
+    "avg": 8.0,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/07-personal-ai-exit-ramp.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 7,
+      "h2-skimmer": 9,
+      "target-icp": 7
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/07-personal-ai-exit-ramp.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 8
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/08-deepseek-trajectory.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 8
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/08-deepseek-trajectory.en.md",
+    "scores": {
+      "mobile-first-reader": 8,
+      "seo-skeptic": 7,
+      "h2-skimmer": 8,
+      "target-icp": 7
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/09-context-ownership.cn.md",
+    "scores": {
+      "mobile-first-reader": 8,
+      "seo-skeptic": 8,
+      "h2-skimmer": 7,
+      "target-icp": 8
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/09-context-ownership.en.md",
+    "scores": {
+      "mobile-first-reader": 8,
+      "seo-skeptic": 8,
+      "h2-skimmer": 7,
+      "target-icp": 8
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/10-composition-over-subscription.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 8
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/10-composition-over-subscription.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 7,
+      "target-icp": 7
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/11-displacement-spiral.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 7,
+      "h2-skimmer": 7,
+      "target-icp": 7
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/11-displacement-spiral.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 9,
+      "target-icp": 6
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/12-ghost-gdp.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 7,
+      "h2-skimmer": 9,
+      "target-icp": 7
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 6
+  },
+  {
+    "draft": "en/12-ghost-gdp.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 7,
+      "h2-skimmer": 7,
+      "target-icp": 8
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/13-friction-elimination.cn.md",
+    "scores": {
+      "mobile-first-reader": 8,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 7
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/13-friction-elimination.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 7,
+      "h2-skimmer": 7,
+      "target-icp": 5
+    },
+    "avg": 6.5,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/14-top10-spending-collapse.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 7,
+      "target-icp": 7
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 6
+  },
+  {
+    "draft": "en/14-top10-spending-collapse.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 6,
+      "target-icp": 6
+    },
+    "avg": 6.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/15-daisy-chain.cn.md",
+    "scores": {
+      "mobile-first-reader": 8,
+      "seo-skeptic": 8,
+      "h2-skimmer": 8,
+      "target-icp": 7
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 6
+  },
+  {
+    "draft": "en/15-daisy-chain.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 6,
+      "target-icp": 7
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/16-2028-mortgage-crisis.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 7,
+      "h2-skimmer": 7,
+      "target-icp": 7
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/16-2028-mortgage-crisis.en.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 8,
+      "h2-skimmer": 9,
+      "target-icp": 8
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/17-interchange-pressure.cn.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 6,
+      "h2-skimmer": 8,
+      "target-icp": 7
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/17-interchange-pressure.en.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 7,
+      "h2-skimmer": 8,
+      "target-icp": 7
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/18-zendesk-template.cn.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 6,
+      "h2-skimmer": 7,
+      "target-icp": 7
+    },
+    "avg": 6.5,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/18-zendesk-template.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 6,
+      "h2-skimmer": 7,
+      "target-icp": 6
+    },
+    "avg": 6.5,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/19-revenue-paradox.cn.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 7,
+      "h2-skimmer": 7,
+      "target-icp": 8
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/19-revenue-paradox.en.md",
+    "scores": {
+      "mobile-first-reader": 7,
+      "seo-skeptic": 8,
+      "h2-skimmer": 7,
+      "target-icp": 6
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/20-labor-share-46.cn.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 6,
+      "h2-skimmer": 8,
+      "target-icp": 7
+    },
+    "avg": 6.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/20-labor-share-46.en.md",
+    "scores": {
+      "mobile-first-reader": 6,
+      "seo-skeptic": 7,
+      "h2-skimmer": 7,
+      "target-icp": 6
+    },
+    "avg": 6.5,
+    "terminate": true,
+    "weakness_count": 5
+  }
+]

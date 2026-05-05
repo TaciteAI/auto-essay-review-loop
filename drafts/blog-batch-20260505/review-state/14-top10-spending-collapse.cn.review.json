@@ -1,0 +1,56 @@
+{
+  "draft": "cn/14-top10-spending-collapse.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 7,
+    "seo_skeptic": 8,
+    "h2_skimmer": 7,
+    "target_icp": 7
+  },
+  "verdicts": {
+    "mobile_first_reader": "almost",
+    "seo_skeptic": "ready",
+    "h2_skimmer": "almost",
+    "target_icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Five visual walls on a 300px column: '杠杆之所以这么暴力' (~390 chars), the 2008-vs-structural comparison, the '苗头其实已经露出来了' three-stat run, the 'ServiceNow / 工资税' double-parallel, and the 'PPT假设' four-claim closer.",
+      "fix": "Break the 390-char graf at '...可选消费上。' and '...边际消费倾向。'; turn the '苗头' three stats into a 3-bullet list; split the closer at '...结构性。'.",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Voice flips between US macro voice ('战后大部分时间', '边际消费倾向') and CN street-level vignette ('上海 IFC...北京回龙观...深圳南山区...苏州工业园') — geographically the chain doesn't add up since the post is about US top-10% spending.",
+      "fix": "Either stay in US (Manhattan/Marin/Austin like the EN version) or explicitly mark the CN cities as a localizing analogy ('换到中国语境...'); don't switch coordinate systems mid-paragraph.",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Forward-looking specifics (2027 SF/Seattle/Austin housing -11/9/8%, 工资税 below CBO baseline 12%, ServiceNow ARR 23->14%) are written as fait accompli rather than scenario; ICP would caveat the share.",
+      "fix": "Mark each as 'Citrini 推演里...' or 'Citrini 场景中...' so readers don't accuse the post of 宏观爽文; collapse to 1-2 illustrative figures.",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Metaphor stack reads as deck-y: '承重墙', '传送带', '资产价格回声', '同一个剧情的不同切面', '杠杆这么暴力'.",
+      "fix": "Keep '承重墙' and one other; demote the rest.",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "H2 '早期信号长什么样' and '谁来做下一个十年的可选消费' are slightly informal/口语 and miss searchable keywords.",
+      "fix": "Sharpen to '早期信号：白领招聘下滑与CS毕业生失业率' and '需求端追问：下一个十年的可选消费由谁买单'.",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Anchor texts 'Citrini 的 2028 场景推演' and bare '7.0%' are descriptive but not conclusion-bearing.",
+      "fix": "Re-anchor as 'Citrini：顶层10%就业下降2%将拖累3–4%可选消费' and '美国新晋 CS 毕业生失业率 7.0%'.",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "All four personas score >=7 and SEO calls it ready / 8 — the title is sticky and the H2 outline tells a clean mechanism->signal->forward-question arc. The fixable issues are the same the EN version has plus a unique CN-specific bug: the Shanghai/Beijing/Shenzhen/Suzhou vignette is dropped into a US-top-10% macro argument and breaks the coordinate system."
+}

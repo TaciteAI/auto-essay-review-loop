@@ -1,0 +1,50 @@
+{
+  "draft": "cn/02-on-ramp-collapse.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 6,
+    "seo-skeptic": 8,
+    "h2-skimmer": 7,
+    "target-icp": 7
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "ready",
+    "h2-skimmer": "almost",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "中文专栏套话/抽象收束句密集：'把数字背后的抽象剥掉，模式很清楚'，'这是过去几轮极化没有的结构性特征'，'生成式 AI 的招牌动作'，'决定下一个劳动时代的形状'，'四十年里复利' — 读者会闻到'AI 宏大叙事味'",
+      "fix": "把每个收束句换成具体微观例子（一个真实岗位被取消/外包/被改成'要 3 年经验'的 junior 招聘 JD）",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "多个段落超过 ~150 字（手机舒适阈值），尤其是中段大量'因果链+抽象名词'连堆，iPhone 上看像一堵墙",
+      "fix": "把每个超长段拆成 2-3 段；每段只留一个主张+一个数字/例子；总结句改成短口语句",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Voice 从开篇'入门岗+学徒制'的具体解释滑向后半段'流动性/政策博弈/40年复利'宏大叙事；前后判断密度不一致",
+      "fix": "结尾收回到'公司/个人各自能做什么'的具体清单，避免大词收束；'资本拿走份额/劳动缩'改成可检验的表述（用工结构/薪酬分布/junior→mid 晋升周期）",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "最后一个 H2 '什么事情就此停止可能' 语法不顺、过度文学化",
+      "fix": "改成 '入门岗消失的后果：流动性、工资与不平等' 或 '下一步关键变量：企业是否还会培养新人'",
+      "raised_by": ["seo-skeptic", "h2-skimmer"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "锚文本多为裸数字 ('7.0%', '下降了大约 35%')，缺少'来源+指标'",
+      "fix": "改成 'Fortune：应届计算机毕业生失业率约7.0%'、'Fortune：入门级岗位招聘自2023年1月起下降约35%'",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "Framing 强（'不是替代资深，是拆入门'），最可分享句即标题本身；但中后段被专栏套话拖累、段落普遍超长、结尾过度宏大。下一轮重点：拆段、去套话、用真实招聘案例替代宏大判词。"
+}

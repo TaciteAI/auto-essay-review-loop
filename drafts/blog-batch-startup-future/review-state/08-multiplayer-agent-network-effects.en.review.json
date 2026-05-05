@@ -1,0 +1,16 @@
+{
+  "draft": "en/08-multiplayer-agent-network-effects.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 7, "h2-skimmer": 7, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "not ready", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Too abstract — nouns stacked on nouns without one concrete multiplayer scene", "fix": "Open with one vivid workflow: a broker agent asks a carrier agent for a missing doc, learns the pattern, every later claim gets faster", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Mechanism of network effect is asserted, not shown — no explicit loop", "fix": "Name the loop tightly: more participants → more exception data → better resolution playbooks → lower onboarding cost → more participants", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "List of verticals (insurance, freight, healthcare, legal) is breadth without depth", "fix": "Pick ONE vertical (say claims) and develop it; use the others as quick contrast or cut", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "Citations feel bolted on (Bessemer, Salesforce, Menlo) rather than load-bearing", "fix": "Use each citation only where it sharpens a specific claim, not as credibility confetti", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "VC-memo phrasing ('compounding workflow graph', 'workflow density across participants', 'shared operating memory')", "fix": "Translate abstract noun phrases into user-visible changes: fewer rejected forms, faster approvals, fewer manual escalations", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "No named loser/enemy — who is on the wrong side of this thesis?", "fix": "Identify what loses if multiplayer wins: horizontal copilots, RPA, generic APIs, or single-tenant SaaS", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "Strong contrarian thesis ('compounding workflow graph, not a viral loop') buried under abstraction. Pick one vertical, name the loop concretely, and add an enemy to push this from 7 to share-worthy."
+}

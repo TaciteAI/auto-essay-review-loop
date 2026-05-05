@@ -1,0 +1,15 @@
+{
+  "draft": "en/10-brand-and-ux-when-capability-is-rented.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7, "h2-skimmer": 7, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Thesis ('models commoditize → UX/brand becomes moat') is correct but already consensus for HN/Lenny audience", "fix": "Add one contrarian wedge: defend why interface is MORE durable than distribution/data/procurement lock-in, or what kind of UX decision actually creates defensibility", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Perplexity/Harvey/Midjourney paragraph name-checks but doesn't prove — each supports a different kind of moat", "fix": "Pick one example and zoom in on the specific UX decision (Perplexity citation design, Harvey's narrowing, Midjourney's discord workflow) that created defensibility", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "VC-strategy boilerplate ('owned surface', 'control plane', 'last mile between intelligence and action', 'compressed trust signal')", "fix": "Cut 3-4 abstract phrases; replace with plain operator language", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "H2s are polished but generic enough to fit many essays — title doesn't surface the arena", "fix": "Tighten H1, e.g. 'When AI Capability Is Rented, Brand and UX Are the Company'; sharpen one H2 to name a mechanism", "raised_by": ["seo-skeptic", "h2-skimmer"]},
+    {"severity": "MINOR", "issue": "Anchor text 'Agentforce' and the Menlo stat anchor are cryptic", "fix": "Rewrite anchors to describe destination/claim", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Quotable closer ('When the model is a commodity, the product is the company') and the ICP would share, but the argument is correct-and-consensus. One concrete UX-as-moat example and a contrarian wedge would unlock the next level."
+}

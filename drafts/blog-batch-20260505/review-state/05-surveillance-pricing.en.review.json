@@ -1,0 +1,44 @@
+{
+  "draft": "en/05-surveillance-pricing.en.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 7,
+    "seo-skeptic": 8,
+    "h2-skimmer": 8,
+    "target-icp": 8
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Several slogan/aphorism lines drift the voice from analytic-reportorial into vibe-y commentary: 'The cyberpunk reading is exact', 'This isn't a bug in the model. It IS the model', 'a higher-stakes arms race on the same field'",
+      "fix": "Either tether each slogan to a concrete mechanism in the next sentence, or cut the slogan and let the FTC evidence carry the weight",
+      "raised_by": ["mobile-first-reader", "target-icp", "seo-skeptic"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Lede leads thesis-first (perfect price discrimination → checkout flow); lacks one concrete checkout-screenshot anecdote to ground the abstraction before the reader hits the FTC citations",
+      "fix": "Open with a specific real example (the $42 sweater anecdote later in the piece could be promoted into the lede)",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Anchor text leads with publishers/institutions ('2025 review by Snell & Wilmer', 'antimonopoly analysis of AI') instead of query-shaped topic phrases",
+      "fix": "Rewrite anchors topic-first: 'FTC surveillance pricing 6(b) study (Jan 2025)', 'Yale Law & Policy Review: antimonopoly approach to governing AI'",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "The 'forward question' section drifts into speculative futurism (buyer-side agents) without anchoring to anything emerging today",
+      "fix": "Add one bridging sentence naming a real surveillance-pricing case (Wendy's dynamic pricing rollout, Uber surge, Kroger digital tags) before forecasting",
+      "raised_by": ["target-icp"]
+    }
+  ],
+  "consensus_summary": "Sharpest closing question of the batch and clean H2 outline; bottlenecked by slogan-style lines that pop credibility and a thesis-first lede that needs a concrete checkout anecdote up top. Tighten the slogans, ground the lede, ship."
+}

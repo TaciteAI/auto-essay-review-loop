@@ -1,0 +1,14 @@
+{
+  "draft": "cn/20-micro-saas-corner.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "ready", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "三段排比 + 概念密度过高 — '第一类是监管信任', '第二类是具身服务', '第三类是超本地上下文'，再加上 '不是 X，而是 Y' 模板句过密 ('这是信号，不是命令', '不买魔法，而买证据', '不是模型，而是流程')", "fix": "打破三段排比；每个约束只保留一句定义，紧跟一个具体 buyer/痛点/付费理由", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "英文 VC 术语残留：'agentic 叙事', 'workflow operating system', 'venture-scale outcome', 'service-as-software', 'glamorous', 'intake', 'grant tracker' — 让中文 voice 变成 newsletter 余韵", "fix": "把 70% 英文术语换成稳定中文表达；保留 1-2 个核心词足够", "raised_by": ["mobile-first-reader", "target-icp", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Citation-as-crutch 'StartuPage 2026 提到 20 个...' + NFX/Codurance 串引让原创判断稀释", "fix": "把 StartuPage 段重写为作者自己的筛选逻辑，或直接删掉；NFX/Codurance 压缩成一句", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "外链锚文本 'AI defensibility'、'durable AI moats' 为英文，对中文 SEO 偏弱；H2 'Solo founder 的角度' 偏泛", "fix": "锚文本本地化为中文描述句；H2 改为 'Solo founder 如何用 AI 做耐久 Micro-SaaS'", "raised_by": ["seo-skeptic", "h2-skimmer"]}
+  ],
+  "consensus_summary": "中文版的本土化最强：县域工程许可/社区养老排班/物业通知/乡镇诊所台账等中国小市场清单是真正可分享的差异点，金句 '耐久角落不是小软件，而是附着在通用智能体无法便宜满足的约束上' 也成立。最大拖累是三段排比 + 英文 VC 术语残留 + StartuPage citation 拼接感。"
+}

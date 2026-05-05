@@ -1,0 +1,14 @@
+{
+  "draft": "en/19-vertical-saas-rebundling.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Abstract until line 27 — opening argument is conceptual; concrete industry examples (dental, construction) arrive late", "fix": "Promote a vivid example into the lede or first H2's first paragraph", "raised_by": ["mobile-first-reader", "seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Strategy-deck/board-memo texture in places: 'The commercial implication is uncomfortable for incumbents', 'AI is not a feature category forever', 'durable advantage comes from trust, process, regulation, positioning, and integration'", "fix": "Replace memo lines with sharper operator language; say the mean thing about incumbents instead of cushioning it", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Claim 'Mature AI buyers are reducing agent vendor count and choosing one or two solutions per workflow category' is unsourced and reads as memo-speak", "fix": "Add citation/data point or rewrite with confident specifics", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "Final H2 'The Agent Is The New Buying Center' is slightly broad", "fix": "Sharpen to name the buying behavior change concretely", "raised_by": ["seo-skeptic", "h2-skimmer"]}
+  ],
+  "consensus_summary": "Real thesis with a coherent H2 spine and at least two genuinely shareable lines ('the database remains necessary, but necessity is not the same as strategic control'; 'the agent must go deep enough to complete work, not broad enough to sound intelligent'). Held back by a memo-y middle and late-arriving concrete examples."
+}

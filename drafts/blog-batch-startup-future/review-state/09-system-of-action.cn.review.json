@@ -1,0 +1,16 @@
+{
+  "draft": "cn/09-system-of-action.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 8, "seo-skeptic": 6, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "ready", "seo-skeptic": "not ready", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "H1'行动系统'对 SEO 太短太抽象，缺关键词与冲突", "fix": "改为'AI 时代的行动系统：企业软件价值正在离开记录系统'或'行动层会吃掉记录系统'", "raised_by": ["seo-skeptic", "h2-skimmer"]},
+    {"severity": "MAJOR", "issue": "锚文本'Agentforce'与'$5.74 trillion'语义弱", "fix": "改为'Salesforce Agentforce 的行动层尝试'与'Gartner 2025 年全球 IT 支出预测'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "中国本土化不够深——金蝶/用友/钉钉/企业微信只是顺带列举", "fix": "选其中一家（如钉钉的销售流程或企业微信的客户运营）展开为具体行动层创业 wedge", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "三段超过 150 字符（164/171/158）", "fix": "切分长段，特别是行动层 + Agent 例子那一段", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "Gartner 5.74T 数据连接论证偏松", "fix": "或挂到具体行动系统支出预测，或删除", "raised_by": ["mobile-first-reader", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "结尾三个'谁...'句式略包装感", "fix": "保留最强一句即可", "raised_by": ["mobile-first-reader"]}
+  ],
+  "consensus_summary": "中文里相对最强的一篇，结尾'记录系统回答发生了什么，行动系统回答接下来该做什么'极具传播力。SEO 标题与本土化案例待加强，长段需切短。"
+}

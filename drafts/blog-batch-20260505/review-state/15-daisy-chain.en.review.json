@@ -1,0 +1,50 @@
+{
+  "draft": "en/15-daisy-chain.en.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 7,
+    "seo_skeptic": 8,
+    "h2_skimmer": 6,
+    "target_icp": 7
+  },
+  "verdicts": {
+    "mobile_first_reader": "almost",
+    "seo_skeptic": "ready",
+    "h2_skimmer": "almost",
+    "target_icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Three paragraphs over 80 words on mobile (100, 121, 120). The 121-word annuity paragraph stacks five firm names + claims into a thumb-tall wall.",
+      "fix": "Split annuity paragraph after 'structurally senior.'; split Citrini-scenario paragraph after '...the highest reading since the early pandemic.'",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "The 'How the bet got distributed' section is a triptych (software / annuities / mortgages) that isn't surfaced as H3s, so skimmers and SERP readers can't see the three-part structure.",
+      "fix": "Add H3s 'Software LBOs', 'Annuities + private credit', 'Mortgages' — same content, but the structure is visible from the outline.",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Hyper-specific scenario stats (ServiceNow 23->14%, claims at 487K Q3 2027, Zendesk debt at 58c) feel like 'future-porn' / fanfic precision unless inline-sourced; ICP would caveat the share.",
+      "fix": "Hedge the numbers ('Citrini's scenario has...') or cut to 1-2 illustrative figures and let the mechanism carry the rest.",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "First 155 chars front-load examples and truncate before the 'same trade' payoff; title is concept-heavy without naming the three industries.",
+      "fix": "Lead with the thesis ('A 2024 software LBO, a 2025 annuity, and a 2026 mortgage are the same trade: long U.S. white-collar employment.') so the snippet contains the punchline.",
+      "raised_by": ["seo-skeptic", "h2-skimmer"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Anchor 'hundreds of billions of dollars' is a bare-quantity link without naming the subject being cited.",
+      "fix": "Re-anchor as 'life insurers' private-credit exposure (hundreds of billions)'.",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "All four personas score >=6 and the spine ('same bet, three balance sheets') is the strongest of the batch — SEO scores it 8 / ready. The remaining work is mobile readability (3 paragraphs >80 words), surfacing the SaaS/annuity/mortgage triptych as H3s, and hedging the most specific scenario numbers so it doesn't read as macro-thesis cosplay."
+}

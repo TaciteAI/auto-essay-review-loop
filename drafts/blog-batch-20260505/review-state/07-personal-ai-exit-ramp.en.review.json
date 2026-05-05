@@ -1,0 +1,15 @@
+{
+  "draft": "en/07-personal-ai-exit-ramp.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Manifesto-language pile-up: phrases like 'rent-seeking machine,' 'open-weight curve is bending fast,' 'cost-per-capability curve,' 'small constellation of specialized open-weight models' read as essay-ish/VC-deck and dilute the lived-builder voice", "fix": "Cut 10-15%; replace one or two abstractions with a concrete, specific local-stack example (a real model, a real laptop spec, a real workflow)", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Voice flips between angry-builder lede and analyst/policy-memo middle ('repayment vehicle is the per-token API charge,' policy bullet list at end)", "fix": "Hold the builder voice through; trim the policy laundry list at the close or replace it with a one-line concrete call", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "82-word paragraph ('The rent is on a meter you can't read...') is dense on mobile but not a wall", "fix": "Optional split after 'It is a service you consume, on terms you do not write.'", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "Discovery-language gap: H2s and early body lack common query phrases ('local AI models,' 'self-hosted AI,' 'open-source LLMs')", "fix": "Weave one natural query phrase into an H2 or the lede", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "DeepSeek section hedges its own punch ('isn't, for everyone')", "fix": "Either commit to the claim or move the caveat to a footnote", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "Strong, share-worthy thesis with a sticky frame ('rent on cognition'); H2 outline tells the story cleanly. Held back by manifesto/analyst voice flips and a missing concrete local-stack example."
+}

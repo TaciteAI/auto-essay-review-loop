@@ -1,0 +1,15 @@
+{
+  "draft": "cn/03-distribution-is-the-moat.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 4, "seo-skeptic": 7.4, "h2-skimmer": 5, "target-icp": 7.1},
+  "verdicts": {"mobile-first-reader": "not ready", "seo-skeptic": "almost", "h2-skimmer": "not ready", "target-icp": "almost"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "CRITICAL", "issue": "宏大断言+机构名堆叠+无出处数据多处叠加：'2026 年投资人先看分发'、列 7 家模型厂商、NFX+WHU+Foundation Capital 三连背书、61%/$155M 无可验证口径，整体读感像 AI 拼贴稿；mobile-first 评 4/10", "fix": "删一半机构名（NFX/WHU/Foundation 三选一）；$155M 加来源或删；列模型厂商改成一句'能力供给过剩'", "raised_by": ["mobile-first-reader", "target-icp", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Persona 不一致：目标第一人称但全文是第三人称投资人/媒体口吻；'公司意义上并不可投' 像审判，与 founder/operator 视角割裂", "fix": "选定身份（投资人 OR 创始人）并开头亮明；将关键断言改为 '我在看项目时' / '我在跑客户时' 第一人称视角", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "墙段 + 中美语境抹平：'在中国市场也一样' 段把字节/阿里/腾讯/百度/DeepSeek/月之暗面/智谱罗列成一段；中美渠道结构不同被一句 '也一样' 抹平", "fix": "改为单一具体对比案例（企业微信入口 vs 冷启动获客）；把巨头列表拆成 2-3 行短行", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "H2 偏抽象口号（Demo 已经太便宜 / 分发不只是销售人数 / 既有玩家从合同开始），缺可检索词（GTM/采购/合规/工作流）；H2-skimmer 评 5/10", "fix": "重写 H2 包含检索词：'Demo 便宜化：胜负手转向渠道与采购链路', '分发的产品化：入口/背书/合规/伙伴', '买方收敛供应商：合同与审查记录的锁定效应'", "raised_by": ["h2-skimmer", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "结尾缺可分享资产", "fix": "加一个 '创始人自检 5 问' 或 '采购流程 5 关' 清单", "raised_by": ["seo-skeptic", "target-icp"]}
+  ],
+  "consensus_summary": "观点和金句（'分发已成为产品属性'、'后来者跟已经有合同的人打'）都在，但中文 AI 套话密度最高的一篇：机构堆叠+无出处数据+第三人称口吻让中文 HN 圈立刻判定 AI 拼贴。优先精简机构、补数据来源、改第一人称、加具体案例。"
+}

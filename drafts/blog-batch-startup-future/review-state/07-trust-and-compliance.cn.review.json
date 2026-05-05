@@ -1,0 +1,15 @@
+{
+  "draft": "cn/07-trust-and-compliance.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7, "h2-skimmer": 6, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "not ready", "target-icp": "almost"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "标题'信任与合规'太泛，像章节名，不像会被转发的标题", "fix": "改为'监管行业 AI 的护城河是审计链'或'AI 产品在医疗金融法律行业，先设计审计链'", "raised_by": ["seo-skeptic", "h2-skimmer", "target-icp"]},
+    {"severity": "MAJOR", "issue": "FDA/FINRA/Menlo 引用偏白皮书腔，缺一个具体采购场景或失败案例让读者记住", "fix": "加一个真实场景：某券商 AI 顾问被合规驳回、医院上线 AI 病历前的内部审批清单", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "全文近乎没有第一人称，像分析报告而不是 brunch 朋友讲判断", "fix": "加 1-2 句第一人称立场，如'我现在看这类公司，第一眼不看 demo，先看审计链的截图'", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "中国部分点名'阿里、腾讯、百度、月之暗面、智谱'但无具体案例，像补全", "fix": "替换为一个真实中国监管 AI 的卡点（医保结算/银保监模型备案）", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "H2 都是抽象结论句，缺递进中的具体冲突（谁被卡住，机会在哪）", "fix": "把第三个 H2 改成机制句，如'合规姿态难复制，因为它是组织肌肉'", "raised_by": ["h2-skimmer"]}
+  ],
+  "consensus_summary": "结尾'模型负责回答，审计链负责获得行动权'是好金句，但全文太像白皮书。换标题、加一个真实采购/审批场景、加第一人称判断，就能从 7 跳到 8+。"
+}

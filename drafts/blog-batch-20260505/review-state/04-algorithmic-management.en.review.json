@@ -1,0 +1,50 @@
+{
+  "draft": "en/04-algorithmic-management.en.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 7,
+    "seo-skeptic": 8,
+    "h2-skimmer": 9,
+    "target-icp": 8
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Rhetorical tics that signal essay-template: 'This is the structural innovation', 'Read that sentence again', 'The asymmetry is the product', 'The constraint is collapsing', 'labor story of the decade'",
+      "fix": "Replace each with concrete cause-effect or one specific implication; cut 'Read that sentence again' entirely",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Cyberpunk-framing flourish ('The cyberpunk image of low life is not a soup line') and 'Each is shipping today in mainstream productivity suites' assert claims without anchoring to named tools or evidence",
+      "fix": "Name 1-2 concrete white-collar tools (Microsoft Productivity Score, GitHub Copilot review dashboards, etc.) or qualify ('is being marketed and piloted')",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "One paragraph clocks 83 words ('The worker is not managed by a human...') — wall-adjacent on mobile",
+      "fix": "Split at 'A floor supervisor exists, but...'",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Final H2 'Why this is the labor story of the decade' is thesis-statement-shaped rather than narrative-advancing",
+      "fix": "Rename to something concrete: 'Algorithmic management is moving up the org chart' or 'Management is the durable AI-labor story'",
+      "raised_by": ["seo-skeptic", "h2-skimmer"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Anchor text on Doctorow link is the full quoted sentence (overlong); ADAPT anchor is a bare acronym",
+      "fix": "Tighten anchors: 'Cory Doctorow on Amazon's electronic whipping for coders'; 'Amazon ADAPT productivity tracking system'",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "Strong escalating narrative (warehouse → union-busting → keyboard) with the most quotable line on the batch. Trim the rhetorical tics, anchor the white-collar 'shipping today' claim with named tools, and this ships."
+}

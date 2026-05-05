@@ -1,0 +1,14 @@
+{
+  "draft": "en/06-antitrust-lag.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 8, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Two paragraphs over 80 words ('This was tolerable...' = 92 words; 'These are not allegations...' = 87 words) — wall on mobile", "fix": "Split each at the natural pivot ('AI does not cycle in decades.' / 'By the time a court could order...')", "raised_by": ["mobile-first-reader", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "First sentence under 'The political path...' H2 echoes the H2 verbatim, wastes the slot", "fix": "Open the paragraph with new information, not a restatement of the header", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Policy bullets and conclusion drift toward whitepaper voice; loses the punchy clock-metaphor energy of the lede", "fix": "End on a sharper concrete image (a la 'a million Excel files') instead of civic-textbook closer", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "First 155 chars of snippet are DOJ/Google timing only — AI compounding thesis doesn't surface in preview window", "fix": "Tighten lede so 'AI compounds' lands inside first 155 chars", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Strong thesis with a memorable clock metaphor; all four personas would read or share it. Two long paragraphs and a slightly think-tanky policy section are the only things keeping it from a clean 9."
+}

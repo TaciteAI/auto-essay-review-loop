@@ -1,0 +1,15 @@
+{
+  "draft": "cn/20-labor-share-46.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 6, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "数字口径与情景标签缺失:'劳动份额 1974=64%/2024=56%' 没标 BLS/BEA 还是学术口径;'2028=46%' 是推演但写法像既成预测;'5 万亿美元' 算术依赖名义 GDP 但未说明假设", "fix": "首次出现处统一标注 '在 Citrini 推演里';为劳动份额加 '按 ××口径(雇员报酬 / 含自雇)';5 万亿前加 '按 2024 年名义 GDP 粗略量级'", "raised_by": ["mobile-first-reader", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "AI 中文绝对化判词高密度:'这是未来五年最重要的宏观事实'、'这是奖品'、'顺序很固定'、'中美是同构的'、'内部没有刹车。刹车必须从环外来'、'算术不复杂' — 大量绝对化收束句", "fix": "至少删 6-8 处绝对句;把 '这是奖品' 改为 '这就是争夺的收益池';'中美是同构的' 改为 '在算力堆栈集中度这一点上中美呈现相似结构'", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "因果跳跃:'18 个百分点的国民收入...流向别处。别处就是算力的所有者' — 劳动份额下降不必然主要流向算力,还可能流向传统资本/地租/跨国利润转移", "fix": "改为 '主要流向...算力/平台资本' 并给机制拆解;补一段反例边界(哪些条件下会缓和:生产率扩散/竞争加剧/监管提前介入)", "raised_by": ["seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "'劳动份额到底量的是什么' 节第二段(从'1974 到 2024 的下行'到'这是奖品')信息密度过高,机制+引用+资本开支+换算+预算/医疗类比挤在一屏", "fix": "拆成 3 段:50 年四因素(每句一因)/2024-2028 为何不同(两点机制+一条数据)/'18 点≈5 万亿' 单独一行加口径", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "外链锚 '麻省理工的研究发现,自动化一项就解释了 1980 至 2016 年美国工资不平等上升的 50% 到 70%' 是整句锚;H2 偏抽象口语化('到底量的是什么'/'按什么顺序拿走')", "fix": "锚文本缩短为 'MIT:自动化与不平等';H2 改为 '劳动份额是什么:口径与三种常见误读' / '18 个百分点怎么分走:算力链条的定价权与收益顺序'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "H2-skimmer 评价 ready(标题强,定义→机制→不可逆推进清晰),share-vector 也愿意转。主要修订集中在:把推演数字明确标记为推演并补口径;删大量绝对化判词;把因果跳跃('别处就是算力')改成机制拆解。"
+}

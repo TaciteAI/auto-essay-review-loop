@@ -1,0 +1,14 @@
+{
+  "draft": "en/08-deepseek-trajectory.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 8, "seo-skeptic": 7, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Two paragraphs over 80 words (82 + 85) under 'What it doesn't buy' — dense on mobile and the section where abstraction is highest", "fix": "Split each at the natural pivot ('Open-weight releases compete...' / 'Cheaper AI is not the same as more egalitarian AI.')", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "H2s ('What the gap proves,' 'What the leak buys you,' 'What it doesn't buy,' 'The forward question') are abstract and metaphor-dependent — weak standalone for skimmers and search", "fix": "Sharpen with entity nouns: e.g., 'What DeepSeek's $5.6M Actually Proves,' 'What the Open-Weight Leak Buys CTOs,' 'What It Doesn't Buy: Chips and Cloud,' 'Which Curve to Bet On'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Voice drifts toward consultant/op-ed in macro sections (labor-share, China/export-controls); abstract noun density rises ('substrate remains concentrated,' 'capability gates,' 'permanent rent')", "fix": "Cut the labor-share paragraph or tighten to one line; add one concrete deployment example (a real CTO swap, a real workload migration)", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "Anchor text could be more specific ('2 to 3x per year' could be 'frontier AI compute growth 2-3x per year'; '64% in 1974 to roughly 56% by 2024' is data-only)", "fix": "Tighten anchors to name the source/concept explicitly", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Sharp framing and a quotable closing line ('the frontier moves up while the cost-to-replicate-last-year's-frontier moves down'); thesis is HN-shareable. Held back by abstract H2s, two long paragraphs, and a macro/labor section that drifts into op-ed voice."
+}

@@ -1,0 +1,14 @@
+{
+  "draft": "cn/02-service-as-software.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 6.3, "h2-skimmer": 7.2, "target-icp": 7.2},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Heavy CJK wall paragraphs (300+ chars on 300px column) — 多处段落 230-310 字，'结果定价' 一节连续 2 段超 300 字", "fix": "每段拆到 ≤120-160 字；清单（resolved ticket/qualified lead/...）改成 2-4 行短行", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Chinese AI-slop register: '资本正在奖励这种姿态', '脏活才是真公司出现的地方', '这恰恰是防御性来源', '更尖锐地说...' — 押韵金句+对仗句堆叠，HN 中文读者会判定 AI 总结写作", "fix": "每个金句后强制跟一个细节（数字/流程/失败案例）；删 '这恰恰', '更尖锐地说', '这不是X。是Y' 至少 30%", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "$155M 数据无来源口径（'平均融资额' 是 top 15 还是全体？Q1 还是 YTD？）；anchor text 弱语义（仅数字/金额）", "fix": "补口径或删数字保留趋势；anchor 改描述型中文（'2026 年 agentic AI 融资规模统计（原文）'）。NOTE: 61% OECD 数据已可验证，可保留并加 OECD 来源注", "raised_by": ["seo-skeptic", "target-icp"]},
+    {"severity": "MINOR", "issue": "缺一个具体可核验的端到端任务案例（应收催收/理赔/合同初审），导致 H2-skimmer 评 'medium genericness'", "fix": "选一个任务，写出 输入→权限→审计→升级→责任边界 的完整闭环", "raised_by": ["h2-skimmer", "target-icp"]}
+  ],
+  "consensus_summary": "论点清晰且有可转发金句（'卖那件事本身'、'按结果收费也更残酷'），但中文 AI 套话密度高、墙感段落多、关键数据缺口径。优先：拆段、去金句堆叠、补 $155M 来源（61% 已可由 OECD 验证）、加一个具体任务闭环。"
+}

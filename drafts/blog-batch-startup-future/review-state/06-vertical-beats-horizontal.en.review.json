@@ -1,0 +1,15 @@
+{
+  "draft": "en/06-vertical-beats-horizontal.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "H1 'Vertical Beats Horizontal' lacks 'AI' keyword — under-informative for SEO and out-of-context skim", "fix": "Change H1 to 'Vertical AI Beats Horizontal AI'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Two paragraphs >80 words (89 and 83) — borderline walls on mobile", "fix": "Split the 'AI budgets are leaving the innovation theater' paragraph after 'procurement discipline.'; split the Abridge paragraph after the funding citation", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "VC-blog template cadence in closing ('The future will not belong to... It will belong to...') reads as generated", "fix": "Replace closing with a more concrete, voice-y line modeled on 'That is not software. That is consulting with a model attached.'", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "Abstract noun stack ('use case gravity', 'operating layer', 'innovation theater') trends toward jargon", "fix": "Cut or replace with concrete phrasing in 2-3 spots", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "First 155 chars cuts mid-thought; 'vertical AI' not surfaced before snippet cutoff", "fix": "Front-load 'vertical AI' into the lede so snippet contains the contrast", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Strong, opinionated argument with a real shareable line ('consulting with a model attached'). Title needs 'AI' for context, two paragraphs need splitting for mobile, and the closing should ditch the VC-template cadence."
+}

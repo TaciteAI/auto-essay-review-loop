@@ -1,0 +1,482 @@
+[
+  {
+    "draft": "cn/01-wrapper-era-over.cn.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 7.2,
+      "h2-skimmer": 4.0,
+      "target-icp": 7.6
+    },
+    "avg": 6.2,
+    "terminate": false,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/01-wrapper-era-over.en.md",
+    "scores": {
+      "mobile-first-reader": 4.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 9.0,
+      "target-icp": 6.0
+    },
+    "avg": 6.8,
+    "terminate": false,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/02-service-as-software.cn.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 6.3,
+      "h2-skimmer": 7.2,
+      "target-icp": 7.2
+    },
+    "avg": 6.7,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/02-service-as-software.en.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 7.0,
+      "target-icp": 7.0
+    },
+    "avg": 6.8,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/03-distribution-is-the-moat.cn.md",
+    "scores": {
+      "mobile-first-reader": 4.0,
+      "seo-skeptic": 7.4,
+      "h2-skimmer": 5.0,
+      "target-icp": 7.1
+    },
+    "avg": 5.9,
+    "terminate": false,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/03-distribution-is-the-moat.en.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 7.0,
+      "target-icp": 6.7
+    },
+    "avg": 6.7,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/04-data-flywheel-vs-hoard.cn.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 6.2,
+      "h2-skimmer": 6.2,
+      "target-icp": 6.4
+    },
+    "avg": 6.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/04-data-flywheel-vs-hoard.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.2,
+      "h2-skimmer": 5.0,
+      "target-icp": 7.6
+    },
+    "avg": 6.7,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/05-workflow-lockin.cn.md",
+    "scores": {
+      "mobile-first-reader": 4.0,
+      "seo-skeptic": 5.6,
+      "h2-skimmer": 6.0,
+      "target-icp": 6.5
+    },
+    "avg": 5.5,
+    "terminate": false,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/05-workflow-lockin.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.4,
+      "h2-skimmer": 4.0,
+      "target-icp": 7.4
+    },
+    "avg": 6.5,
+    "terminate": false,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/06-vertical-beats-horizontal.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 7.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/06-vertical-beats-horizontal.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/07-trust-and-compliance.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 6.0,
+      "target-icp": 7.0
+    },
+    "avg": 6.8,
+    "terminate": false,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/07-trust-and-compliance.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 5.0,
+      "target-icp": 7.0
+    },
+    "avg": 6.8,
+    "terminate": false,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/08-multiplayer-agent-network-effects.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 7.0,
+      "target-icp": 7.0
+    },
+    "avg": 7.0,
+    "terminate": false,
+    "weakness_count": 6
+  },
+  {
+    "draft": "en/08-multiplayer-agent-network-effects.en.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 7.0,
+      "target-icp": 7.0
+    },
+    "avg": 6.8,
+    "terminate": false,
+    "weakness_count": 6
+  },
+  {
+    "draft": "cn/09-system-of-action.cn.md",
+    "scores": {
+      "mobile-first-reader": 8.0,
+      "seo-skeptic": 6.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.5,
+    "terminate": false,
+    "weakness_count": 6
+  },
+  {
+    "draft": "en/09-system-of-action.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/10-brand-and-ux-when-capability-is-rented.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 6.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.2,
+    "terminate": false,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/10-brand-and-ux-when-capability-is-rented.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 7.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/11-death-of-prompt-box.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/11-death-of-prompt-box.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 6.0
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/12-outcome-pricing.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/12-outcome-pricing.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 7.0
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/13-vendor-consolidation.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/13-vendor-consolidation.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 6.0
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/14-155M-series-a.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 7.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/14-155M-series-a.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 7.0,
+      "target-icp": 6.0
+    },
+    "avg": 7.0,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/15-foundation-models-as-competitors.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 7.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/15-foundation-models-as-competitors.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 7.0
+    },
+    "avg": 7.5,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/16-ai-native-hedge-fund.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 9.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 7.0
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/16-ai-native-hedge-fund.en.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 7.0
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/17-ai-native-agency.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "en/17-ai-native-agency.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 5
+  },
+  {
+    "draft": "cn/18-open-vs-closed-cost-curve.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 9.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 8.0,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/18-open-vs-closed-cost-curve.en.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 7.0
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/19-vertical-saas-rebundling.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 9.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 8.0,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/19-vertical-saas-rebundling.en.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "cn/20-micro-saas-corner.cn.md",
+    "scores": {
+      "mobile-first-reader": 7.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 8.0
+    },
+    "avg": 7.8,
+    "terminate": true,
+    "weakness_count": 4
+  },
+  {
+    "draft": "en/20-micro-saas-corner.en.md",
+    "scores": {
+      "mobile-first-reader": 6.0,
+      "seo-skeptic": 8.0,
+      "h2-skimmer": 8.0,
+      "target-icp": 7.0
+    },
+    "avg": 7.2,
+    "terminate": true,
+    "weakness_count": 4
+  }
+]

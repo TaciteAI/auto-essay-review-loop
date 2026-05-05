@@ -1,0 +1,44 @@
+{
+  "draft": "en/02-on-ramp-collapse.en.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 7,
+    "seo-skeptic": 7,
+    "h2-skimmer": 8,
+    "target-icp": 7
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Several rhetorical filler/transition phrases read as AI-essay-template: 'Strip the abstraction off these numbers,' 'a pattern emerges,' 'This is the structural feature,' 'The forward question is not whether...'",
+      "fix": "Replace each meta-transition with the actual next claim or a concrete example; cut the bridging sentence entirely where the data already speaks",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "H2s are abstract essay-chapter titles ('What the data actually shows', 'What stops being possible') — they bury the core nouns (entry-level hiring, junior roles, career ladder) and miss SERP/skim alignment",
+      "fix": "Rewrite H2s to carry concrete nouns, e.g. 'Entry-level postings have collapsed since 2023', 'What ends when the ladder ends'",
+      "raised_by": ["seo-skeptic", "h2-skimmer"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Voice flips from concrete journalist mode to policy-wonk macro register in the closing two sections (mobility quintiles, 40-year compounding)",
+      "fix": "Either tone the closing back to the concrete metaphor (staircase/rungs) or land on a specific anecdote rather than a sweeping policy claim",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "First-155-char snippet leads with narrow keyword ('computer science graduates') and truncates before the staircase/on-ramp payoff",
+      "fix": "Restructure lede so the staircase line lands in the first 155 chars",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "Strong contrarian title and core metaphor; the body weakens by drifting into essay-template transitions and abstract section titles. Sharpen H2s to carry concrete nouns, cut the meta-transitions, and this ships."
+}

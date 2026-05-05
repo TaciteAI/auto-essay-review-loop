@@ -1,0 +1,15 @@
+{
+  "draft": "cn/06-vertical-beats-horizontal.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 7, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "ready", "h2-skimmer": "almost", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "三段超过 150 字符，单手手机阅读有墙感（首段 162、第四段 168、第六段 166）", "fix": "首段在'一个声称什么都能做的 Agent，往往把最难的部分交还给客户'处断开；其他两段同样切短", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "标题'垂直胜过水平'抽象，不含'AI'，看不出领域", "fix": "改为'垂直 AI 凭什么比水平 AI 更容易赚钱'或'垂直 AI 胜过水平 AI'", "raised_by": ["seo-skeptic", "h2-skimmer"]},
+    {"severity": "MAJOR", "issue": "缺少一个具体中国垂直案例（比如蜜雪/拼多多客服、平安理赔、华西病历），'中国创业公司尤其现实'段说服力不够", "fix": "把'字节阿里腾讯...'改为一个真实中国 vertical AI 的卡点场景或公司", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "结尾两句'水平 AI 卖想象，垂直 AI 卖结果。后者更慢热，但更接近长期利润'太工整像金句卡片", "fix": "把'否则只是外包'这种硬判断提前作为收尾，更像创业者会转发的句子", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "金额类锚文本'$5.74 trillion'、'$150 million'语义弱，读者不知道点开看到什么", "fix": "改成'Gartner 2025 年 IT 支出预测'、'Abridge C 轮 1.5 亿美元'类描述性锚", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "中文论点扎实，最有转发力的句子是'水平 AI 卖想象，垂直 AI 卖结果'。三段过长需切短，标题加'AI'，再补一个真实中国 vertical 案例就能从 7 跳到 8.5+。"
+}

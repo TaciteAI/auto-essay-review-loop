@@ -1,0 +1,14 @@
+{
+  "draft": "en/01-wrapper-era-over.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 4, "seo-skeptic": 8, "h2-skimmer": 9, "target-icp": 6},
+  "verdicts": {"mobile-first-reader": "not ready", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Lede and middle paragraphs read as thesis-y/abstract with AI-slop register ('intellectually indefensible', 'feature waiting to be absorbed', 'It is naked'); no concrete example of a wrapper that actually died", "fix": "Open with one specific wrapper category or named startup that got crushed; cut chest-thumpy abstractions", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "List-shaped sentences (three investor questions; ways a startup can still win) buried in prose; hurts mobile scannability", "fix": "Convert to bullets at line 18 and line 24", "raised_by": ["seo-skeptic", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Stats paragraph (61% VC, $155M agentic) feels like uncited data-dump in the share-vector reader's feed even though links exist; credibility load on two early external links", "fix": "Tighten to one stat; add a sentence framing why the number proves the thesis", "raised_by": ["target-icp", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "No quotable, non-obvious payoff line; closing question is the most shareable but buried", "fix": "Promote the closing 'next-quarter test' question earlier or sharpen as a tweetable kicker", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "Structure and outline are strong (H2 skim and SEO panels happy), but the prose drifts into abstract thesis register and the share-vector reader sees no fresh, concrete example. Tighten paragraphs, add one named case, and convert enumerations to bullets to clear the bar."
+}

@@ -1,0 +1,15 @@
+{
+  "draft": "cn/19-revenue-paradox.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 7, "h2-skimmer": 7, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "关键数字未标口径/来源/情景:'联邦税收预计低于 CBO 基线 12%'、'2028 年中失业率冲到 10.2%'、'仅 2026 一年 6600 亿美元 AI 资本开支'、'劳动份额从 64% 跌到 46%' 都被读成既成预测", "fix": "全部改成 '在 Citrini 推演里...';为每个比例加 '按 ××口径'(如劳动份额定义/是否含自雇)", "raised_by": ["mobile-first-reader", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "AI 中文判词化高密度:'没有干净的技术方案能解'、'经济逻辑很直白'、'难度叠加'、'在它失效之前一直管用'、'这不是 2008 年式的财政紧张' 全是空泛结论句/模板句", "fix": "改成可检验命题:'算力税难落地三点:集中度、叙事武器、可迁移性';'借钱'选项补一条触发条件('当利率上行/通胀再起时')", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "开头段把引语+三条预测+'先崩的不是数学,是政治' 一起塞,300px 列宽下密度过高;'劳动份额崩塌算术题' 第一段是连续抽象名词长句", "fix": "开头拆两段:第一段只放引语+悖论定义;第二段集中放三条数字并加 '推演' 标签。把 '工资税三分之一/个税一半' 改为项目符号", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "外链锚 '仅 2026 一年,美国云计算巨头就在 AI 资本开支上烧了高达 6600 亿美元' 是整句话级锚文本,过长且强断言", "fix": "缩短为 '6600 亿美元 AI 资本开支(2026)' 或 '2026 年 AI CapEx ~6600 亿'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "'算力所有者集中在五家公司' 是强断言但未定义算力(GPU 集群/云份额/训练算力/推理算力?)", "fix": "改为 '高度集中在少数超大厂(约 4-6 家)'并加一句口径说明", "raised_by": ["target-icp", "mobile-first-reader"]}
+  ],
+  "consensus_summary": "强主线 + 强金句('先崩的不是数学,是政治'),H2 spine 让 H2-skimmer 和 share-vector 都点头。主要修订:把推演数字标记为推演并加口径;删一半空泛判词句;把开头两个长段拆成短段+项目符号。"
+}

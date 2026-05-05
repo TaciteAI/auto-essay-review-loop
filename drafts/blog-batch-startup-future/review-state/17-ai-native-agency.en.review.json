@@ -1,0 +1,15 @@
+{
+  "draft": "en/17-ai-native-agency.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Anchor-text claim '61% of global VC investment in 2025' links to a URL slug that says 'ai-captures-50-percent' — credibility mismatch on-page", "fix": "Reconcile the number (verify source) and update either anchor or URL/citation to match", "raised_by": ["seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Stays clean and abstract — strong claims, not enough vivid concrete proof (no named agency, no founder quote, no real numbers, no failure mode)", "fix": "Add one vivid agency vignette: a name, a workflow, numbers, a quote, or a documented failure mode", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "Long 'Charge per qualified meeting…per onboarded customer' grocery-belt list inside a single sentence", "fix": "Break into a scannable bulleted list or split after 4 items", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Final H2 'Agencies Become Products' is softer than the others; first paragraph under it ('It is not fewer agencies. It is fewer agencies that look like the old kind.') trips its own logic", "fix": "Sharpen the H2 (e.g., 'The Winning Agency Looks Like Software') and rewrite that opening line", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Mild VC-memo texture: 'human trust at the boundary, machine execution in the middle, ruthless measurement at the end' is three-part-symmetry; 'more economically violent' is try-hard", "fix": "Trim three-part-symmetry phrasing; replace 'economically violent' with concrete language", "raised_by": ["mobile-first-reader", "target-icp"]}
+  ],
+  "consensus_summary": "Best-performing draft so far: clean H2 spine, sharp opener, real thesis, and a quotable closing line ('the billable hour was a tax on coordination'). Mostly held back by an unverified 61%/50% citation mismatch and not enough concrete proof inside an otherwise tight argument."
+}

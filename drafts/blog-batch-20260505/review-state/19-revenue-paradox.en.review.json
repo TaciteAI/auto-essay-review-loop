@@ -1,0 +1,15 @@
+{
+  "draft": "en/19-revenue-paradox.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 7, "target-icp": 6},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "ready", "h2-skimmer": "almost", "target-icp": "not ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Several lines trip AI-essay detectors: 'The reasons stack', 'The choices are narrow', 'This works until it does not', 'compounds without limit', 'in that order', 'by definition' — pattern of stacked epigrammatic mini-paragraphs", "fix": "Cut three of these standalone refrains; merge the orphan one-liners back into their parent paragraphs", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "'Compute tax' is the central concept but never operationally defined (per GPU-hour? per kWh? per inference token?) — HN readers will dunk on the gap", "fix": "Add a one-sentence definition under the compute-tax H2 so the policy is concrete before discussing politics", "raised_by": ["seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Option-1/2/3/4 enumeration is structurally clean but currently prose; on mobile it reads symmetric in a way that pings AI-template", "fix": "Either render as a numbered list with a one-line subhead per option, or break the symmetry by tightening the option-2 and option-4 paragraphs to different shapes", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "Anchor text 'hyperscalers spent up to $660 billion on AI capex in 2026 alone' is a full claim sentence — spammy and hard to scan; '2028 scenario' anchor is non-descriptive", "fix": "Shorten to '$660B hyperscaler AI capex (2026)' and 'Citrini's 2028 fiscal scenario'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "'Labor share' is cited in numbers without a parenthetical definition — non-econ readers stall", "fix": "Add a 6-word parenthetical: '(wages and benefits as % of GDP)'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Strong thesis with a quotable hook ('The math does not break first. Politics does.') and a clean four-beat structure that the SEO-skeptic rates ready. Main fixes: trim the epigrammatic AI-tells, define 'compute tax' operationally, and either listify or de-symmetrize the four options."
+}

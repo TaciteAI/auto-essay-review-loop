@@ -1,0 +1,14 @@
+{
+  "draft": "en/18-open-vs-closed-cost-curve.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Opening is consensus-y and abstract — 'change startup economics' is deck phrasing, not a hook; ICP feels the AI in balanced caveats and predictable 'do/do-not-buy' triads", "fix": "Replace lede with a concrete founder-math moment (a real cost-per-call comparison, a real routing decision)", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Reads like a synthesis/strategy memo — too clean, no scars, no 'where founders are lying to themselves'; the outline bones show ('three practical advantages')", "fix": "Add one real founder example with numbers; cut the 'first/second/third' template", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "H2s are useful but abstract for SEO ('What Open Models Actually Buy', 'The Founder Gets Optionality')", "fix": "Tighten H2s to include 'open-source LLM cost', 'inference cost', or 'private deployment' to anchor a keyword cluster", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Snippet truncates mid-thought at 'OpenAI'", "fix": "Rewrite first ~155 chars so the founder-economics promise is delivered before the 155-char cutoff", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Strong H2 spine and a quotable kicker ('cost curve gives founders optionality. It does not give them a company.'), but the prose is too MBA-clean and synthesis-shaped for the HN/Lenny ICP. One founder vignette with real numbers would lift it from competent to shareable."
+}

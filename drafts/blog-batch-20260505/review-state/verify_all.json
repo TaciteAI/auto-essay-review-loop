@@ -1,0 +1,627 @@
+[
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\01-compute-moat.en.md",
+    "word_count": 776,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://arxiv.org/abs/2405.21015",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\02-on-ramp-collapse.en.md",
+    "word_count": 790,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\03-so-so-automation.en.md",
+    "word_count": 773,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121",
+      "https://shapingwork.mit.edu/wp-content/uploads/2024/05/Acemoglu_Macroeconomics-of-AI_May-2024.pdf"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\04-algorithmic-management.en.md",
+    "word_count": 795,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.medianama.com/2025/12/223-algorithms-gig-workers-india-new-study/",
+      "https://pluralistic.net/2025/03/13/electronic-whipping/#youre-next",
+      "https://journals.sagepub.com/doi/10.1177/23780231251318389",
+      "https://arxiv.org/html/2508.09438v1"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\05-surveillance-pricing.en.md",
+    "word_count": 752,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-surveillance-pricing-study-indicates-wide-range-personal-data-used-set-individualized-consumer",
+      "https://www.ftc.gov/system/files/ftc_gov/pdf/sp6b-issue-spotlight.pdf",
+      "https://www.swlaw.com/publication/algorithmic-pricing-under-the-antitrust-microscope-doj-and-ftc-sharpen-their-enforcement-posture/",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\06-antitrust-lag.en.md",
+    "word_count": 775,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://arxiv.org/abs/2405.21015",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\07-personal-ai-exit-ramp.en.md",
+    "word_count": 815,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\08-deepseek-trajectory.en.md",
+    "word_count": 803,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://arxiv.org/abs/2405.21015",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\09-context-ownership.en.md",
+    "word_count": 726,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://pluralistic.net/2025/03/13/electronic-whipping/#youre-next"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\10-composition-over-subscription.en.md",
+    "word_count": 766,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://arxiv.org/abs/2405.21015",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\11-displacement-spiral.en.md",
+    "word_count": 824,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\12-ghost-gdp.en.md",
+    "word_count": 799,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\13-friction-elimination.en.md",
+    "word_count": 802,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\14-top10-spending-collapse.en.md",
+    "word_count": 750,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\15-daisy-chain.en.md",
+    "word_count": 798,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\16-2028-mortgage-crisis.en.md",
+    "word_count": 807,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\17-interchange-pressure.en.md",
+    "word_count": 692,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-surveillance-pricing-study-indicates-wide-range-personal-data-used-set-individualized-consumer",
+      "https://www.citriniresearch.com/p/2028gic"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\18-zendesk-template.en.md",
+    "word_count": 748,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\19-revenue-paradox.en.md",
+    "word_count": 760,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://shapingwork.mit.edu/wp-content/uploads/2024/05/Acemoglu_Macroeconomics-of-AI_May-2024.pdf",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\en\\20-labor-share-46.en.md",
+    "word_count": 746,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\01-compute-moat.cn.md",
+    "word_count": 1184,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://arxiv.org/abs/2405.21015",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\02-on-ramp-collapse.cn.md",
+    "word_count": 1290,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\03-so-so-automation.cn.md",
+    "word_count": 1240,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121",
+      "https://shapingwork.mit.edu/wp-content/uploads/2024/05/Acemoglu_Macroeconomics-of-AI_May-2024.pdf"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\04-algorithmic-management.cn.md",
+    "word_count": 1328,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.medianama.com/2025/12/223-algorithms-gig-workers-india-new-study/",
+      "https://pluralistic.net/2025/03/13/electronic-whipping/#youre-next",
+      "https://journals.sagepub.com/doi/10.1177/23780231251318389",
+      "https://arxiv.org/html/2508.09438v1"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\05-surveillance-pricing.cn.md",
+    "word_count": 1201,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-surveillance-pricing-study-indicates-wide-range-personal-data-used-set-individualized-consumer",
+      "https://www.ftc.gov/system/files/ftc_gov/pdf/sp6b-issue-spotlight.pdf",
+      "https://www.swlaw.com/publication/algorithmic-pricing-under-the-antitrust-microscope-doj-and-ftc-sharpen-their-enforcement-posture/",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\06-antitrust-lag.cn.md",
+    "word_count": 1312,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://arxiv.org/abs/2405.21015",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\07-personal-ai-exit-ramp.cn.md",
+    "word_count": 1327,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\08-deepseek-trajectory.cn.md",
+    "word_count": 1327,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://arxiv.org/abs/2405.21015",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\09-context-ownership.cn.md",
+    "word_count": 1293,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://pluralistic.net/2025/03/13/electronic-whipping/#youre-next"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\10-composition-over-subscription.cn.md",
+    "word_count": 1355,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://arxiv.org/abs/2405.21015",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\11-displacement-spiral.cn.md",
+    "word_count": 1496,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\12-ghost-gdp.cn.md",
+    "word_count": 1424,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\13-friction-elimination.cn.md",
+    "word_count": 1196,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\14-top10-spending-collapse.cn.md",
+    "word_count": 1252,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\15-daisy-chain.cn.md",
+    "word_count": 1316,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\16-2028-mortgage-crisis.cn.md",
+    "word_count": 1428,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\17-interchange-pressure.cn.md",
+    "word_count": 1070,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-surveillance-pricing-study-indicates-wide-range-personal-data-used-set-individualized-consumer",
+      "https://www.citriniresearch.com/p/2028gic"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\18-zendesk-template.cn.md",
+    "word_count": 1160,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\19-revenue-paradox.cn.md",
+    "word_count": 1207,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://shapingwork.mit.edu/wp-content/uploads/2024/05/Acemoglu_Macroeconomics-of-AI_May-2024.pdf",
+      "https://fortune.com/2026/04/29/ai-agentic-entry-level-jobs-disappearing-yale-celi-sonnenfeld/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-20260505\\cn\\20-labor-share-46.cn.md",
+    "word_count": 1254,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.citriniresearch.com/p/2028gic",
+      "https://news.mit.edu/2022/automation-drives-income-inequality-1121",
+      "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence",
+      "https://yalelawandpolicy.org/antimonopoly-approach-governing-artificial-intelligence"
+    ]
+  }
+]

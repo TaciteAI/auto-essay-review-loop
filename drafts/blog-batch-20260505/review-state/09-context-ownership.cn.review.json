@@ -1,0 +1,15 @@
+{
+  "draft": "cn/09-context-ownership.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 8, "seo-skeptic": 8, "h2-skimmer": 7, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Translationese clusters: '在结构上,都是把你更深地钉进同一家供应商,' 'AI 栈的集中度在多个层级上同时强化,' '数据导出权是必要条件,但远远不够' — read as English tech-essay 直译", "fix": "改成更口语化中文: e.g. '都是把你往同一家厂商里越钉越深'; 砍'集中度''规格''必要条件'类抽象词", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Voice flips at the policy outro ('政策也能帮上忙. 强制可携带...对 GPU 和云的反垄断处置...') — turns from 揭穿商业模式 into 监管白皮书", "fix": "压短政策段，保留一句结论性强的句子，或者删掉整段直接收到 '谁握着上下文,谁就握着用户' 的金句", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "Multi-citation evidence段 (Epoch + CNBC + Yale + Doctorow) 让文章从中文评论滑向英文论证体; the strongest sentences are the un-cited judgments", "fix": "压缩数字和链接密度; 把 Cory Doctorow 引用与主线 (用户上下文锁定) 关系收紧或删掉", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "Anchor text 像 '7800 万美元' / '6600 亿美元' 信息单薄, SEO 语义弱; 完整词组 '大模型护城河' / 'AI 护城河' 仅部分覆盖", "fix": "锚文本扩成 'GPT-4 训练成本约 7800 万美元' / '四大云厂商 2026 年 AI 资本支出预计 6600 亿美元'; 在 H2 或首段加一次完整词组 '大模型护城河'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "技术细节 '向量保真度' 偏黑话，对大众读者会掉人", "fix": "替换或括号里给一句通俗解释", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "中文版立判断锋利，标题和金句 ('谁握着上下文,谁就握着用户') 都能传播; 'export 不出来'的具体测试段是最强骨头. 主要被翻译腔密度、证据段过重、和政策段语气切换拖累；削掉 20% 引用密度 + 政策白皮书段后能稳到 9。"
+}

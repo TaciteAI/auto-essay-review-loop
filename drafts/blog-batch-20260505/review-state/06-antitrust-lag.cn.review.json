@@ -1,0 +1,15 @@
+{
+  "draft": "cn/06-antitrust-lag.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 8, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Two long paragraphs read as walls on mobile: '这种节奏在底层技术按...' (~250-300 chars) and the '第一/第二/第三' political-reasons paragraph stacks all three points into one block", "fix": "Split historical analogies and capex into two paragraphs; break each '第一/第二/第三' point into its own paragraph", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Forced three-part symmetry ('原因有三' followed by '第一/第二/第三') reads as model-template / 智库简报体, breaking the sharp authorial voice", "fix": "Drop '原因有三' framing; rewrite as three short paragraphs with varied openers, or fold into prose", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "H2 '结构性错位' and '一个匹配真实时钟的回应该是什么样' are abstract; weak for Chinese search queries (no '反垄断', 'AI 监管', '大模型监管' as anchors)", "fix": "Sharpen to e.g. '反垄断与 AI 速度的结构性错位' / 'AI 反垄断需要怎样的实时监管'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "'两个时钟，不在同一根轴上' reads slightly translated (英文 metaphor 直译); '约 35%' anchor text is data-only", "fix": "Consider '不是同一套时间尺度'; expand the 35% anchor to '入门级岗位招聘下降约 35% 的报道'", "raised_by": ["seo-skeptic", "target-icp"]},
+    {"severity": "MINOR", "issue": "Final policy bullet list flips from columnist judgment to think-tank memo, dilutes shareability of the close", "fix": "Compress bullets into one sharper paragraph or end on the existing strong final question", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "强中文稿，标题和论证有辨识度，赛博朋克段落是最强的分享钩子。主要问题是手机端两处长段、'原因有三' 的强行三段式、以及尾段政策清单略偏报告体。"
+}

@@ -1,0 +1,15 @@
+{
+  "draft": "cn/17-ai-native-agency.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "锚文本 '61%' 链接 URL slug 是 'ai-captures-50-percent-global-venture-capital-2025' — 数字与来源页矛盾，可信度风险", "fix": "核原文；不核就删掉数字或换可靠来源", "raised_by": ["seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "三段排比与抽象名词堆叠：'做久一点，多派几个人，多汇报活动'、'观察、执行、升级例外、报告完成'、'流程、数据、质检和价格'、'边界上有人类信任，中间有机器执行，末端有冷酷计量'", "fix": "削减排比；用一两个具体动作或案例替换", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "翻译腔与 VC-deck 抽象：'AI 改变的是生产函数'、'软件毛利正在侵入劳动市场'、'真正防御点是分发、信任、工作流嵌入、领域知识和评估体系'、'交付闭环产品化'", "fix": "用 operator 视角和具体业务事件替换", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "'垂直化也不是口号' 一段约 240 字，包含数字、英文链接和 prior authorization，移动端易被滑过", "fix": "拆成 '为什么垂直化' 和 '例子' 两段", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "H1 'AI 原生代理公司' 偏概念化，未透露核心判断；外链锚文本多为英文/数字，对中文 SEO 弱", "fix": "改为更具体的中文 H1 (如 'AI 原生 Agency：从计时收费到结果定价') 并把锚文本改成中文描述型", "raised_by": ["seo-skeptic", "h2-skimmer"]}
+  ],
+  "consensus_summary": "中文版结构与论点清晰，最强部分是把抽象论点落到具体业务事件 ('Deck 不是结果，带来 pipeline 的 campaign 才是') 和中国渠道地图 (阿里代运营/抖音本地生活/企业微信)。两道硬伤是 61%/50% 数字疑似冲突，以及 VC-deck 抽象抽屉句太多。"
+}

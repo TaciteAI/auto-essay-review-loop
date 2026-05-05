@@ -1,0 +1,14 @@
+{
+  "draft": "en/03-distribution-is-the-moat.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 7, "h2-skimmer": 7, "target-icp": 6.7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Multiple paragraphs >80 words (P6 ~101, P8 ~93, P9 ~91, P12 ~82) — wall of text on mobile", "fix": "Split each at the natural transition; aim for <80 words per paragraph", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Stat lede over-leveraged on a low-trust source (61% / $155M); also unlinked name-drops (WHU, Foundation Capital) reading as citation-scented synthesis", "fix": "Cite primary source or downgrade to directional claim; link or remove the WHU and Foundation Capital references", "raised_by": ["seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "No concrete example anchoring the thesis; reads as investor-memo trend essay (NFX/WHU/FC frameworks stacked) without one named distribution-vs-product battle", "fix": "Insert one specific case: a vertical AI startup that won via EHR/EMR partnership, or a generic agent that lost despite better benchmarks", "raised_by": ["target-icp", "h2-skimmer"]},
+    {"severity": "MINOR", "issue": "Stops at diagnosis; no 'Monday morning' tactical payoff", "fix": "Add an H2 like 'How to Build Distribution as a Product' with 3-5 levers (partnerships, compliance, procurement, implementation, anchor customer)", "raised_by": ["seo-skeptic", "h2-skimmer"]}
+  ],
+  "consensus_summary": "Strong spine and a genuinely shareable closing line ('it does not yet have a startup. It has a technical artifact.'), but the post is over-leveraged on shaky stats and stays at framework-stacking altitude. Tighten paragraphs for mobile, source or remove the numbers, and add one concrete embed-vs-cold-email example."
+}

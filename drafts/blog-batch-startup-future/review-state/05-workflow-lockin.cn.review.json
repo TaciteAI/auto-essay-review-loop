@@ -1,0 +1,15 @@
+{
+  "draft": "cn/05-workflow-lockin.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 4, "seo-skeptic": 5.6, "h2-skimmer": 6, "target-icp": 6.5},
+  "verdicts": {"mobile-first-reader": "not ready", "seo-skeptic": "not ready", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "CRITICAL", "issue": "中英夹杂过密：system of action / system of record / agentic AI / service-as-software / workflow lock-in / seat / operator —— 像翻译英文 VC memo，削弱中文圈 '我在一线干过' 的可信度", "fix": "保留 1-2 个核心术语（如 'agent'），其余中文化：动作系统/记录系统/智能体/服务即软件/工作流锁定/席位/操作员", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "段落墙严重：开头 '18 个月 agent / 运营手术' 段、'切换会制造隐藏风险' 段把 5 个动作+一个结论塞进一段；mobile-first 评 4/10", "fix": "拆段：1 句结论+具体场景（替换导致续费跟进漏发/误发退款）；动作清单改成 4 条短列每条 8-12 字", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "$155M / 61% 无来源口径，且 anchor 与 URL slug 矛盾（slug 写 50%）。NOTE: 61% 已可由 OECD 验证，但本文链接的是 agentmarketcap.ai；$155M 仍未验证", "fix": "61% 改用 OECD 来源；$155M 删或注明口径（轮次/阶段/币种/样本）", "raised_by": ["mobile-first-reader", "seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Persona 不一致：要求第一人称但全文是全知行业叙述+二手背书（NFX/Sequoia thesis）；'下一批伟大的 AI 公司' 是模板式宏大收尾", "fix": "改第一人称：'我看到的 2-3 个真实场景+指标/失败教训' 替代权威转述；结尾改成 2 条可执行建议（权限/集成/回滚审计/异常处理）", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "三个 H2（Agent 会学会这家公司 / 切换会制造隐藏风险 / 护城河来自把活干好）偏抽象口号，缺可检索术语（迁移/审计/幂等/回滚/SLA）", "fix": "改为 'Agent 如何学习公司流程：例外、权限与灰度规则' / '供应商切换的隐藏风险：状态迁移、审计断层与回滚成本' / '护城河不在更聪明：可靠执行、可观测与可控迁移'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "高可传播且金句存在（'运营手术'、'拔掉它会让业务停摆'），但 '英文 VC memo 翻译腔 + 无出处数据 + 段落墙' 三连让中文圈可信度塌方。优先：术语中文化、61% 换 OECD 来源、拆段、改第一人称、加具体失败案例。"
+}

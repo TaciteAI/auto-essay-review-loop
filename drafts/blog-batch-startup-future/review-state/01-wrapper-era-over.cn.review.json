@@ -1,0 +1,14 @@
+{
+  "draft": "cn/01-wrapper-era-over.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 7.2, "h2-skimmer": 4, "target-icp": 7.6},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "not ready", "target-icp": "almost"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "CRITICAL", "issue": "H2 skim test fails (4/10): 三个小标题（平台变成了竞争对手 / 功能不是护城河 / 被平台吸收后还剩什么）过于通用，没有限定平台对象或产品类型，缺少叙事支点", "fix": "重写 H2 为具体声明，如 'Operator 到底改变了什么（动作层）', '套壳模式的 3 个致命暴露点', '应用层活下去的 3 类资产：分发、数据闭环、结果交付'", "raised_by": ["h2-skimmer", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "数据段（61% / $258.7B / $155M）口径不清且来源域名 agentmarketcap.ai 非权威；中文读者会立刻质疑", "fix": "补来源机构+报告名+统计口径；或降级为趋势判断 ('有报告称……')", "raised_by": ["mobile-first-reader", "seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "墙感段落多：'OpenAI、Anthropic、Google 不再只是按 token...'（并列名词串）、'最强的形态看起来反而不像传统软件...'（~205 CJK 字符），300px 手机阅读体验差", "fix": "拆段：先给一个可验证的'动作层'例子，再单独一句解释；客户价值段拆成 '客户买的是 X，不是 Y'+具体 KPI+模型可替换", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "口号式排比和 AI-公关腔过密：'资本市场已经把这件事说得很清楚', '这就是新的生死线', '没有工作流、没有分发、没有数据闭环', 第二人称 '你的公司' 与第一人称视角不一致", "fix": "去掉 2-3 处口号；改第二人称为 '一个团队' 或第一人称 '我'；'客户不关心。客户关心' 加例外条件", "raised_by": ["target-icp", "mobile-first-reader"]}
+  ],
+  "consensus_summary": "观点锋利且有金句（'死的是\"界面就是公司\"的幻觉'），但 H2 过于通用导致 skim 失败，硬数据无可信来源，墙感段落多。优先级：重写 H2、补数据来源、拆 2 段长段落、减少口号式排比。"
+}

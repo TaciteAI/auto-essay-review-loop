@@ -1,0 +1,19 @@
+{
+  "draft": "en/15-foundation-models-as-competitors.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Lacks a concrete startup casualty / survival example beyond naming OpenAI, Anthropic, Google product launches; piece reads as consensus memo without proprietary observation", "fix": "Cut the a16z citation paragraph and replace with one specific named company (e.g. a wrapper that died after Operator, or a vertical app that survived) with a real before/after", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Voice flips between sharp platform-risk argument and consultant-abstraction lists ('Permissions. Audit logs. Workflow ownership. Data contracts. Review queues. Implementation playbooks.')", "fix": "Replace the bare-noun list with one or two specific examples (e.g. how Harvey's review queue saved a renewal)", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "H2 'Defensibility Moves to the Boring Parts' is editorially memorable but vague for SEO/skim", "fix": "Sharpen to 'Where AI Startup Defensibility Actually Comes From' or name one boring part in the header", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Three-part-symmetry phrasing ('Not X but Y. Not X but Y. Not X but Y.') in 'Startups Are Moving Downstream' reads as AI-essay rhythm", "fix": "Keep one of the three; cut or vary the others", "raised_by": ["mobile-first-reader"]}
+  ],
+  "consensus_summary": "Coherent platform-risk argument with the strongest pull-quote line of the batch ('It is a competitor with distribution.'). Held back from sharing by abstract supporting paragraphs and a missing concrete company casualty — strong enough to publish, not yet strong enough to spread."
+}

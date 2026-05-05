@@ -1,0 +1,14 @@
+{
+  "draft": "en/02-service-as-software.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 7, "h2-skimmer": 7, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Heavy MBA/VC-deck register: 'cleaner economic claim', 'operating model', 'defensible', 'sharper product discipline', 'messy middle' read as synthesis-engine prose, not lived founder voice", "fix": "Replace at least one abstraction-stack paragraph with a concrete operator anecdote (named workflow, named edge case, real $/time saved)", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "List-shaped content (example tasks line 5; messy-middle components line 21) trapped in prose; mobile/SEO scannability hit", "fix": "Convert example tasks (invoices/support/claims/candidates/briefs/leads) and operating-system pieces (retrieval/permissions/audit logs/escalation/monitoring) to bullet lists", "raised_by": ["seo-skeptic", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Stat paragraph (61% VC / $155M agentic) reads like deck flex; HN crowd will demand source quality, and the linked domain looks low-trust", "fix": "Add primary-source citation language ('per PitchBook/CB Insights') or cut the number entirely; reframe so the stat supports the thesis instead of standing alone", "raised_by": ["target-icp", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "H2-only outline; chunky paragraphs without H3 break-up", "fix": "Add 1-2 H3s under longer sections, or add a one-line TL;DR after the lede", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "The thesis lands and there are quotable lines ('cannot hide behind login metrics'; 'sells the job itself'), but the prose drifts into MBA register and the VC stats undermine credibility. Convert two list-shaped paragraphs to bullets and swap one abstraction block for a concrete operator example."
+}

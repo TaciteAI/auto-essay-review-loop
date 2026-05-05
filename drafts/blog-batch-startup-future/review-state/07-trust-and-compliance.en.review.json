@@ -1,0 +1,15 @@
+{
+  "draft": "en/07-trust-and-compliance.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 5, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "not ready", "target-icp": "almost"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "H1 'Trust and Compliance' is generic — sounds like a category page, not a thesis", "fix": "Use thesis-bearing H1 like 'The Moat in Regulated AI Is the Audit Trail' or 'Regulated AI Wins on Evidence, Not Models'", "raised_by": ["seo-skeptic", "h2-skimmer"]},
+    {"severity": "MAJOR", "issue": "Too abstract — no concrete operating scene, no named hospital/bank/lawyer/buyer-meeting/scar", "fix": "Add one vivid procurement/regulator/customer moment: a model recommends X, compliance blocks Y, audit trail enables Z", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Polished-essay phrasing ('first-class object', 'product infrastructure', 'winning architecture', 'product stakeholder') trends into AI/consulting voice", "fix": "Swap abstractions for operator language: approvals, records, admin controls, handoffs, reversals, review queues, evidence packs", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "Final H2 'The Regulated Future Is Not Slow' is editorial, not informational", "fix": "Sharpen to 'Regulated AI Will Advance Through Permissioned Autonomy'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Audit-trail enumeration in P-under-H2-2 is one long sentence; web readers want a list", "fix": "Convert 'source documents, confidence bands, policy checks...' into a bulleted list", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Strong thesis with one shareable closer ('The audit trail earns the right to act'), but the generic title and abstract framing keep it in 'smart memo' territory. Sharpen the H1 and add one concrete operator scene to clear the bar."
+}

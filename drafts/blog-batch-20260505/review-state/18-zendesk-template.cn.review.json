@@ -1,0 +1,15 @@
+{
+  "draft": "cn/18-zendesk-template.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 6, "h2-skimmer": 7, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "标题写 Zendesk 但开头第一句是 ServiceNow,读者会觉得在拼贴;'每一步都是同一本剧本里的不同章节' 是空话句", "fix": "开头三句内明确这是 'Citrini 推演的情景样本';或只保留 Zendesk 单线,把 ServiceNow 改成行业信号引用而非主语", "raised_by": ["mobile-first-reader", "seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "未来违约时间点(2027 年 9 月)、金额(50 亿美元)、折价(58 折)、'70% 工单' 等具体数字以既成事实写出,被读者当事实就会反噬可信度", "fix": "所有 2027/2028 数字前加 '推演中' 或 '推演假设';'70%' 改成区间或加合规/语言/集成等条件", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "'推到房贷' 跨度大但缺中间节点(谁持有谁、通过什么工具传导、何时触发);'每一层都做同一笔多头交易,没有任何分散化收益' 过于绝对化", "fix": "在多米诺段加 4-6 行 '可能的持仓/资产负债表连接点';把 '没有任何' 降级为 '在这些条件同时成立时分散化收益接近零'", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "AI 中文判词化高密度:'标准信号'、'最危险的部分'、'顺序不能乱'、'教科书式的实时演示'、'本质上是对...征的税'", "fix": "至少删一半绝对化口号;把 '本质上' 类归因句改为 'Zendesk 价值的一部分是对人类客服规模征的税'", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "外链锚文本叙事化过长:'那本依赖白领稳定高薪的 13 万亿美元住房贷款账簿'、'Daron Acemoglu 那套...框架'", "fix": "改为 '美国住房按揭约 13 万亿美元:对白领收入的隐含假设' / 'Acemoglu:自动化够用但不完美的替代逻辑'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "四步剧本框架对中文 HN 等价读者很有传播力,结尾反问 '你确定不是把同一笔交易连买了四遍?' 是金句。主要修订:开头主语统一(Zendesk vs ServiceNow)、所有未来数字标记为推演、补传导链中间节点。"
+}

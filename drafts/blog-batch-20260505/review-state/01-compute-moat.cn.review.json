@@ -1,0 +1,50 @@
+{
+  "draft": "cn/01-compute-moat.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 7,
+    "seo-skeptic": 8,
+    "h2-skimmer": 8,
+    "target-icp": 7
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "ready",
+    "h2-skimmer": "ready",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "口号化对仗与宏大判词反复出现：'这已经不叫准入壁垒，这叫闭关'，'更像国与国之间的博弈'，'护城河不是一条沟，是四条互相垂直的沟'，'这才是接下来十年里真正的政治经济故事' — 中文版的 AI-slop pattern",
+      "fix": "保留一两个金句，把其余口号化判词换回具体约束（合同、配额、电力数字）；'这才是真正的故事' 类结句直接砍",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "多个段落超过 ~150 字（手机舒适阈值），尤其是结尾'政治后果是...'段约 260 字，并列长定语多，拇指扫读容易划过去",
+      "fix": "把超长段落每段拆成 2 段；尤其结尾段要按'反垄断时滞 / 救济令 / 周期定价'三个判断各自成段",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "锚文本多为裸数字（'6600 亿美元', '7800 万美元', '560 万美元的训练算力'），不够语义化",
+      "fix": "把锚文本改成主体+结论：如'四巨头2026年AI资本开支预计6600亿美元（CNBC）'、'GPT-4训练成本估算约7800万美元（Epoch AI）'",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "全文仅 H1+H2，'集中度...四个瓶颈叠在一起'一节四层并列（芯片/云/模型/应用）密度高，可加 H3 提升可扫描性",
+      "fix": "在'集中度'与'成本曲线'下各加 3-4 个 H3 子标题",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "中后段从硬数据/产业链推演滑向'资本化、宿命论'抽象语气；voice 从分析文变成观点宣言",
+      "fix": "结尾收回到具体名单+具体合同期限，避免大词收束",
+      "raised_by": ["target-icp"]
+    }
+  ],
+  "consensus_summary": "数据扎实、大纲递进清晰，最分享得动的句子是'前沿不是一条赛道，是一个会员制俱乐部'。下一轮重点：拆长段适配手机、把口号化对仗改回具体约束、锚文本主体化。"
+}

@@ -1,0 +1,50 @@
+{
+  "draft": "cn/04-algorithmic-management.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 8,
+    "seo-skeptic": 7,
+    "h2-skimmer": 8,
+    "target-icp": 8
+  },
+  "verdicts": {
+    "mobile-first-reader": "ready",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "AI-slop模板句：'这是结构性的创新'、'请把这一句重新读一遍'、'这部分故事最少被讨论,因为它不上镜'、'这种不对称本身就是产品'、'这道约束正在垮掉'、'这个十年最关键的劳动故事' — 高概念名词堆叠，断言强但缺机制细节",
+      "fix": "把每个强判断后面紧跟一个机制例子（用哪些数据、算哪些分、触发哪些后果）；'请把这一句重新读一遍' 直接砍",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Voice 在'赛博朋克影像'（low life/荧光灯/14秒）与'学术结构分析'之间来回切，结尾又从强论断转成设问句（2028年...会不会），声线不稳",
+      "fix": "锁定一种声线：'具象场景 + 机制拆解 + 可复述结论'；结尾改成判断句收束：'到2028年，它很可能就是那台数你commit的扫码枪'",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "段落普遍超过 150 字（多段 200+），尤其结尾'AI 与劳动的主流叙事...'与'2025 年 arXiv 上的论文...'两段，手机上拥堵",
+      "fix": "把每个超长段拆成 2 段；'白领工具栈'部分拆成 度量/排名/惩戒/叙事 四个项目符号",
+      "raised_by": ["mobile-first-reader", "seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "'功能今天就在主流办公套件里发货'是强断言无来源，'对所有公司网络上的认知劳动者都能用'同样过度",
+      "fix": "改成'在不少企业部署/部分产品功能中常见'，或补 2-3 个可核验来源（产品文档/新闻/研究）",
+      "raised_by": ["seo-skeptic", "target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "标题文学化但缺可检索关键词（'算法管理'/'electronic whipping'/'Slack 监控'未出现在 H1）；'Bessemer'/'Manesar' 等地名对中文读者陌生且无括注",
+      "fix": "保留文学感但带关键词：'算法管理从亚马逊仓库走向白领：Slack、键盘与电子鞭打'；地名加括注（Bessemer 即'亚马逊仓库工会投票所在地'）",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "全 batch 最分享得动的一篇——warehouse→keyboard 映射既具体又锋利。下一轮：去模板句、锁声线、拆超长段、强断言加来源，标题加可检索关键词。"
+}

@@ -1,0 +1,15 @@
+{
+  "draft": "en/10-composition-over-subscription.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 7, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "CRITICAL", "issue": "Four paragraphs over 80 words, including a 111-word wall ('The 2027 stack a serious user runs...') — major mobile fail and the densest section is the most concrete one", "fix": "Split the 111-word paragraph after 'A persistent memory store backed up like any other file.'; split each 80+ paragraph at its natural pivot", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Hand-wavy quantitative claims (70B on $2K workstation, 'within roughly a year,' 'bill drops by an order of magnitude,' 'switching cost: zero') will get pounced on by HN", "fix": "Either quantify with one named config/benchmark or downgrade to softer hedges with a footnote", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "'One model trained to do everything is, by construction, average at most things' is technically sloppy — frontier generalists often beat small specialists without task-specific data", "fix": "Reframe to 'when you have task-specific data and evals, specialists win on cost/latency/quality' — keeps thesis, drops the false universal", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "Voice flips between economics analyst and manifesto ('She is a firm. It is a peer.'); solo lawyer/clinic examples drift to techno-libertarian without addressing liability, eval, compliance", "fix": "Cut one of the three examples and add one concrete workflow or benchmark instead", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "Search-language gap: H2s lack discoverable phrases like 'local AI models,' 'open-weight AI,' 'AI model orchestration,' 'private AI stack'", "fix": "Weave one query phrase into an H2 or early body", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Sticky frame ('constellation vs oracle') with a quotable line ('Your subscription is the amortization schedule'); H2s tell a clean story. Held back by four long paragraphs (one 111-word wall), unsubstantiated quantitative claims, and a manifesto closer that drifts off the analyst voice."
+}

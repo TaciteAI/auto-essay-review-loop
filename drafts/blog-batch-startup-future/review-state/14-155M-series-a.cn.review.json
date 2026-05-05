@@ -1,0 +1,19 @@
+{
+  "draft": "cn/14-155M-series-a.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7, "h2-skimmer": 7, "target-icp": 8},
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "almost",
+    "target-icp": "ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "1.55 亿美元这个核心数字没有出处或具体案例，开场又用了'无论看成精确信号还是热情症状'的双边免责声明，削弱锋利度", "fix": "明确数据来源（哪份报告/时间窗）并点名 1-2 家代表性 A 轮公司（Sierra、Glean、Harvey、Sakana 等），删掉双边免责声明", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "国内大模型公司名单堆叠（百度/阿里/腾讯/月之暗面/智谱/DeepSeek）和'OpenAI/Anthropic/Google/Meta'连续两组名单读起来像填空，而不是判断", "fix": "把两组名单压成一句话因果（'即使中美前线模型继续逼近通用能力'），删掉清单", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "H2 偏抽象（'更大的支票，更少的赢家'、'资本本身成为武器'、'稀缺让战略更清楚'），skimmer 看不到具体主体或机制", "fix": "至少一个 H2 点出具体公司、品类或机制，例如'大额 A 轮在哪些品类买到了什么'", "raised_by": ["h2-skimmer", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "首屏没有告诉读者'这和我有什么关系'，第二段立刻跳到 a16z+Menlo 引用让动能下降", "fix": "把'下一千个创始人需要不同切口'的具体建议提前到首屏一句话", "raised_by": ["mobile-first-reader"]}
+  ],
+  "consensus_summary": "标题数字够硬、share-vector 给到 8.1 愿意发 X/即刻；最大短板是 1.55 亿这个数字本身没有出处或案例，加上双重免责声明和大厂名单堆叠让锋利感被稀释。需要把数字钉死＋删名单＋让 H2 至少有一个具体到品类。"
+}

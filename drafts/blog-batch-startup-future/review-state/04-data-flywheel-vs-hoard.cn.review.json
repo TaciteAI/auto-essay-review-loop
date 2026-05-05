@@ -1,0 +1,14 @@
+{
+  "draft": "cn/04-data-flywheel-vs-hoard.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 6.2, "h2-skimmer": 6.2, "target-icp": 6.4},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "not ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "CRITICAL", "issue": "URL slug 与正文数字矛盾：anchor 写 61%, URL slug 是 'ai-captures-50-percent-...'。读者点开会立刻发现矛盾，整篇可信度被一条评论击穿。NOTE: 61% 已可由 OECD 验证 (oecd.org 2026-02-17)，正确数字 = 61%", "fix": "保留 61%，改用 OECD 来源链接（https://www.oecd.org/en/about/news/announcements/2026/02/ai-firms-capture-61-percent-of-global-venture-capital-in-2025.html），并在文中加 '按 OECD 口径'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Persona 不一致：要求第一人称但全文是媒体解说体（a16z/Insignia 复述）；'真正的护城河不是仓库，而是飞轮' 等对仗金句堆叠像 AI 商业文模板", "fix": "改第一人称：'我在尽调时怎么拆 我们有数据'；去掉 '不是X而是Y' 句式；把飞轮落到具体闭环（动作→结果→标注→回写）+ 行业字段示例", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "三个 H2 偏抽象口号（折旧/飞轮/权利），缺尽调清单、可检索实体词（数据治理、数据尽调、反馈闭环、企业采购）", "fix": "新增 H2：'判断数据护城河的尽调清单（10 问）' 和 '反例：哪些数据护城河是伪命题'；现有 H2 改成 '数据折旧：边际收益递减与无差异数据陷阱'", "raised_by": ["seo-skeptic", "h2-skimmer"]},
+    {"severity": "MAJOR", "issue": "'稀缺的是经得起尽调的数据故事'、'尽调时会爆炸的负债'、'更尖锐地说...' 等 AI 文章味金句过密；行业列表（医疗/物流/保险/金融）缺具体工作流字段", "fix": "每个金句后跟一个数字/字段/失败案例；行业列表改为 1 个具体例子（如工业品渠道：定价习惯/采购语言/续约触发点）", "raised_by": ["mobile-first-reader", "target-icp"]}
+  ],
+  "consensus_summary": "立论清晰且可分享金句存在（'TB 数 vs 闭环'、'囤随机文档不是护城河'），但 anchor 文本与 URL slug 矛盾的具体可信度炸点必须先修。其次去掉对仗金句、改第一人称、加尽调清单与具体字段示例。"
+}

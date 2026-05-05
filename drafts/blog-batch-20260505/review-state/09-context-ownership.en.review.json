@@ -1,0 +1,14 @@
+{
+  "draft": "en/09-context-ownership.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 8, "seo-skeptic": 8, "h2-skimmer": 7, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Aphorism/abstract-noun stack ('Real numbers, wrong moat,' 'sharecropping with extra steps,' 'embedding-grade fidelity,' 'layer-by-layer') reads as over-polished and pre-owned in places", "fix": "Cut 2-3 aphorisms; replace one with a concrete portability-failure example (a real export attempt, a specific missing field)", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Voice flips at the policy outro ('Mandated portability with embedding-grade fidelity. Antitrust treatment of the GPU and cloud bottlenecks...') — drifts from operator-critic to think-tank memo", "fix": "Cut or sharpen the policy paragraph; either drop entirely or condense to one sentence in the same voice as the export-button line", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "$2,000 workstation / 70B claim is hand-wavy for HN readers who will immediately argue RAM, quantization, latency, quality", "fix": "Either name the specific config (model + quant + tokens/sec) or downgrade to 'increasingly feasible' with a footnote", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "Anchor text could name sources more explicitly ('around $78 million' could include 'Epoch AI estimate of GPT-4 training cost')", "fix": "Add source/concept name to two anchor texts", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Sharp thesis with a memorable closing punch ('Whoever owns the context owns the user'); H2s outline a clean arc and the export-button passage is the strongest. Held back by aphorism density, a hand-wavy local-AI claim, and a think-tank policy outro that breaks voice."
+}

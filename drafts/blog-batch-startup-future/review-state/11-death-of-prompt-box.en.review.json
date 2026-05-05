@@ -1,0 +1,19 @@
+{
+  "draft": "en/11-death-of-prompt-box.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 6},
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Voice drifts into VC-thesis abstraction ('current application layer', 'economic value', 'defensibility', 'ambient context, suggested action, and accountable execution'); blunts shareability for HN/operators", "fix": "Replace abstract bridge phrases with concrete operator nouns; cut the keynote-style closer in favor of one sharp sentence", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Paragraph 2 (the 'It is no longer enough...' a16z block) is dense and citation-heavy at ~80 words — feels like a wall on mobile before the post has earned trust", "fix": "Split into two paragraphs and push the a16z citation later or to a single short clause", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "Headlines are clever-magazine ('The Blank Box Shrinks') but underuse search-relevant terms (AI agents, enterprise AI, agentic workflows)", "fix": "Tighten one or two H2s to name the claim directly, e.g. 'Chat Was the Training-Wheel Interface'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Lots of 'It is therefore...' / 'This is also why...' connective tissue that reads as essay-AI rhythm", "fix": "Cut connective adverbs; let claims stand without scaffolding", "raised_by": ["mobile-first-reader", "target-icp"]}
+  ],
+  "consensus_summary": "Strong, coherent thesis with a story-shaped H2 outline that all personas can follow. Holds back from being shared because the prose drifts into abstract VC-thesis voice and one early paragraph is wall-shaped on mobile."
+}

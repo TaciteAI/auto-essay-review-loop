@@ -1,0 +1,19 @@
+{
+  "draft": "en/14-155M-series-a.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 7, "target-icp": 6},
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "almost",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "$155M average is presented unsourced and hedged ('precise market signal or symptom of late-cycle enthusiasm'); HN would attack the number on first read", "fix": "Cite the exact source/period for the average, name one or two of the actual rounds (Sierra, Glean, Harvey, etc.) so the headline number is anchored", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "Voice oscillates between Stratechery-lite macro framing and operator-coach 'Do not... Do not... Do not...' three-part-symmetry; reads as VC memo template", "fix": "Pick one register; replace the do-not list with one named anti-pattern + one concrete counterexample", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "Two H2s ('Capital Becomes a Weapon', 'Scarcity Clarifies Strategy') are elegant but generic — could appear in any VC essay", "fix": "Sharpen one to name the actual mechanism (e.g. 'Capital Buys Procurement Cycles, Not Code')", "raised_by": ["h2-skimmer", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "AI-essay rhythm phrases ('changes the tempo', 'durable margin', 'capital concentration')", "fix": "Cut at least half of the polished bridge phrases", "raised_by": ["mobile-first-reader", "target-icp"]}
+  ],
+  "consensus_summary": "Title hook ($155M) and H2 spine work; structure is snippet-worthy and the founder advice is directionally sound. Held back by the unsourced headline number and AI/VC-memo voice — would land on Lenny but not on HN as written."
+}

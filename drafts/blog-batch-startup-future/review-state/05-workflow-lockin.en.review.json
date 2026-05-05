@@ -1,0 +1,14 @@
+{
+  "draft": "en/05-workflow-lockin.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7.4, "h2-skimmer": 4, "target-icp": 7.4},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "not ready", "target-icp": "almost"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "CRITICAL", "issue": "H2 outline read alone is generic ('The Agent Learns the Business', 'Switching Creates Hidden Risk', 'The Moat Is Earned by Doing the Work') — no domain anchor; H2-skimmer scored 4/10", "fix": "Rewrite H2s to carry concrete payload: 'Operational Memory: What Agents Learn That Databases Don't', 'Why Replacing a Workflow Agent Feels Like Surgery', 'How Workflow Lock-In Is Earned (Outcomes, Not Dark Patterns)'", "raised_by": ["h2-skimmer", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Funding stats ($155M / 61%) are off-thesis (post is about lock-in, not capital flows), low-trust source, anchor mismatches link slug; major credibility drag for HN/Stratechery readers", "fix": "Delete both stats or replace with one sourced sentence; the argument works without them", "raised_by": ["mobile-first-reader", "seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Two external-thesis name-drops (NFX defensibility, Sequoia outcomes) without anchoring to a concrete failure mode; reads as borrowed authority", "fix": "Cut one and replace with a real workflow scenario (support refund flow, AR billing): what the agent learned, what would break in migration, what metric to watch", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "Missing acknowledgement of counter-trend (portability standards, swappable agents); 'strongest switching cost in 2026' is too universal", "fix": "Add one sentence qualifying scope ('in action-taking enterprise AI workflows...') and a counterpoint about portability layers", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "Strong thesis and the operator metaphor ('operational surgery') is genuinely shareable, but the H2-only skim fails badly and the off-topic funding stats undermine credibility. Sharpen H2s to carry payload, drop the stats, and swap one name-drop for a concrete migration-risk scenario."
+}

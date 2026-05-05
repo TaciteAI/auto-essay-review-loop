@@ -1,0 +1,14 @@
+{
+  "draft": "cn/19-vertical-saas-rebundling.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 9, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "ready", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "VC-blog 套话：'每一家严肃的垂直 SaaS'、'现有厂商的优势很真实'、'市场整合也强化了这一点'、'商业含义对老厂商不舒服'、'本质上指向这里'、'预算会流向产生结果的界面'", "fix": "替换为更狠/更具体的表达 (例：'数据库仍然必要，但必要不等于战略控制' 一类的句子)", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "中英夹层：'AI layer'、'system of record'、'system of action'、'rebundling test'、'bundle'、'action layer'、'copilot 面板' — 中文 SEO 与读者都偏吃力", "fix": "保留 1-2 个核心英文术语，其余统一为中文表达", "raised_by": ["seo-skeptic", "mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "Foundation Capital 段落 ~175 字，移动端为视觉长段；中国生态那段是清单式，可读性中等", "fix": "拆段；把中国一段写得更具体（一个具体场景）或删掉", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "H2 '重组测试' 偏抽象；H1 是思想型而非搜索型", "fix": "把 H2 改为 '怎样判断 AI 是否重组了垂直 SaaS'，并在导语自然嵌入 'AI 智能体如何重组垂直 SaaS'", "raised_by": ["seo-skeptic", "h2-skimmer"]}
+  ],
+  "consensus_summary": "中文版有清晰论点 ('数据库仍然必要，但必要不等于战略控制' 是分享金句) 和稳健 H2 spine。主要拖累是中英夹层术语和 VC-blog 套话；压缩中段、把中国一节写具体或删掉，可上线。"
+}

@@ -1,0 +1,14 @@
+{
+  "draft": "en/20-micro-saas-corner.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Three-part-symmetry triads ('first constraint is regulated trust', 'second constraint is embodied service', 'third constraint is hyper-local context') reads as LinkedIn-strategy-thread template", "fix": "Break the symmetry — vary opener verbs, lead with the strongest example, or replace the numbered pattern with one extended vignette", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Citation-as-crutch — laundering thesis through 'StartuPage 2026 list' and namedropping NFX/Codurance weakens conviction; needs more contempt for wrapper startups, less polite framing", "fix": "Drop the StartuPage citation or rewrite to claim the pattern as the author's own; cut throat-clearing before the real take", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "Prose is over-smoothed and consultant-y: 'durable corner', 'agentic funding cycle', 'sell the buyer a calmer operation', 'administrative leakage'", "fix": "Replace abstract category labels with named buyers/products and concrete pain", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "H2s 'The Three Durable Constraints' and 'The Solo Founder Angle' are vague for SEO", "fix": "Tighten to query-aligned phrasing like 'Why AI Cannot Replace These Micro-SaaS Niches' and 'How Solo Founders Can Build Defensible Micro-SaaS'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Real thesis ('small software attached to constraints the general agent cannot cheaply satisfy') and a clear H2 spine, but the numbered-constraint triad and citation crutch make it read like a LinkedIn strategy thread. Cut 20% of throat-clearing and one vivid niche vignette would unlock it."
+}

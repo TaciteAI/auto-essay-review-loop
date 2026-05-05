@@ -1,0 +1,19 @@
+{
+  "draft": "cn/12-outcome-pricing.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "缺少一个具体行业账本案例把'结果定价=产品架构'钉死；正文偏顺滑，像英文 AI/VC 文章翻译腔", "fix": "补一个 Fin 或客服 agent 的毛利拆解场景：解决定义、升级规则、误判退款、人工复核率的总和", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "首段缺少核心搜索词（AI 智能体定价、按结果定价、按用量定价），首 80 字不够 snippet 友好", "fix": "把首段开头改成'AI 智能体定价的核心变化，是买方不再为席位付费，而是为完成的工作单元/结果/用量付费'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "AI/投研短语堆叠（'真正/不只是/下一代/越来越/之所以...因为'），让结尾段读着像综述", "fix": "全文删除这些连接词，改成更硬的判断句", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "英文锚文本（Fin pricing、AI customer service、AI agents market map）对中文读者偏弱", "fix": "改成中文语义锚文本，例如'Fin 的 AI 客服按结果定价案例'、'a16z 对 AI 智能体市场分类的分析'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "立场和结构都成立，'定价页会变成流程图，账单会变成价值证明'是适合圈层转发的强句。最大短板是缺一个具体的毛利拆解场景，让全文从顺滑判断变成可以被 CFO 拿走用的备忘录。"
+}

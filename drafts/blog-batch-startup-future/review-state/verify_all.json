@@ -1,0 +1,598 @@
+[
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\01-wrapper-era-over.en.md",
+    "word_count": 706,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\02-service-as-software.en.md",
+    "word_count": 719,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\03-distribution-is-the-moat.en.md",
+    "word_count": 688,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+      "https://www.nfx.com/post/ai-defensibility"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\04-data-flywheel-vs-hoard.en.md",
+    "word_count": 663,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://a16z.com/the-empty-promise-of-data-moats/",
+      "https://review.insignia.vc/2025/03/10/ai-moat/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\05-workflow-lockin.en.md",
+    "word_count": 667,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://www.nfx.com/post/ai-defensibility"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\06-vertical-beats-horizontal.en.md",
+    "word_count": 732,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/",
+      "https://www.gartner.com/en/newsroom/press-releases/2024-10-23-gartner-forecasts-worldwide-it-spending-to-grow-nine-point-three-percent-in-2025",
+      "https://www.bvp.com/atlas/vertical-ai",
+      "https://www.abridge.com/press/abridge-raises-150-million-series-c"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\07-trust-and-compliance.en.md",
+    "word_count": 640,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device",
+      "https://www.finra.org/rules-guidance/key-topics/artificial-intelligence",
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\08-multiplayer-agent-network-effects.en.md",
+    "word_count": 713,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.bvp.com/atlas/vertical-ai",
+      "https://www.salesforce.com/news/stories/agentforce-ai-agents-announcement/",
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\09-system-of-action.en.md",
+    "word_count": 697,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.salesforce.com/news/stories/agentforce-ai-agents-announcement/",
+      "https://www.gartner.com/en/newsroom/press-releases/2024-10-23-gartner-forecasts-worldwide-it-spending-to-grow-nine-point-three-percent-in-2025"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\10-brand-and-ux-when-capability-is-rented.en.md",
+    "word_count": 696,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/",
+      "https://www.salesforce.com/news/stories/agentforce-ai-agents-announcement/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\11-death-of-prompt-box.en.md",
+    "word_count": 646,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://a16z.com/ai-application-strategy/",
+      "https://a16z.com/ai-agents-market-map/",
+      "https://openai.com/index/introducing-operator/",
+      "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\12-outcome-pricing.en.md",
+    "word_count": 605,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.intercom.com/fin/pricing",
+      "https://www.intercom.com/blog/ai-customer-service/",
+      "https://a16z.com/ai-agents-market-map/",
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\13-vendor-consolidation.en.md",
+    "word_count": 583,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/",
+      "https://a16z.com/ai-agents-market-map/",
+      "https://openai.com/index/introducing-operator/",
+      "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\14-155M-series-a.en.md",
+    "word_count": 624,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://a16z.com/ai-agents-market-map/",
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\15-foundation-models-as-competitors.en.md",
+    "word_count": 601,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://openai.com/index/introducing-operator/",
+      "https://www.anthropic.com/claude-for-work",
+      "https://workspace.google.com/solutions/ai/",
+      "https://a16z.com/ai-application-strategy/",
+      "https://a16z.com/ai-agents-market-map/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\16-ai-native-hedge-fund.en.md",
+    "word_count": 705,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://a16z.com/the-empty-promise-of-data-moats/",
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\17-ai-native-agency.en.md",
+    "word_count": 690,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://linas.substack.com/p/sequoiathesis",
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://foundationcapital.com/ideas/where-ai-is-headed-in-2026"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\18-open-vs-closed-cost-curve.en.md",
+    "word_count": 697,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.nfx.com/post/ai-defensibility",
+      "https://a16z.com/the-empty-promise-of-data-moats/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\19-vertical-saas-rebundling.en.md",
+    "word_count": 661,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://foundationcapital.com/ideas/where-ai-is-headed-in-2026",
+      "https://www.whu.edu/en/news-insights/whu-magazine/article/ai-software-moats-defensibility-framework/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\en\\20-micro-saas-corner.en.md",
+    "word_count": 733,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+      "https://www.nfx.com/post/ai-defensibility",
+      "https://www.codurance.com/publications/beyond-functionality-building-durable-moats-in-the-ai-era"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\01-wrapper-era-over.cn.md",
+    "word_count": 1067,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\02-service-as-software.cn.md",
+    "word_count": 1081,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+      "https://a16z.com/the-empty-promise-of-data-moats/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\03-distribution-is-the-moat.cn.md",
+    "word_count": 1040,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+      "https://www.nfx.com/post/ai-defensibility"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\04-data-flywheel-vs-hoard.cn.md",
+    "word_count": 1083,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://a16z.com/the-empty-promise-of-data-moats/",
+      "https://review.insignia.vc/2025/03/10/ai-moat/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\05-workflow-lockin.cn.md",
+    "word_count": 1063,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://www.nfx.com/post/ai-defensibility"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\06-vertical-beats-horizontal.cn.md",
+    "word_count": 978,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/",
+      "https://www.gartner.com/en/newsroom/press-releases/2024-10-23-gartner-forecasts-worldwide-it-spending-to-grow-nine-point-three-percent-in-2025",
+      "https://www.bvp.com/atlas/vertical-ai",
+      "https://www.abridge.com/press/abridge-raises-150-million-series-c"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\07-trust-and-compliance.cn.md",
+    "word_count": 845,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device",
+      "https://www.finra.org/rules-guidance/key-topics/artificial-intelligence",
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\08-multiplayer-agent-network-effects.cn.md",
+    "word_count": 933,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.bvp.com/atlas/vertical-ai",
+      "https://www.salesforce.com/news/stories/agentforce-ai-agents-announcement/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\09-system-of-action.cn.md",
+    "word_count": 971,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.salesforce.com/news/stories/agentforce-ai-agents-announcement/",
+      "https://www.gartner.com/en/newsroom/press-releases/2024-10-23-gartner-forecasts-worldwide-it-spending-to-grow-nine-point-three-percent-in-2025"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\10-brand-and-ux-when-capability-is-rented.cn.md",
+    "word_count": 964,
+    "h1_count": 1,
+    "h2_count": 3,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/",
+      "https://www.salesforce.com/news/stories/agentforce-ai-agents-announcement/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\11-death-of-prompt-box.cn.md",
+    "word_count": 862,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://a16z.com/ai-application-strategy/",
+      "https://a16z.com/ai-agents-market-map/",
+      "https://openai.com/index/introducing-operator/",
+      "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\12-outcome-pricing.cn.md",
+    "word_count": 902,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.intercom.com/fin/pricing",
+      "https://www.intercom.com/blog/ai-customer-service/",
+      "https://a16z.com/ai-agents-market-map/",
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\13-vendor-consolidation.cn.md",
+    "word_count": 924,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 4,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/",
+      "https://a16z.com/ai-agents-market-map/",
+      "https://openai.com/index/introducing-operator/",
+      "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\14-155M-series-a.cn.md",
+    "word_count": 972,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://a16z.com/ai-agents-market-map/",
+      "https://menlovc.com/2024-the-state-of-generative-ai-in-the-enterprise/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\15-foundation-models-as-competitors.cn.md",
+    "word_count": 896,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 5,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://openai.com/index/introducing-operator/",
+      "https://www.anthropic.com/claude-for-work",
+      "https://workspace.google.com/solutions/ai/",
+      "https://a16z.com/ai-application-strategy/",
+      "https://a16z.com/ai-agents-market-map/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\16-ai-native-hedge-fund.cn.md",
+    "word_count": 1028,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://a16z.com/the-empty-promise-of-data-moats/",
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\17-ai-native-agency.cn.md",
+    "word_count": 1073,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://linas.substack.com/p/sequoiathesis",
+      "https://agentmarketcap.ai/blog/2026/04/10/ai-captures-50-percent-global-venture-capital-2025",
+      "https://foundationcapital.com/ideas/where-ai-is-headed-in-2026"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\18-open-vs-closed-cost-curve.cn.md",
+    "word_count": 1056,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://www.nfx.com/post/ai-defensibility",
+      "https://a16z.com/the-empty-promise-of-data-moats/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\19-vertical-saas-rebundling.cn.md",
+    "word_count": 1070,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 2,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://foundationcapital.com/ideas/where-ai-is-headed-in-2026",
+      "https://www.whu.edu/en/news-insights/whu-magazine/article/ai-software-moats-defensibility-framework/"
+    ]
+  },
+  {
+    "path": "c:\\Users\\ycao\\Documents\\GitHub\\auto-essay-review-loop\\drafts\\blog-batch-startup-future\\cn\\20-micro-saas-corner.cn.md",
+    "word_count": 1079,
+    "h1_count": 1,
+    "h2_count": 4,
+    "fence_count": 0,
+    "link_count": 3,
+    "passed": true,
+    "issues": [],
+    "links": [
+      "https://agentmarketcap.ai/blog/2026/04/08/agentic-ai-funding-velocity-2026-sector-map-vertical-distribution",
+      "https://www.nfx.com/post/ai-defensibility",
+      "https://www.codurance.com/publications/beyond-functionality-building-durable-moats-in-the-ai-era"
+    ]
+  }
+]

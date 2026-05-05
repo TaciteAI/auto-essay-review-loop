@@ -1,0 +1,44 @@
+{
+  "draft": "en/11-displacement-spiral.en.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 7,
+    "seo_skeptic": 8,
+    "h2_skimmer": 9,
+    "target_icp": 6
+  },
+  "verdicts": {
+    "mobile_first_reader": "almost",
+    "seo_skeptic": "almost",
+    "h2_skimmer": "ready",
+    "target_icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Reads as ~70% Citrini synthesis; share-vector reader won't forward a single-source recap with brittle dated predictions (ServiceNow Q3 2026, Mastercard Q1 2027, 487K claims, S&P -38%).",
+      "fix": "Add the author's own 1-2 leading indicators and a falsification condition; trim or hedge the most specific company-by-company timeline calls.",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Mechanism section promises 'step by step' but delivers run-on paragraphs instead of an actual list/H3 structure; skimmers lose the staircase.",
+      "fix": "Convert each labeled step ('AI capabilities improve.', 'Companies need fewer workers.', etc.) into an H3 or numbered list item.",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "A handful of phrases tip into rhetorical-essayist mode and make the mobile reader squint ('Nobody is the villain.', 'the velocity dialed up', 'The political brake is weaker than it looks.').",
+      "fix": "Replace one or two with a concrete sentence (a name, a quote, a number) to preserve the otherwise-grounded voice.",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Voice drifts from mechanism description into policy-pitch mode in the final paragraph (Transition Economy Act / Shared AI Prosperity Act).",
+      "fix": "End on the strongest mechanism line ('Every company's individual response was rational...') or a one-sentence challenge instead of a legislative wrap-up.",
+      "raised_by": ["target-icp"]
+    }
+  ],
+  "consensus_summary": "Title and H2 outline tell a coherent mechanism->no-brakes->timeline story and the lede earns the scroll, so structure is shippable. The unresolved tension is share-vector trust: too much weight on one Citrini scenario with very precise dated calls drops the ICP score below the 'I'd retweet this' bar."
+}

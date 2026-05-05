@@ -1,0 +1,44 @@
+{
+  "draft": "en/12-ghost-gdp.en.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 7,
+    "seo_skeptic": 7,
+    "h2_skimmer": 7,
+    "target_icp": 8
+  },
+  "verdicts": {
+    "mobile_first_reader": "almost",
+    "seo_skeptic": "almost",
+    "h2_skimmer": "almost",
+    "target_icp": "ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Two H2s ('The signatures already showing up', 'What gets built or doesn't') are label-ish, not information-rich; skim-only readers get the thesis but miss which signatures and which policy fork.",
+      "fix": "Sharpen to e.g. 'Tax receipts, housing, and payment rails are already signaling it' and 'Three options: retrain, tax compute, or do nothing'.",
+      "raised_by": ["seo-skeptic", "h2-skimmer"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Evidence stretch in 'signatures' section run-dumps multiple stats (Federal receipts, SF/Seattle/Austin, ServiceNow, Mastercard) as adjacent paragraphs with no bullets; mobile/scroll readers lose the throughline.",
+      "fix": "Convert that block to a 4-bullet list (Fiscal / Housing / Hiring / Payments), each one line + one-line implication.",
+      "raised_by": ["seo-skeptic", "mobile-first-reader"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Metaphor stack ('ghost', 'signature', 'shadow', 'streets will say something different', 'brake hits the accelerator') tilts toward thinkpiece compression that pings the AI-slop sensor for some readers.",
+      "fix": "Pick the strongest one ('ghost') and demote the rest to plainer language.",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Snippet opener (first 155 chars) is polluted by the markdown citation link ('Citrini Research's [2028 Global Intelligence Crisis]...'), truncating before the 'machines do not consume' punchline.",
+      "fix": "Lead the first sentence with the mechanism, move the Citrini attribution to sentence two.",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "All four personas score >=7 on the strength of a sticky coined concept, concrete examples, and a clean four-section arc; ICP would actually share it. The consistent fix is structural: two H2s are too vague and the 'signatures' run-on wants to be a bullet list."
+}

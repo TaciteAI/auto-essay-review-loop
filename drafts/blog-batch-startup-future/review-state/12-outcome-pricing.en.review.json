@@ -1,0 +1,19 @@
+{
+  "draft": "en/12-outcome-pricing.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Lede is generic SaaS-history framing ('Software pricing used to hide behind access') — does not name AI agents or outcome pricing in the first 155 chars/first thumb-scroll", "fix": "Open with the AI-agent break or the Intercom Fin example; push the SaaS-history paragraph to second slot", "raised_by": ["mobile-first-reader", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Voice repeatedly flips into LinkedIn-thought-leadership maxims ('They will win by naming the outcome, pricing it, and proving it happened', 'repeatable labor market wedge with software margins')", "fix": "Replace generalized closers with specific failure modes or numbers; cut three-part-symmetry summary lines", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "Could use one compact list to enumerate outcome-pricing definitions (attribution, completion, escalation, refund, quality)", "fix": "Convert the sales/legal/support agent paragraph into a short bulleted list for skimmability", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Underuses search-intent phrases (usage-based pricing, value-based pricing, AI agent pricing)", "fix": "Naturally include those phrases in body without stuffing", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Strong, coherent argument with a clean H2 outline and a real thesis about pricing as architecture. Loses share-vector readers because the opening is abstract SaaS history and the closers slide into VC/LinkedIn-maxim voice."
+}

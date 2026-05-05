@@ -1,0 +1,38 @@
+{
+  "draft": "en/01-compute-moat.en.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 7,
+    "seo-skeptic": 8,
+    "h2-skimmer": 9,
+    "target-icp": 7
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Op-ed register creeps in mid-post: phrases like 'they parse as state-craft' and 'this is the lesson of every previous infrastructure cycle' read as essay-mode rather than blog-mode, weakening shareability",
+      "fix": "Replace 'state-craft' line with something concrete; cut the railroads/Amazon analogy run or anchor it to one specific data point",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "First-155-char snippet gets sabotaged by an early inline markdown link in the lede, which fragments the SERP-lifted preview",
+      "fix": "Restructure sentence 1 so the URL/citation moves to sentence 2; keep the thesis statement clean of links in the snippet zone",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Voice flip from punchy political-econ ('closed border', 'country club') to think-tank policy register (DOJ/EU antitrust timelines) in the final third",
+      "fix": "Keep the ending in the same voice as the lede; or add a final H2 that states the takeaway in plain blog voice",
+      "raised_by": ["target-icp", "seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "The argument lands and the H2 outline is genuinely strong, but the prose drifts into op-ed register in places and the first-155-char snippet is wrecked by an early inline link. Tighten the lede and re-tone the closing third for a clean ship."
+}

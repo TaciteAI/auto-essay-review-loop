@@ -1,0 +1,14 @@
+{
+  "draft": "en/16-ai-native-hedge-fund.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Argues at concept layer only — no concrete trade example, named fund, or weird proprietary detail; reads like assembled 2025 AI-finance discourse", "fix": "Add one concrete vignette: a named fund, a specific signal-to-trade story, or a documented failure mode", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "AI-slop / abstract-noun phrasing: 'swarms of agents reading the entire internet', 'always-on interpretation layer over public reality', 'compact capital machines', 'institutional judgment about which machine-generated beliefs deserve capital'", "fix": "Replace abstract noun stacks with concrete verbs and specific examples", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "H2 'The New Asymmetry' is vague; 'Capital Concentrates Around Believable Loops' is inside-baseball in scan mode", "fix": "Sharpen H2s to name the asymmetry and the loop concretely", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Anchor text on $155M link describes the stat but not the source", "fix": "Rewrite anchor as 'Agent Market Cap's 2026 agentic-AI funding velocity report'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Strong structural skeleton and a real thesis, but reads as plausible AI-finance essay assembled from 2025 talking points rather than reported insight. One concrete company, trade, or failure mode would move this from 'almost' to shareable."
+}

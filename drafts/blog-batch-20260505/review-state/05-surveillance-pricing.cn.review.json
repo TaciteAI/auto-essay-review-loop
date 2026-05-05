@@ -1,0 +1,50 @@
+{
+  "draft": "cn/05-surveillance-pricing.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 6,
+    "seo-skeptic": 8,
+    "h2-skimmer": 6,
+    "target-icp": 8
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "ready",
+    "h2-skimmer": "almost",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "段落普遍超过 150 字（多段 200+，最长 232 字），iPhone 阅读拥堵；'更深的问题是...被工程化地从界面上抹掉了' 一段尤其挤",
+      "fix": "每段拆成 2 段；'模型到底在用什么数据'一节拆成数据类型清单/推断机制/为何与成本无关三个 H3；FTC 列出的 7 个数据点改成项目符号",
+      "raised_by": ["mobile-first-reader", "seo-skeptic"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "AI-slop 模板句密集：'这不是模型的 bug。这就是模型本身'、'机制不复杂'、'监控定价是当下最干净的样本'、'强制披露规则会有用' — 论文/社论腔，不是中文科技社区的'理性讨论帖'感",
+      "fix": "把每个宣言式断句改成机制推论+条件句；保留 1 处金句即可；把'穷人付得更多，是设计出来的'两处绝对化表述降级为条件推论",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "缺'可感知'锚点：除 ¥298 毛衣外没有具体微案例；论证密度高但日常感弱，读起来像政策综述而非中文科技帖",
+      "fix": "在'模型到底在用什么数据'之后加 3-5 句具体微案例：同一航班/酒店/网约车在两台设备的差价体验（即使只是可能性也有效）",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Voice 在'机制解释（经济学/模型输入）'到'价值判断（穷人付更多是设计出来的）'的过渡偏陡；监管段从事实陈述跳到规范性处方（披露/审计/责任）缺过渡",
+      "fix": "在进入价值判断前加'下面不是道德指控，而是优化目标的推论'；监管处方前补一句'因为外部约束被界面抹掉，唯一可规模化的约束只能来自披露与可审计性'",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "结尾设问句很强但缺读者下一步行动路径；少数派/V2EX 适配度受影响",
+      "fix": "结尾追加'个人应对清单（多设备比价/无痕窗口/不登录比价/记录截图）+ 企业合规清单'各 3-5 条",
+      "raised_by": ["seo-skeptic", "target-icp"]
+    }
+  ],
+  "consensus_summary": "选题与结尾问题都很强，'穷人付得更多'一节是全篇最分享得动的部分。下一轮重点：拆超长段、加一个可感知的具体微案例、把宣言式断句改成机制推论。"
+}

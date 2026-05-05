@@ -1,0 +1,50 @@
+{
+  "draft": "en/14-top10-spending-collapse.en.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 7,
+    "seo_skeptic": 8,
+    "h2_skimmer": 6,
+    "target_icp": 6
+  },
+  "verdicts": {
+    "mobile_first_reader": "almost",
+    "seo_skeptic": "almost",
+    "h2_skimmer": "almost",
+    "target_icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Three paragraphs over 80 words on mobile (84 / 95 / 81). The 95-word 'multiplier is brutal' paragraph (line cook -> mechanic chain) is the worst wall.",
+      "fix": "Split the 95-word para after 'all downstream of that decile's discretionary income.' Trim the Econ 101 explainer in the second half.",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "'Early signal' section is indicator-bingo (white-collar openings, CS unemployment, entry-level postings, ServiceNow ARR, payroll-tax receipts, SF/Seattle/Austin housing) without a clean causal chain — reads like a deck/dashboard rather than an essay.",
+      "fix": "Add H3s grouping the indicators (Labor / Enterprise / Fiscal / Housing) and drop one or two of the weakest stats; tie each cluster back to the top-decile mechanism in one sentence.",
+      "raised_by": ["seo-skeptic", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Several phrases tip into deck-dunking / pundit cadence ('cheerful AI productivity decks leave out', 'The multiplier is brutal', 'You can already see the leading edge', 'reads the same signal' x3, 'asset-price echo', 'polite framing... arithmetic is') — pings the AI-slop sensor.",
+      "fix": "Cut or replace at least four of these; vary the 'reads X through Y' motif so it appears once, not three times.",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Anchor texts '7.0% unemployment' and 'Citrini Research's 2028 scenario' are bare-stat or generic; final H2 'What this means for anyone budgeting toward 2028' is wordy and slightly generic.",
+      "fix": "Re-anchor as 'CS-grad unemployment hits 7.0%' and 'Citrini's 2028 displacement model'; sharpen H2 to e.g. 'If you sell to the top decile, model this as structural'.",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Asserted elasticity ('2% job loss -> 3-4% discretionary decline') is treated as fact without a primary citation beyond Citrini.",
+      "fix": "Either qualify ('Citrini estimates...') or add one BEA/Fed source link to anchor the elasticity outside the scenario doc.",
+      "raised_by": ["target-icp"]
+    }
+  ],
+  "consensus_summary": "The thesis (top 10% are the load-bearing wall, AI displacement breaks the demand half of its own thesis) is strong and the closing question lands; SEO scores it 8 on structure. Mobile and ICP score it down for three over-long paragraphs and an indicator-salad signals section that reads more like a deck than an earned argument."
+}

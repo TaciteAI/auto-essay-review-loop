@@ -1,0 +1,15 @@
+{
+  "draft": "en/17-interchange-pressure.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 7, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Speculative figures (median American consuming 400K tokens/day; 3.4% growth in Q1 2027; specific city price drops) presented with too much certainty for an HN audience that pokes at numbers", "fix": "Frame Citrini's numbers as 'in the scenario' projections rather than asserted facts; add one line of caveat after the token-volume claim", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Analyst-speak phrases break voice: 'underlying physics', 'signature is already in the pipe', 'underweighting', 'downstream balance sheet effects are mechanical'", "fix": "Replace metaphors with concrete mechanism — e.g., one paragraph showing an agent picking FedNow vs Visa with the actual cost delta", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "H2 'The signature is already in the pipe' is metaphor-heavy; informational intent unclear at a glance", "fix": "Rewrite as something like 'Early signals: agents already bypass the checkout moment'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Two 80+ word paragraphs (China comparison; networks-fight-back) feel like walls on mobile and bury the payoff", "fix": "Split each at the natural pivot — China paragraph at 'The networks did not get disrupted...'; defense paragraph at 'None of it changes...'", "raised_by": ["mobile-first-reader", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Implicit list opportunities buried in prose (rails enumeration, agent decision criteria, defense moves)", "fix": "Bullet the rails (Stablecoins/FedNow/RTP/A2A/closed-loop) with one-line 'why it undercuts interchange' each", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Sharp closing question and a coherent H2 spine that the H2-skimmer rates ready, but the middle drifts into analyst-speak and over-asserts speculative scenario numbers. Tighten claims with caveats, swap one metaphor-heavy H2, and split the two long paragraphs to ship."
+}

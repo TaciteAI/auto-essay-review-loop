@@ -1,0 +1,14 @@
+{
+  "draft": "cn/18-open-vs-closed-cost-curve.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 9, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "ready", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "三段排比 '第一，买来成本弹性。第二，买来部署控制。第三，买来战略杠杆。' + 重复反转套话 ('不是意识形态，而是...'，'不是胜利，而是选择权'，'不是公司本身')", "fix": "打破三段排比；至少把其中一段换成具体账本/任务案例（客服、票据、医疗文档）", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "中英夹层 + 翻译腔：'按 outcome 收费'、'保留 fallback'、'垂直 agency'、'benchmark 高两分'、'在哪些环节租用智能'", "fix": "把外来词换成稳定中文表达，例如 outcome → 结果，fallback → 退路", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "中段连续引用 NFX 和 a16z 让声音从 founder/VC 切到 newsletter 摘要 — citation 拼接感削弱原创判断", "fix": "压缩为一句背景，或换为作者自己的判断", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "外链英文锚文本 ('AI defensibility', 'data moats') 对中文 SEO 偏弱", "fix": "改为中文描述型锚文本，例如 'NFX 关于 AI defensibility 的分析'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "中文版整体扎实，结尾金句 '成本曲线给创业者的是选择权，不是公司本身' 有传播性。最大问题是 '第一/第二/第三' 三段排比与连续 NFX+a16z 引用让文章像 VC newsletter 拼接，需要 1-2 个具体账本案例和打破排比的句式来重新拉回 operator 声音。"
+}

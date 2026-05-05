@@ -1,0 +1,56 @@
+{
+  "draft": "cn/15-daisy-chain.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 8,
+    "seo_skeptic": 8,
+    "h2_skimmer": 8,
+    "target_icp": 7
+  },
+  "verdicts": {
+    "mobile_first_reader": "ready",
+    "seo_skeptic": "ready",
+    "h2_skimmer": "ready",
+    "target_icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "The 'Citrini 推演里... 房贷市场。' transmission paragraph (~420 chars) chains ARR -> 招聘 -> 初请失业金 -> Zendesk 债券 -> 私募信贷基金 -> 保险/养老金 -> 房贷 in one mobile wall.",
+      "fix": "Split at '...本金摊还快。' and again at the second '把...' so the cascade renders as 2-3 paragraphs with breathing room.",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "PE-巨头 paragraph and 寿险年金 paragraph in '同一个赌注是怎么被分散的' both stack 5+ firm names + a multi-step causal chain in one block.",
+      "fix": "Add H3s ('软件: PE 收购 SaaS' / '年金: 寿险私募信贷' / '房贷: 13万亿美国住宅按揭') so the triptych is visible from the outline; or break each at the natural mechanism pivot.",
+      "raised_by": ["mobile-first-reader", "seo-skeptic"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Voice tilts toward 'headline-y 金句' density — '真正的杀招在于相关性', '监管至今没问的一个问题', '全球资产负债表上最大的一笔单一风险', '失败模式同步触发' — reads as manufactured gravitas; ICP would caveat the share.",
+      "fix": "Pick the strongest two punchlines and rewrite the rest in plainer language (e.g. '相关性把分散变成同向押注').",
+      "raised_by": ["target-icp", "mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "The Citrini scenario figures (ARR 23->14%, 招聘 -15%, 487K initial claims, Zendesk debt at 58 cents) are written as fait accompli; chain plausibility is tied entirely to one scenario doc.",
+      "fix": "Hedge each as 'Citrini 推演里...' / '在该情景中...'; consider trimming to one or two illustrative numbers and let the correlation logic carry the rest.",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Anchor texts '数千亿美元的量级' (bare-quantity) and 'Citrini 的 2028 推演' miss the named subject; first 80-char SERP snippet front-loads year+product enumeration before the 'same trade' payoff.",
+      "fix": "Re-anchor as '寿险通过固定年金配置私募信贷的累计敞口' and 'Citrini：AI 冲击下的 2028 美国就业与信用情景推演'; lead the first sentence with 'SaaS 杠杆收购、寿险固定年金、30 年房贷看似三笔账,押的是同一注'.",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "H2 wording '同一个赌注是怎么被分散的' / '真正的杀招在于相关性' / '监管至今没问的一个问题' carries the story but misses searchable terms (SaaS / 私募信贷 / 房贷 / 压力测试 / 情景缺口).",
+      "fix": "Sharpen to '三层结构：SaaS LBO → 寿险私募信贷 → 房贷', '同向敞口：白领就业相关性如何同步触发', '压力测试缺口：跨市场的位移情景'.",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "Best-scoring CN draft of the 10 — three of four personas score 8 / ready; the 'same bet, three balance sheets' spine is the sharpest in the batch. The remaining work is mobile readability (split the 420-char transmission paragraph and the two firm-name walls) and hedging the Citrini scenario numbers so 即刻/HN commenters don't dismiss it as macro fanfic."
+}

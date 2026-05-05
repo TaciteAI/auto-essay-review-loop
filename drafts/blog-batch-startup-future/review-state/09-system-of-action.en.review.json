@@ -1,0 +1,15 @@
+{
+  "draft": "en/09-system-of-action.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Thesis (system of record → system of action) is directionally right but already a common AI-SaaS framing", "fix": "Add one contrarian twist, e.g. why the action layer captures budget before it captures the database, or one vertical where incumbents are structurally weak", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Examples name functions (sales, claims, legal) but never zoom into one specific workflow with before/after", "fix": "Replace one of the function lists with a vivid sales-agent or claims-agent scene: 'agent reads the call, drafts the follow-up, opportunity stage updates Tuesday morning' vs the Friday-afternoon CRM update", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "Gartner $5.74T stat feels bolted on — proves enterprise spend exists, not the records→action shift", "fix": "Either drop the stat or replace it with a citation that supports the action-layer thesis specifically", "raised_by": ["mobile-first-reader", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "H1 'System of Action' lacks search/category modifier", "fix": "Consider 'AI's System of Action: Why the Next Enterprise Layer Sits Above the Record'", "raised_by": ["seo-skeptic", "h2-skimmer"]},
+    {"severity": "MINOR", "issue": "VC-essay phrasing trickles in ('value line', 'data gravity', 'AI theater', 'where the margin moves')", "fix": "Trim 2-3 of these and replace with operator language", "raised_by": ["mobile-first-reader", "target-icp"]}
+  ],
+  "consensus_summary": "Cleanest of the batch so far — strong category frame, shareable closer ('practical source of momentum'). One concrete workflow scene and a contrarian twist would push this from solid to memorable."
+}

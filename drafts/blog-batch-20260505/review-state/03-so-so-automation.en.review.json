@@ -1,0 +1,44 @@
+{
+  "draft": "en/03-so-so-automation.en.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 7,
+    "seo-skeptic": 8,
+    "h2-skimmer": 6,
+    "target-icp": 8
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "almost",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Multiple unsupported certainty-claims, especially 'The 2025 to 2026 deployment data confirms it' with no link or source — a credibility gap that gets flagged across personas",
+      "fix": "Either cite a specific paper/dataset/company evidence or soften to 'early evidence suggests'",
+      "raised_by": ["mobile-first-reader", "seo-skeptic", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Heavy metaphor/template diction: 'walks into the office', 'stripped to its skeleton', 'fits this template too cleanly to ignore', 'inequality machine', 'escape hatch nobody is funding', 'hollowing out the middle' — reads as thinkpiece template",
+      "fix": "Replace each metaphor section title with a plainer promise (e.g., 'How so-so automation works (3 steps)', 'How AI shifts income from labor to capital'); cut 'the chapter has a name' flourish",
+      "raised_by": ["mobile-first-reader", "target-icp", "seo-skeptic"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Thesis is delayed — first paragraph leads with stats and only paragraph 2 names 'so-so automation'; the snippet zone could carry the definition + stake in one breath",
+      "fix": "Move 'GenAI is Acemoglu's so-so automation' into sentence 1-2 of the lede",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "One paragraph clocks ~82 words (the substitution-play paragraph), borderline wall on mobile",
+      "fix": "Split at 'A senior litigator with an AI research assistant...'",
+      "raised_by": ["mobile-first-reader"]
+    }
+  ],
+  "consensus_summary": "Sharp economic frame and coherent H2 arc, but the prose leans into thinkpiece metaphors and asserts fresh empirical claims without sources. De-slop the metaphors, source the 2025-26 claim, and move the thesis into the lede."
+}

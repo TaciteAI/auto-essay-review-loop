@@ -1,0 +1,19 @@
+{
+  "draft": "cn/11-death-of-prompt-box.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "ready",
+    "target-icp": "ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "重复 AI/投研腔关键词（'真正的变化是'、'真正有价值的信号'、'应用层的价值不只是'、'长期成立的 AI 应用'、'默认形态会变成环境感知、动作建议和可审计执行'）削弱作者自己的锋利感", "fix": "把每个'真正/不只是/长期成立'类抽象短语换成具体画面（CRM、拒赔、合同红线、客服升级）", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "a16z 引用出现在第二段，像在借权威铺垫，让全文显得像二手观点整理", "fix": "先抛自己的判断，再把 a16z 放成脚注式佐证；或者干脆删掉这一段", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "英文锚文本（AI application strategy、AI agents market map、computer use）对中文读者和中文 SEO 都偏弱", "fix": "改用中文语义锚文本，例如 'a16z 对 AI 应用战略的分析'、'AI 智能体市场地图'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "首段缺少核心搜索词（大模型、AI 智能体）", "fix": "在首段或第二节自然加入这些词，不堆砌", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "结构与立场清楚，'辅助轮'比喻是全文最强可分享句，share-vector 给到 8 分愿意发朋友圈/小报童。主要问题是中段反复出现的 AI/投研腔短语和过早引用 a16z 削弱了原创密度。"
+}

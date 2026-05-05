@@ -1,0 +1,15 @@
+{
+  "draft": "cn/17-interchange-pressure.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 6, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "若干强断言+推演数字以既成事实写出:'AI 恰好是消除摩擦的机器'、'token 是智能体行动的计量单位'、'每天消费 40 万 token, 是 2026 年底的十倍'——V2EX/即刻 会被一条质疑带偏", "fix": "数字前加 '推演假设',明确 token 数量为场景估计;补一句边界:讨论的是'线上常规电商/订阅/低客单价' 先被重塑而非全部支付", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "叙事跳跃:从'智能体下单'直接推到'卡组织费率归零'缺关键中间环节(争议/欺诈/信用授信谁来兜底?)", "fix": "在'卡组织当然会反击'之前加一段:卡组织最强的不是清算,是争议/欺诈/信用授信接口;然后再说智能体如何替代它", "raised_by": ["target-icp", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "'更危险的是后面的多米诺' 段是链式四连(卡组织→银行→消费信贷→住房账簿)+巨额数字链接,300px列宽下是高墙;'但这套逻辑在...的瞬间' 段连续短句+多条轨道枚举也接近高墙", "fix": "拆成两段;把 '稳定币/FedNow/RTP/A2A 直扣/封闭信贷' 这一行单独成段或做项目符号", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "外链锚文本过长且叙事化:'Citrini 推演里 2028 年那 13 万亿美元结构性受损的住房贷款账簿' 不利于扫读", "fix": "缩短为 'Citrini:13 万亿美元结构性受损'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "'底层物理学没变' / 'AI 恰好是消除摩擦的机器' 是 AI 文风口号式总结", "fix": "替换 '物理学' 比喻;把口号式收束换成具体机制描述", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "结尾反问 '这个税率的均衡价格是多少?' 是强金句,中国扫码-银联类比降低了理解门槛,H2 spine 清晰。主要修订:把推演数字标记为推演;补争议/欺诈/信用授信这一中间论证;拆两段超长链式多米诺。"
+}

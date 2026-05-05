@@ -1,0 +1,14 @@
+{
+  "draft": "en/16-2028-mortgage-crisis.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 8, "h2-skimmer": 9, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Long dense paragraphs under each H2 — the 'early signals' paragraph is ~170 words, walls on mobile and buries the point", "fix": "Split the 170-word paragraph at 'These are not subprime markets' and break the 110-word policy paragraph at 'Whatever you think of the design'", "raised_by": ["mobile-first-reader", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Essay-scaffolding tells: 'The phrase is not hyperbole', 'The temptation is to look back and say...', 'The honest question is whether...'", "fix": "Replace with concrete openings — e.g., open the section with the $1.6M two-bedroom example instead of the definition", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "Title 'Loans Good on Day One' is evocative but missing search/topical signal (mortgage / housing / 2028)", "fix": "Subtitle or H2 could include 'structurally impaired mortgages' or '2028 mortgage scenario' to anchor topic", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Voice register shifts from narrative framing to analyst-mode (PV of cash flows) to op-ed punditry", "fix": "Keep the narrative voice in the definition section — lead with the underwriter's-eye example, then drop the technical aside", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "Sharp thesis with a quotable closing line and a coherent H2 spine that the H2-skimmer reconstructs cleanly. Main fixes: split two long paragraphs for mobile and trim a few essay-scaffolding tells in section openers."
+}

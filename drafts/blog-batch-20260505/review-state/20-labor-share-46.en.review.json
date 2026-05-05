@@ -1,0 +1,15 @@
+{
+  "draft": "en/20-labor-share-46.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 6, "seo-skeptic": 7, "h2-skimmer": 7, "target-icp": 6},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "not ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Lede is a cold stat dump ('64% in 1974. 56% by 2024.') with no human stakes — Maya bounces on the L train; HN reader feels policy-memo opening", "fix": "Open with the $5T number or a one-line image: 'Eighteen points of US national income are quietly migrating from paychecks to compute owners. That's a $5 trillion slice.'", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Crescendo and absolutist tells trip AI-essay detectors: 'This is the single most important macroeconomic fact', 'It is the prize', 'The arithmetic is not subtle', 'It is larger than X. It is larger than Y.'", "fix": "Cut 'It is the prize' and 'The arithmetic is not subtle'; soften 'single most important' to a less rhetorical claim", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Speculative 46% projection treated as near-fact; assertions like 'no competitive layer' and 'a few thousand entities' lack sourcing", "fix": "Frame 46% as scenario projection; add a hedge or BEA/BLS baseline citation for the labor-share series; cite one source for the concentration claim", "raised_by": ["target-icp", "seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Anchor texts are full claim sentences ('MIT research finds automation alone explains 50% to 70%...', 'Hyperscalers spent up to $660 billion...') — spammy and hard to scan", "fix": "Trim to 'MIT: automation drove 50–70% of wage-inequality rise' / 'Big Tech AI capex hit ~$660B in one year'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "Missing one concrete human-scale example or company-line-item to anchor the macro thunder for non-econ readers", "fix": "Add 2 sentences: a real role displaced + the corresponding shift in firm operating income (e.g., support staff cut → opex line drops → flows to chip vendor)", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "Strong closing question and a coherent definition-mechanism-implications spine, but the lede is too cold for mobile and the middle leans crescendo-rhetorical in ways that ping AI-slop. Soften absolutes, ground the 46% projection, trim spammy anchors, and add one concrete example."
+}

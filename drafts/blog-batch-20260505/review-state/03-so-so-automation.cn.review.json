@@ -1,0 +1,50 @@
+{
+  "draft": "cn/03-so-so-automation.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile-first-reader": 6,
+    "seo-skeptic": 8,
+    "h2-skimmer": 6,
+    "target-icp": 8
+  },
+  "verdicts": {
+    "mobile-first-reader": "almost",
+    "seo-skeptic": "almost",
+    "h2-skimmer": "almost",
+    "target-icp": "almost"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "断言式语气过强且缺源：『2025 至 2026 年的部署数据只是确认了它』、『美国劳动占 GDP 的份额从 1974 年的 64% 跌到 2024 年的 56%, 资本份额对称地涨了同样多』 — 没有具体口径/来源，被读者抓一点就全盘否定的风险大",
+      "fix": "把『确认』改成『更像是在确认这一倾向』，把『对称地涨了同样多』改成『在某口径下』，并补 1-2 个可核查例子",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "段落普遍超长（多段 150-180+ 字），尤其'第三步...'、'每一项都是替代型部署...'，手机阅读容易划过",
+      "fix": "把每个超长段拆成 2 段；'部署清单'（客服/法务/初级编码等）改成项目符号列表",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "中文 AI-slop 模板句密集：'把机制剥到只剩骨架'、'贴得过分严丝合缝'、'这不是一个道德判断,是一个会计判断'、'冷静地说...'、'下一道政治题是' — 读者会闻到模板气",
+      "fix": "把每句金句换成一句具体落地（'对企业而言：短期 ROI 更清晰 → 优先替代'）；'冷静地说' '下一道政治题' 直接砍",
+      "raised_by": ["mobile-first-reader", "target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "缺少'结论先行/摘要'段，导语之后直接进入三步机制，搜索摘要与跳读不友好；H2 比喻化（骨架/严丝合缝/逃生通道）虽有风格但缺关键词指向",
+      "fix": "在导语后加 3 句摘要（结论-机制-影响）；H2 副标题加关键词版本（如'什么是凑合用的自动化（so-so automation）'）",
+      "raised_by": ["seo-skeptic", "h2-skimmer"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "'资深不会快十倍' 是强断言，缺反例边界",
+      "fix": "加'在多数现有部署/在议价结构不变时'类限定词",
+      "raised_by": ["target-icp"]
+    }
+  ],
+  "consensus_summary": "三步机制+自助结账类比是全文最像人写的段落，最分享得动。下一轮重点：把强断言降语气并补口径、拆超长段、把金句模板换成具体落地表述。"
+}

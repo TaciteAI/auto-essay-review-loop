@@ -1,0 +1,14 @@
+{
+  "draft": "cn/16-ai-native-hedge-fund.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 9, "h2-skimmer": 8, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "ready", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "中文翻译腔 + 抽象名词堆叠：'解释、评估和执行的闭环'、'持续运转的现实解释层'、'高资本强度叙事'、'公开现实意味着什么' — 像英文 VC essay 直译过来", "fix": "删掉 30% 抽象名词；用具体交易场景或失败案例代替 '闭环 / 解释层 / 不对称' 等抽象标签", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "声音漂移：开头像 Stratechery 摘要，中段突然滑入 VC-memo 腔（'资金市场已经开始奖励这种高资本强度叙事'）和 demo-day 系统图（'一个智能体提假设，另一个攻击假设，组合智能体决定仓位'）", "fix": "把中段降到 operator 视角，删掉 agent parade 句式，用一个真实信号→交易→盈亏的具体案例替代", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "锚文本偏弱：'data moats 的批评' 中英混杂；'几乎翻倍到 \\$155M' 锚是结论数字而不是来源主题", "fix": "改为 'a16z 对数据护城河的批评' 和 'agentic AI 融资速度报告'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "SEO 关键词覆盖偏窄 — 缺 'AI 原生对冲基金 / 另类数据 / 量化投资 / 交易信号 / 金融智能体' 等可搜索变体", "fix": "在正文或一个 H2 中自然嵌入 2-3 个变体", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "结构干净、H2 递进有效，结尾金句可分享 ('未必是知道别人不知道的事，而是更快判断公开现实意味着什么')，但中段被翻译腔和抽象闭环词压垮。补一个真实交易/失败案例并削减抽象名词后即可发布。"
+}

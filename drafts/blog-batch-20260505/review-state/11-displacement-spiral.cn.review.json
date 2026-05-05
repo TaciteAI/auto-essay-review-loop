@@ -1,0 +1,44 @@
+{
+  "draft": "cn/11-displacement-spiral.cn.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 7,
+    "seo_skeptic": 7,
+    "h2_skimmer": 7,
+    "target_icp": 7
+  },
+  "verdicts": {
+    "mobile_first_reader": "almost",
+    "seo_skeptic": "almost",
+    "h2_skimmer": "ready",
+    "target_icp": "ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Multiple visual walls on a 300px column: opening graf, '公司需要更少的人' stats wall, 'ServiceNow' graf, '政治刹车也比看上去弱', and especially the timeline single-paragraph (~320 chars) under '未来两年的形状'.",
+      "fix": "Split the timeline into a bulleted/dated list (2025末 / 2026 Q3 / 2027 Q1 / 2027 Q3 / 2027 Nov / 2028 Jun); break the stats paragraph at '...同比下降 15%。'",
+      "raised_by": ["mobile-first-reader"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "'这个回路，五步走完' lead-in promises a numbered five-step list but delivers five labeled paragraphs; skim-readers can't see the staircase.",
+      "fix": "Convert each step to a numbered bullet (1. AI 能力提升 → 2. 公司需要更少的人 → ...) so the H2's promise visibly delivers.",
+      "raised_by": ["seo-skeptic", "mobile-first-reader"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Voice flips into research-report relay in '未来两年的形状' (堆时间点 + 数字), then into a moral-immunity beat ('没人是反派'); ICP would caveat the share.",
+      "fix": "Hedge the dated forecasts ('Citrini 给的具体时间表是这样：' + clearly mark as 'Citrini 推演'); compress the 'no villain' philosophy into one sentence.",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Anchor text '《2028 全球智能危机》' and '四大云厂 2026 年 AI 资本支出预计高达 6600 亿美元' are content-rich but could thread the source/named subject for CJK SERP clarity.",
+      "fix": "Re-anchor as 'Citrini Research：《2028 全球智能危机》' and 'CNBC：谷歌/微软/Meta/亚马逊 2026 年 AI 资本支出'.",
+      "raised_by": ["seo-skeptic"]
+    }
+  ],
+  "consensus_summary": "All four personas score >=7; H2-skimmer rates ready, ICP would actually share. The mechanism + 'individual rationality, collective disaster' line carries the post. Remaining work is mobile-formatting: render the five-step section as an actual list and explode the timeline paragraph into dated bullets."
+}

@@ -1,0 +1,15 @@
+{
+  "draft": "en/18-zendesk-template.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 6, "h2-skimmer": 7, "target-icp": 6},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "not ready"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Headline promises Zendesk but lede leads with ServiceNow + macro stats; first 155 chars never says 'Zendesk', wasting the snippet and weakening relevance match", "fix": "Rewrite lede so 'Zendesk' appears in sentence 1 — e.g., 'Zendesk shows the AI displacement signature: ARR slows, seats shrink, LBO math breaks, BDC marks haircut'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "'Four-step pattern' is written as First/Second/Third/Fourth prose but never formatted as a list — easy scan win wasted; same for the daisy chain (literally a dependency chain)", "fix": "Convert First/Second/Third/Fourth into a numbered list (or H3s); render the daisy chain as an arrow list (SaaS LBO → BDC → life insurer → annuity → mortgage)", "raised_by": ["seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "Narrative certainty outruns evidence — 'cleanest worked example', 'moat-collapse signature', specific Sept 2027 default + 58c marks asserted as if real", "fix": "Frame Citrini's numbers as 'in the scenario'/'projection'; cut 'cleanest worked example' and 'signature' framing; let the four steps carry the argument", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "H2s slightly abstract for the punchy title — 'The four-step pattern' / 'The daisy chain pulls everything else down' don't preview content", "fix": "Sharpen to 'The 4-step AI moat-collapse pattern' / 'How losses propagate: private credit → insurers → households'", "raised_by": ["seo-skeptic", "h2-skimmer"]},
+    {"severity": "MINOR", "issue": "Em-dash overuse and essay-scaffolding phrasing ('The pattern moves in a predictable order', 'The dangerous part is what sits behind...', 'This is the structural problem')", "fix": "Cut three of the em-dash parentheticals; replace 'The dangerous part is what sits behind' with the chain itself", "raised_by": ["mobile-first-reader", "target-icp"]}
+  ],
+  "consensus_summary": "Strong conceptual spine and one quotable line ('A recession lifts when demand recovers. A moat collapse does not lift') but on-page packaging undersells it: lede buries Zendesk, the four-step pattern isn't a list, and the certainty outruns the citations. Ship after a lede rewrite + list conversion + caveat pass."
+}

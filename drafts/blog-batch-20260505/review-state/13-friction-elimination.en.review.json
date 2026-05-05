@@ -1,0 +1,50 @@
+{
+  "draft": "en/13-friction-elimination.en.md",
+  "round": 1,
+  "scores": {
+    "mobile_first_reader": 7,
+    "seo_skeptic": 7,
+    "h2_skimmer": 7,
+    "target_icp": 5
+  },
+  "verdicts": {
+    "mobile_first_reader": "almost",
+    "seo_skeptic": "almost",
+    "h2_skimmer": "almost",
+    "target_icp": "not ready"
+  },
+  "would_terminate": true,
+  "top_weaknesses": [
+    {
+      "severity": "MAJOR",
+      "issue": "Mid-essay shifts from concrete consumer reality to analyst-note cadence (Mastercard 3.4%, ServiceNow 23->14%, DCF terminal margins, Yale/Sonnenfeld) — feels bolted on and pings the AI-slop sensor for ICP readers.",
+      "fix": "Cut at least two of the borrowed scenario stats; replace with one falsifiable mechanism the author can defend (e.g. why MLS access or RESPA is or isn't a blocker).",
+      "raised_by": ["target-icp"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "Four paragraphs run >80 words on mobile (94, 85, 97, 115) — the capital-flow section is the densest and lacks H3s or lists.",
+      "fix": "Break the 115-word McKinsey paragraph at 'But the $30,000 used to flow through...'; add 2-3 H3s under the capital-flow H2 ('Toll roads', 'DCF reset', 'Local demand shock').",
+      "raised_by": ["mobile-first-reader", "seo-skeptic"]
+    },
+    {
+      "severity": "MAJOR",
+      "issue": "The 'four things' enumeration in the disintermediation section is buried in a 71-word run-on sentence instead of a numbered list.",
+      "fix": "Convert 'searches across multiple databases simultaneously / fills in forms / negotiates / signs' into a 1-2-3-4 list.",
+      "raised_by": ["seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Final H2 'The honest question' is placeholder-ish; the title 'Friction Was the Business Model' is punchy but doesn't name the domain.",
+      "fix": "Sharpen final H2 to e.g. 'What replaces the friction layer'; consider title appendix like 'Friction Was the Business Model: Why Brokers, Couriers, and SaaS Marketplaces All Re-Rate Together'.",
+      "raised_by": ["h2-skimmer", "seo-skeptic"]
+    },
+    {
+      "severity": "MINOR",
+      "issue": "Asserts 2027 agent capability (negotiate within bounds, sign on your behalf, every transaction in parallel) without naming the real blockers (liability, compliance, MLS access, agency law).",
+      "fix": "Add one sentence acknowledging the constraint and one concrete leading indicator.",
+      "raised_by": ["target-icp"]
+    }
+  ],
+  "consensus_summary": "All personas agree the spine and opening are strong (5-6% to <1% is a sticky compression number) but mid-essay structure leaks: too many >80-word paragraphs, the 'four things' wants to be a list, and the capital-flow section needs H3s. ICP holds out at 5 because the borrowed Citrini stats and unhedged 2027 claims feel like macro-thesis cosplay rather than an earned take."
+}

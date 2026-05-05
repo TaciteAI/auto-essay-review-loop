@@ -1,0 +1,15 @@
+{
+  "draft": "cn/10-composition-over-subscription.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Translationese / 英文-思想领袖-腔: '架构事实,' '单位经济,' '按构造来说,' '收敛到这个模式,' '订阅这个范式' — 中文技术圈会觉得飘", "fix": "替换: '架构事实'→'架构选择'; '按构造来说'→'从设计上看'; 砍掉'单位经济''范式'类词", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Strong absolute assertions ('吊打,' '把通用大师按在地上摩擦,' '任何认真...团队最后都收敛到这个模式') 缺乏支撑 evidence; 有经验读者会反驳", "fix": "改'吊打'为'在特定工作流中超过'; 删/弱化'任何团队都收敛'; 补一个真实小模型编排案例 (具体路由器 + 模型 + workload)", "raised_by": ["seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Voice flips: 技术经济分析 → 社会解放叙事 (律师/小公司/诊所三连排比); 场景扩张太快, 力度变大但证据变少", "fix": "砍一个排比例子, 替换成具体本地栈细节 (型号 + 显存 + tokens/秒); hold the analyst voice", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MINOR", "issue": "三句结构重复段 (代码模型/写作模型/检索模型) 像演讲稿模板", "fix": "拆短或减一个例子", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "CN SEO query phrases: '本地大模型' / '私有部署' 完整词组缺席; '开源大模型' 出现但可补'开源大模型部署/成本'", "fix": "在场景段或经济账段自然加入'本地大模型''私有部署''企业私有化部署'", "raised_by": ["seo-skeptic"]}
+  ],
+  "consensus_summary": "中文版'星座赢过大师'的 framing 很有传播力, H2 路径清晰, 是中文版里最干净的一篇. 主要被翻译腔词、绝对化断言、和无支撑的社会解放排比拖累；补一个真实小模型编排案例 + 弱化'吊打'类口号即可到 9。"
+}

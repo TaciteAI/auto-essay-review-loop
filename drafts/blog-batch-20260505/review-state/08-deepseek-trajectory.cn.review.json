@@ -1,0 +1,15 @@
+{
+  "draft": "cn/08-deepseek-trajectory.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 8, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "Six paragraphs in the 220-244 char range; on iPhone 300px column they read as walls. The body has very little breathing room", "fix": "压每段到 1-3 句，多拆行，尤其 '最朴素的读法是...' / '第一,*开源权重...*' / '这个结果也没有推翻劳动力替代论' 三段必须拆", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "Translationese clusters: '资本化所暗示的那个东西,' '可信的退出匝道,' '操作层面的含义,' '结构性结果,' '政策叙事' — read as English thinkpiece 直译", "fix": "改口语化中文: e.g. '可信的退出匝道' → '现在真的有退路了'; 砍掉 20-30% 宏大词", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Voice flips: 反直觉技术评论 → 宏观经济/反垄断分析 → 政策叙事 → newsletter 收束 ('一年后，这件事对你的技术栈意味着什么？'); the macro labor-share section dilutes share momentum", "fix": "把劳动替代和反垄断治理段落压成一段; hold the practitioner-CTO voice", "raised_by": ["target-icp"]},
+    {"severity": "MINOR", "issue": "中文 SEO query phrase coverage incomplete: '开源大模型' 完整词组缺席 (用了'开源权重'); 'AI 算力' 完整词组只在锚里出现", "fix": "正文自然加入'开源大模型'与'AI 算力'各一次; 考虑加 H2 'DeepSeek 训练成本为什么这么低'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "最后一个 H2 '一个向前的问题' 略抽象, snippet/skim 价值低", "fix": "改成更具体的问题如 '该押哪条曲线: 上行前沿还是下行复制成本'", "raised_by": ["h2-skimmer", "seo-skeptic"]}
+  ],
+  "consensus_summary": "中文版判断清晰，反直觉切入有传播价值，金句 '前沿在向上抬，而复制去年前沿的成本在向下走' 是分享钩子。主要问题是六处 220+ 字长段、翻译腔密度高 ('可信退出匝道' 等)、以及宏观段落稀释了 CTO 实用判断的最强部分。"
+}

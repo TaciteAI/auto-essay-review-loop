@@ -1,0 +1,15 @@
+{
+  "draft": "cn/16-2028-mortgage-crisis.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7, "h2-skimmer": 7, "target-icp": 7},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "almost", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "推演 (scenario) 被写成既成事实——'到了 2027 年三季度,美国初请失业金人数飙到 487,000' 等具体时间+数字读起来像新闻播报,与全文'推演'框架打架,V2EX/即刻读者会挑刺", "fix": "在第一节明确标注 '在 Citrini 推演里';所有 2027/2028 数字前加 '推演中' 或 '场景里' 字样", "raised_by": ["target-icp"]},
+    {"severity": "MAJOR", "issue": "第四段(早期信号段)塞入失业率+三城房价+美国市场画像+中国家庭类比+初请失业金+现金流机制,在 300px 列宽下是一堵墙", "fix": "拆成 4-6 段:1) 失业率信号 2) 三城房价(三行短句) 3) 不是次级市场的解释 4) 中国家庭类比 5) 现金流如何断", "raised_by": ["mobile-first-reader"]},
+    {"severity": "MAJOR", "issue": "标题 '放出去那天还是好贷款' 富情绪但缺乏关键词锚点;H2 也没有出现 '房贷/按揭/AI/信用事件' 等核心实体词", "fix": "副标题加 'AI 冲击如何把好按揭变成信用事件';H2 显性化关键词,例如 '核保为何失效:历史模型没见过职业在几年内消失'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "外链锚文本偏弱:'7.0%' 单独做锚太短;'MIT 总结' 不够具体", "fix": "改为 '新晋 CS 毕业生失业率达 7.0%(Fortune,2026-04-29)' 与 'MIT:自动化解释收入不平等扩大的研究摘要'", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "上海/北京 '双码农家庭' 类比从宏观账本突然切到具体家庭画像,语气像公众号桥段,与全文研究笔记口吻不一致", "fix": "保留中国类比但去段子化:用一句 '逻辑同构' 收尾,不要 '换了一组邮编' 这种押韵收束", "raised_by": ["target-icp"]}
+  ],
+  "consensus_summary": "结尾反问 '哪个问题更难修?' 是强金句,主线清晰,4 名 persona 都能复原核心论证。主要修订:把推演时态明确化(避免被读为既成事实)、拆最长段、给标题/H2 显性加上核心实体词。"
+}

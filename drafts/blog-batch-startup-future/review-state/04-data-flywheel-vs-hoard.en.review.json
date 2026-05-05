@@ -1,0 +1,14 @@
+{
+  "draft": "en/04-data-flywheel-vs-hoard.en.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 7.2, "h2-skimmer": 5, "target-icp": 7.6},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "almost", "h2-skimmer": "not ready", "target-icp": "almost"},
+  "would_terminate": true,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "H2s are too generic ('Why Raw Volume Decays', 'The Flywheel Has to Be Operational', 'Data Rights Are Part of the Moat') — could fit any AI essay, no anchoring to a concrete domain or named case", "fix": "Sharpen H2s: 'Why More Data Stops Helping (And Starts Hurting)', 'The Moat Is a Feedback Loop, Not a Warehouse', 'Data Rights: Procurement-Proof or It Doesn't Count'", "raised_by": ["h2-skimmer", "seo-skeptic"]},
+    {"severity": "MAJOR", "issue": "VC-share stat (61%) is off-topic for a data-moat essay AND uses a low-trust source; distracts from the core claim and triggers diligence reflex", "fix": "Either drop the stat (this essay is not about funding) or cite a primary source", "raised_by": ["mobile-first-reader", "seo-skeptic", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Named-but-vague references ('a16z's essay on...', 'Insignia Business Review's analysis...') read as citation-scented synthesis without an operator anecdote to anchor", "fix": "Add a 2-3 sentence concrete case (legal intake or freight brokerage agent: what data, what loop, what metric moved)", "raised_by": ["target-icp", "mobile-first-reader"]},
+    {"severity": "MINOR", "issue": "No scannable framework or checklist; closing paragraph is template-shaped slogan", "fix": "Add a 4-6 bullet 'hoard vs moat' checklist, sharpen the close to a single non-obvious decision rule", "raised_by": ["seo-skeptic", "target-icp"]}
+  ],
+  "consensus_summary": "The flywheel/warehouse framing is genuinely shareable and the operational-feedback section is the strongest, but the H2 outline is too generic to survive a skim and the off-topic VC stat plus vague citations weaken credibility. Sharpen H2s, drop or source the stat, and add one concrete operator example."
+}

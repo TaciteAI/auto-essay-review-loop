@@ -1,0 +1,15 @@
+{
+  "draft": "cn/10-brand-and-ux-when-capability-is-rented.cn.md",
+  "round": 1,
+  "scores": {"mobile-first-reader": 7, "seo-skeptic": 6, "h2-skimmer": 8, "target-icp": 8},
+  "verdicts": {"mobile-first-reader": "almost", "seo-skeptic": "not ready", "h2-skimmer": "ready", "target-icp": "ready"},
+  "would_terminate": false,
+  "top_weaknesses": [
+    {"severity": "MAJOR", "issue": "中国语境'中国也会如此'后只点名头部模型公司，HN/晚点读者期待具体本土映射", "fix": "用 1-2 个具体国内 AI 产品的 UX 决策展开（妙鸭、Kimi、秘塔、扣子、豆包、即梦），说明各自'品味/界面记忆'是什么", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "Perplexity/Harvey/Midjourney 点到即止，未拆出各自的 UX 机制", "fix": "把每个例子收紧到一句具体设计决策（Perplexity 的引用编号、Harvey 的法律 task tree、Midjourney 的 Discord 命令格式）", "raised_by": ["mobile-first-reader", "target-icp"]},
+    {"severity": "MAJOR", "issue": "H2 都是判断句，叙事链不闭合（问题→机制→案例→建议）", "fix": "把第三个 H2 改成更冲突感的版本，如'界面就是护城河，但只在敢有立场的公司里成立'；中间补一节'什么算 UX 资产'的机制说明", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "锚文本'Agentforce'与'61% 的企业...'语义偏弱", "fix": "改写为带语境的描述性锚", "raised_by": ["seo-skeptic"]},
+    {"severity": "MINOR", "issue": "结尾'拥有仪式'文学化，与前文商业分析语气有错位", "fix": "改成更硬的判断，例如'未来 AI 公司租能力，但拥有交互——发问、回应、不确定性、批准、再次授权'", "raised_by": ["mobile-first-reader", "target-icp"]}
+  ],
+  "consensus_summary": "可转发金句已经存在（'创业公司不能再用技术很难解释糟糕体验'），但抽象词比中国案例多。补本土 UX 案例并把头部产品的具体设计决策拆出来即可上 8.5。"
+}

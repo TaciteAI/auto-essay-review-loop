@@ -24,7 +24,7 @@ constants and supplies the prompt template.
 |----------|-------|-----|
 | `MAX_ROUNDS` | **3** | Social posts hit diminishing returns past round 3. A tweet that needs 5 rounds is the wrong tweet. |
 | `POSITIVE_THRESHOLD` | All personas score ≥6/10 **AND** `scroller-08s` says `would_scroll_past = false` | The scroll-stop check is the only metric that matters in the wild. |
-| `REVIEWER_BACKEND` | `codex` (v0.1) | `mcp__codex__codex` with `model_reasoning_effort: xhigh` |
+| `REVIEWER_BACKEND` | `codex` (v0.1) | `mcp__codex__codex` with `model_reasoning_effort: medium` |
 | `REVIEWER_MODEL` | `gpt-5.4` | |
 | `OUTPUT_DIR` | `review-stage/` | |
 | `STATE_FILE` | `review-stage/REVIEW_STATE.json` | |
@@ -111,7 +111,7 @@ Prompt template (one per persona; replace `{{...}}` placeholders):
 
 ```
 mcp__codex__codex:
-  config: {"model_reasoning_effort": "xhigh"}
+  config: {"model_reasoning_effort": "medium"}
   prompt: |
     {{PERSONA_SYSTEM_PROMPT}}
 
@@ -251,7 +251,7 @@ diminishing returns are real and the user will iterate manually from there.
 ```
 mcp__codex__codex
   config:
-    model_reasoning_effort: xhigh
+    model_reasoning_effort: medium
   prompt: |
     You are scroller-08s. A 28-year-old marketing manager scrolling X on
     the toilet. You spend 0.8 seconds per post deciding whether to stop

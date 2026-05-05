@@ -27,7 +27,7 @@ A CV looks like prose but the failure modes are different. A CV is read three ti
 | `MAX_ROUNDS` | `3` | A CV that fails round 3 needs a rewrite, not another polish pass. |
 | `POSITIVE_THRESHOLD` | `>=75% personas score >=7 AND recruiter-6sec-scan says would_shortlist=true` | The recruiter is the gatekeeper. Even with all four personas at 7+, if the recruiter would not shortlist, the CV fails. |
 | `REVIEWER_BACKEND` | `codex` | v0.1: Codex MCP only. |
-| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: xhigh`. |
+| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: medium`. |
 | `OUTPUT_DIR` | `review-stage/` | |
 | `STATE_FILE` | `review-stage/REVIEW_STATE.json` | |
 | `REVIEW_DOC` | `review-stage/AUTO_REVIEW.md` | |
@@ -105,7 +105,7 @@ Use `mcp__codex__codex` with a fresh thread per persona per round (Reviewer Inde
 
 ```
 mcp__codex__codex:
-  config: {"model_reasoning_effort": "xhigh"}
+  config: {"model_reasoning_effort": "medium"}
   model: gpt-5.4
   system: |
     You are reviewing a CV / resume. The candidate's draft is wrapped in

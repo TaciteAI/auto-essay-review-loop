@@ -301,7 +301,7 @@ Available verification flags per format are defined in
    # rough sketch — your harness may differ
    cat tests/fixtures/business-plan/fantasy_tam.md \
      | render-persona personas/business-plan/yc-partner-paul-graham.md \
-     | mcp-codex-call --reasoning xhigh
+     | mcp-codex-call --reasoning medium
    ```
 3. **Assert the persona rejects.** Score should be ≤4. Verdict should be
    `not ready`. At least one CRITICAL weakness should match the actual

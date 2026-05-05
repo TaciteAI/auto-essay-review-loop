@@ -11,7 +11,7 @@ This is the only supported reviewer in v0.1. It is not optional.
 ### What you need
 
 1. **Codex CLI** — `npm install -g @openai/codex`
-2. **Codex configured for `gpt-5.4`** with `model_reasoning_effort: xhigh`
+2. **Codex configured for `gpt-5.4`** with `model_reasoning_effort: medium`
 3. **Codex MCP server registered** with your agent harness (Claude Code, etc.)
 
 ### Setup
@@ -23,12 +23,12 @@ npm install -g @openai/codex
 # 2. Configure model
 codex setup
 #   When prompted, select: gpt-5.4
-#   Set reasoning effort: xhigh
+#   Set reasoning effort: medium
 #
 # Or edit ~/.codex/config.toml directly:
 #
 #   model = "gpt-5.4"
-#   model_reasoning_effort = "xhigh"
+#   model_reasoning_effort = "medium"
 
 # 3. Register the MCP server with Claude Code
 claude mcp add codex -s user -- codex mcp-server
@@ -54,7 +54,7 @@ errors, re-check `claude mcp list`.
 ```
 mcp__codex__codex(
   prompt=<rendered user prompt with <DRAFT>...</DRAFT>>,
-  config={"model_reasoning_effort": "xhigh"},
+  config={"model_reasoning_effort": "medium"},
   system=<persona system prompt>
 )
 ```
@@ -66,7 +66,7 @@ for why.
 
 ### Cost expectations (v0.1)
 
-GPT-5.4 xhigh is slow and expensive. Order-of-magnitude estimates per round:
+Codex calls aren't free. Order-of-magnitude estimates per round:
 
 | Format | Personas | Avg input tokens / persona | Avg output / persona | Approx cost / round |
 |--------|----------|---------------------------|----------------------|---------------------|
@@ -111,7 +111,7 @@ reasoning_effort = "high"
 ### `--reviewer=deepseek`
 
 DeepSeek-V3.5 via DeepSeek API. Cheaper for long-tail formats (social,
-LinkedIn). Trade-off: less rigorous than xhigh, but adequate for char-limit-
+LinkedIn). Trade-off: less rigorous than medium, but adequate for char-limit-
 bounded content.
 
 ### `--reviewer=minimax`
@@ -129,7 +129,7 @@ Local-only review via Ollama. Examples:
 ```
 
 Useful for offline / air-gapped runs and for drafts you can't send to a
-hosted API. Quality drop expected vs GPT-5.4 xhigh — roughly the gap
+hosted API. Quality drop expected vs GPT-5.4 medium — roughly the gap
 between "median peer reviewer" and "your most rigorous editor."
 
 ### `--reviewer=oracle-pro`
@@ -156,7 +156,7 @@ The umbrella dispatcher passes the flag through unchanged.
 | Symptom | Fix |
 |---------|-----|
 | "MCP tool `codex` not found" | `claude mcp list` to verify registration; re-run `claude mcp add codex -s user -- codex mcp-server` |
-| Reviewer responses are extremely fast and shallow | `~/.codex/config.toml` is missing `model_reasoning_effort = "xhigh"` — fix and restart Codex |
+| Reviewer responses are extremely fast and shallow | `~/.codex/config.toml` is missing `model_reasoning_effort = "medium"` — fix and restart Codex |
 | Reviewer returns `{}` or empty JSON | Persona system prompt's JSON schema section may be too long; trim. Or the draft is malformed. Check `traces/.../*.prompt.txt`. |
 | 429 / rate limits | Codex is rate-limited; the skill retries with backoff, but heavy parallel runs may need `--parallel-personas=false` (sequential) |
 | 500 errors mid-round | Codex MCP is flaky on long prompts; reduce `effort` or split blog drafts >5000 words |
@@ -172,9 +172,12 @@ Three reasons we shipped v0.1 with Codex only:
    research-paper loop. ARIS shipped on Codex first; we keep the
    correspondence so personas, prompt patterns, and trace formats are
    directly comparable.
-2. **GPT-5.4 xhigh is the highest-fidelity reviewer in 2026.** The point
+2. **GPT-5.4 is a high-fidelity reviewer in 2026.** The point
    of cross-model adversarial review is the reviewer's bar being high.
-   Cheaper backends ship in v0.2 once the loop is proven on the strong one.
+   `medium` reasoning is the default — fast enough for tight loops, rigorous
+   enough to catch the issues that matter. Bump to `high`/`xhigh` for a
+   one-off rigorous pass when needed. Cheaper backends ship in v0.2 once the
+   loop is proven on the strong one.
 3. **One backend = one set of prompt-injection tests.** Each backend has
    different injection vulnerabilities; we want v0.1's defenses dialed in
    on one surface before fanning out.

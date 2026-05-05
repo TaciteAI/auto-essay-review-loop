@@ -51,7 +51,7 @@ check). Failures are reported as hard rejections in the round's
 
 ### Slides
 
-Supports both markdown slides (Marp / Slidev / reveal.js convention) and `.pptx` input. Stdlib-only parser; no `python-pptx` dependency.
+Supports both markdown slides (Marp / Slidev / reveal.js convention) and `.pptx` input. Verification is stdlib-only — no `python-pptx` dependency for parsing. The optional v0.2 round-trip writer (`tools/edit_pptx.py`) does require `python-pptx`; see "Round-trip editing" below.
 
 | Check | Tool | Pass criteria |
 |-------|------|---------------|
@@ -63,6 +63,10 @@ Supports both markdown slides (Marp / Slidev / reveal.js convention) and `.pptx`
 | Speaker-notes coverage | `tools/verify_slides.py` | ≥ `--notes-coverage-target`% of slides have notes (default 50; academic 70) |
 | Agenda or close | `tools/verify_slides.py` | Front-2 or back-2 slides include an agenda / outline / summary / questions / takeaways slide |
 | Claim-title ratio | `tools/verify_slides.py` | ≥ `--claim-title-target`% of non-boilerplate titles are claims (verb or number); default 30; pitch 40 |
+
+#### Round-trip editing (v0.2)
+
+`tools/edit_pptx.py` applies a structured fix list to a `.pptx` and writes a new file. Optional dependency (`python-pptx>=0.6.21`); if missing, the slides loop falls back to a manual prose fix list. Schema and full action semantics live in [auto-slides-review-loop/SKILL.md](../auto-slides-review-loop/SKILL.md#structured-fix-list-for-pptx-v02). The writer is not a verifier (it produces an `applied` / `skipped` / `warnings` report, not pass/fail check rows), so it sits beside the verification table rather than inside it.
 
 ## Calling verification from a skill
 

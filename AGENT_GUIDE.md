@@ -11,7 +11,7 @@ LinkedIn, business plans. Format-specific skills run a 4-round loop where
 draft, the executor implements highest-priority fixes, and an objective
 verification layer (link-check, char count, market-size sanity) gates
 approval. v0.1 backend is Codex MCP (`mcp__codex__codex`) on GPT-5.4 with
-`model_reasoning_effort: xhigh`.
+`model_reasoning_effort: medium`.
 
 ## Architecture
 
@@ -231,7 +231,7 @@ v0.1: Codex MCP only. Reviewer call shape:
 ```
 mcp__codex__codex(
   prompt=<user-prompt-with-DRAFT-tags>,
-  config={"model_reasoning_effort": "xhigh"},
+  config={"model_reasoning_effort": "medium"},
   system=<persona-system-prompt-with-optional-BRAND_VOICE>
 )
 ```

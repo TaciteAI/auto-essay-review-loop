@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "source": "tests/fixtures/slides/round_trip_input.pptx",
+  "fixes": [
+    {
+      "id": "test-set-notes-s1",
+      "slide_index": 1,
+      "action": "set_notes",
+      "replacement": "30 seconds. Land the thesis. Pause before slide 2.",
+      "rationale": "presenter-coach: cover slide had no notes"
+    },
+    {
+      "id": "test-replace-text-s2",
+      "slide_index": 2,
+      "action": "replace_text",
+      "target": "Customers waste an average of $432K per year on duplicated work and abandoned projects.",
+      "replacement": "$432K wasted per year on duplicated work.",
+      "rationale": "density-skeptic: cut wordy descriptor"
+    },
+    {
+      "id": "test-delete-text-s2",
+      "slide_index": 2,
+      "action": "delete_text",
+      "target": "This is the wordy descriptor we plan to cut.",
+      "rationale": "density-skeptic: drop redundant line"
+    },
+    {
+      "id": "test-replace-title-s3",
+      "slide_index": 3,
+      "action": "replace_title",
+      "replacement": "We are raising $1.5M",
+      "rationale": "exec-30s-skim: title should be a claim, not a noun"
+    },
+    {
+      "id": "test-append-notes-s3",
+      "slide_index": 3,
+      "action": "append_notes",
+      "replacement": "Close on the ask. Hold the pause.",
+      "rationale": "presenter-coach: load-bearing slide needs a close cue"
+    },
+    {
+      "id": "test-skip-unsupported",
+      "slide_index": 1,
+      "action": "add_slide",
+      "replacement": "would be a new slide",
+      "rationale": "out of scope; should be skipped, not crash"
+    },
+    {
+      "id": "test-warn-missing-target",
+      "slide_index": 2,
+      "action": "replace_text",
+      "target": "this string does not exist anywhere in the deck",
+      "replacement": "irrelevant",
+      "rationale": "should produce a warning, not crash"
+    }
+  ]
+}

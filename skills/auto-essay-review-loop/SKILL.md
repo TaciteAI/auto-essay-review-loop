@@ -1,6 +1,6 @@
 ---
 name: auto-essay-review-loop
-description: Umbrella dispatcher for persona-adversarial review loops on non-academic writing. Auto-detects format (blog, social, LinkedIn, business plan, application, CV, slides) from the input file and dispatches to the format-specific skill. Use when user says "review my draft", "auto review my post", "run the loop on this", or invokes /auto-essay-review-loop with a file path. v0.1 backend = Codex MCP (gpt-5.4, model_reasoning_effort=xhigh).
+description: Umbrella dispatcher for persona-adversarial review loops on non-academic writing. Auto-detects format (blog, social, LinkedIn, business plan, application, CV, slides) from the input file and dispatches to the format-specific skill. Use when user says "review my draft", "auto review my post", "run the loop on this", or invokes /auto-essay-review-loop with a file path. v0.1 backend = Codex MCP (gpt-5.4, model_reasoning_effort=medium).
 allowed-tools: Skill, Read, Bash, Glob, Grep
 ---
 
@@ -23,7 +23,7 @@ The seven format-specific skills are:
 All four follow the same loop contract — see
 `skills/shared-references/loop-contract.md`. v0.1 backend is Codex MCP
 (`mcp__codex__codex` / `mcp__codex__codex-reply`) on `gpt-5.4` with
-`model_reasoning_effort: xhigh`. v0.2+ adds DeepSeek, MiniMax, OpenAI direct,
+`model_reasoning_effort: medium`. v0.2+ adds DeepSeek, MiniMax, OpenAI direct,
 local Ollama — see `docs/BACKEND_CONFIG.md`.
 
 ## Invocation

@@ -1,6 +1,6 @@
 ---
 name: auto-blog-review-loop
-description: Autonomous multi-round review loop for blog posts (markdown). Runs four format-specific personas in parallel via Codex MCP (gpt-5.4, xhigh reasoning), runs link/H-tag/word-count verification, implements fixes, and re-reviews until consensus or MAX_ROUNDS. Use when user says "auto review my blog post", "blog review loop", "iterate this post until it ships", or wants autonomous iteration on a markdown blog draft.
+description: Autonomous multi-round review loop for blog posts (markdown). Runs four format-specific personas in parallel via Codex MCP (gpt-5.4, medium reasoning), runs link/H-tag/word-count verification, implements fixes, and re-reviews until consensus or MAX_ROUNDS. Use when user says "auto review my blog post", "blog review loop", "iterate this post until it ships", or wants autonomous iteration on a markdown blog draft.
 argument-hint: <draft.md> [--rounds=4] [--difficulty=medium|hard|nightmare] [--brand-voice=path] [--icp="custom target reader"] [--checkpoint]
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, mcp__codex__codex, mcp__codex__codex-reply, Agent, Skill
 ---
@@ -30,7 +30,7 @@ criteria for blog format.
 | `MAX_ROUNDS` | `4` | Override with `--rounds=N` |
 | `POSITIVE_THRESHOLD` | `≥75% personas score ≥6/10 AND verdict ∈ {ready, almost}` | See loop-contract Termination table |
 | `REVIEWER_BACKEND` | `codex` | v0.1: Codex MCP only |
-| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: xhigh` |
+| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: medium` |
 | `REVIEWER_DIFFICULTY` | `medium` | `medium` / `hard` / `nightmare` |
 | `PARALLEL_PERSONAS` | `true` | All four personas dispatched concurrently each round |
 | `OUTPUT_DIR` | `review-stage/` | Created if missing |
@@ -123,7 +123,7 @@ Dispatch all four personas concurrently. Each call is an INDEPENDENT
 mcp__codex__codex:
   config:
     model: "gpt-5.4"
-    model_reasoning_effort: "xhigh"
+    model_reasoning_effort: "medium"
   prompt: |
     {{PERSONA.system_prompt}}
 
@@ -326,7 +326,7 @@ When `BRAND_VOICE.md` is loaded:
 mcp__codex__codex:
   config:
     model: "gpt-5.4"
-    model_reasoning_effort: "xhigh"
+    model_reasoning_effort: "medium"
   prompt: |
     [SYSTEM]
     {{persona.system_prompt}}

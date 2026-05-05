@@ -276,8 +276,9 @@ showing the phrase in context.
 
 **Symptom:** a single round takes 30+ minutes.
 
-**Why:** GPT-5.4 xhigh is slow. Long drafts (>3000 words) compound.
-Parallel persona dispatch helps but doesn't change per-call latency.
+**Why:** Long drafts (>3000 words) compound per-call latency, and any
+reasoning_effort above `medium` adds time on top. Parallel persona
+dispatch helps but doesn't change per-call latency.
 
 **Mitigations:**
 

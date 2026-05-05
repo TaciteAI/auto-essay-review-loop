@@ -77,7 +77,7 @@ Default settings: `MAX_WORDS_PER_SLIDE=50`, `SLIDE_COUNT_MAX=30`, `NOTES_COVERAG
 | `MAX_ROUNDS` | `3` | A deck that fails round 3 needs a re-architecture (or a re-think of the ask), not another polish pass. |
 | `POSITIVE_THRESHOLD` | per scenario; see Termination below | |
 | `REVIEWER_BACKEND` | `codex` | v0.1: Codex MCP only. |
-| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: xhigh`. |
+| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: medium`. |
 | `OUTPUT_DIR` | `review-stage/` | |
 | `STATE_FILE` | `review-stage/REVIEW_STATE.json` | |
 | `REVIEW_DOC` | `review-stage/AUTO_REVIEW.md` | |
@@ -179,10 +179,58 @@ All outputs to `review-stage/` (create if missing). Per round:
 - `review-stage/REVIEW_STATE.json`, overwritten state
 - `review-stage/traces/slides/{date}_run{NN}/persona-{name}-round-{N}.{prompt,response}.txt`, full traces
 - `review-stage/verify_slides.json`, latest verification output
+- `review-stage/fix_list_round_{N}.json` (when input is `.pptx` and `python-pptx` is available), structured fix list consumed by `tools/edit_pptx.py`
+- `review-stage/edit_pptx_round_{N}.json` (when applicable), the writer's report — applied / skipped / warnings
+- `review-stage/fix_list_round_{N}.md`, prose fix list (always emitted; the writer's manual-only counterpart and human audit log)
 
 On approval, copy the final draft to `review-stage/slides_approved_{scenario}_{timestamp}.{md|pptx}` (extension preserved from input).
 
-If the input is `.pptx`, the loop **edits the markdown sidecar** if one is present (`review-stage/draft.md` next to `review-stage/draft.pptx`). If the input is `.pptx` only, Phase C edits are deferred to the user with a structured fix list — the skill does not rewrite OOXML in v0.1 (see "What this skill does NOT do" below). The verification still runs against the .pptx; the loop only stops applying automated fixes.
+### .pptx editing (v0.2, default when `python-pptx` is installed)
+
+If the input is `.pptx`, the loop edits the deck directly via `tools/edit_pptx.py` (a `python-pptx`-based writer). The writer touches text content and speaker notes only; it preserves the user's PowerPoint-authored theme, layout, fonts, and accent colors. Each round writes a new file (`draft_round{N+1}.pptx`) so prior rounds are kept for diffing.
+
+Fallback order:
+
+1. `python-pptx` importable AND no markdown sidecar -> direct .pptx edit (the v0.2 default).
+2. `python-pptx` importable AND a markdown sidecar exists at `review-stage/draft.md` next to `review-stage/draft.pptx` -> edit the markdown sidecar; user re-renders the .pptx between rounds.
+3. `python-pptx` NOT importable -> Phase C produces only the prose fix list (`fix_list_round_{N}.md`) for the user to apply manually; the loop logs the missing dependency and stops applying automated fixes.
+
+In all three cases, verification still runs against the current .pptx artifact (or its markdown sidecar, if that's the source of truth).
+
+### Structured fix list for `.pptx` (v0.2)
+
+When input is `.pptx` and `python-pptx` is available, every persona is asked to emit an additional `pptx_fixes[]` array alongside its prose `weaknesses[]`. The loop concatenates `pptx_fixes` from all four personas (de-duplicating by `(slide_index, action, target, replacement)`), writes the combined list to `review-stage/fix_list_round_{N}.json`, and invokes:
+
+```bash
+bash tools/run.sh edit_pptx.py \
+  --input  review-stage/draft.pptx          # round 1 input, OR draft_round{N}.pptx for round N+1
+  --output review-stage/draft_round{N+1}.pptx \
+  --fixes  review-stage/fix_list_round_{N}.json \
+  > review-stage/edit_pptx_round_{N}.json
+```
+
+`pptx_fixes[]` schema (each item):
+
+```json
+{
+  "id":          "<persona-name>-f<N>",
+  "slide_index": <1-based int>,
+  "action":      "set_notes" | "append_notes" | "replace_text" | "delete_text" | "replace_title",
+  "target":      "<exact text to find — required for replace_text and delete_text>",
+  "replacement": "<new text — required for set_notes / append_notes / replace_text / replace_title>",
+  "rationale":   "<short reason; logged but not applied>"
+}
+```
+
+Action semantics (mirrors `tools/edit_pptx.py`):
+
+- `set_notes` — wholesale replace speaker notes for slide N. Use for filling load-bearing slides that have no notes.
+- `append_notes` — add a paragraph to existing notes. Use for adding pause cues / close lines.
+- `replace_text` — find `target` in any text frame on the slide and substitute `replacement`. Whitespace-tolerant; case-sensitive after that. Use for cutting wordy bullets or rewriting a sentence.
+- `delete_text` — like `replace_text` with empty replacement; emptied paragraphs are removed. Use for moving a source citation to notes.
+- `replace_title` — replace the title placeholder. Use only when the title placeholder genuinely owns the title; some decks put titles in regular text boxes (the writer falls back to `replace_text` in that case via the persona's instruction).
+
+Personas emit only fixes they're confident about — the writer reports `target text not found` as a warning, not a crash. Out-of-scope edits (`add_slide`, `move_slide`, `restyle`) belong in `weaknesses[]` for the user to decide manually; the writer skips them with reason `unsupported in v0.2`.
 
 ## Loop
 
@@ -213,7 +261,7 @@ Use `mcp__codex__codex` with a fresh thread per persona per round (Reviewer Inde
 
 ```
 mcp__codex__codex:
-  config: {"model_reasoning_effort": "xhigh"}
+  config: {"model_reasoning_effort": "medium"}
   model: gpt-5.4
   system: |
     You are reviewing a slide deck. The deck is wrapped in <DRAFT>...</DRAFT> tags.
@@ -252,11 +300,36 @@ mcp__codex__codex:
     - stage_or_venue: {{stage_or_venue_or_default}}
     - talk_length_min: {{talk_length_or_default}}
 
+    {{pptx_fixes_addendum_or_empty}}
+
     Return your review as JSON only, matching the schema in your persona's
     "Output format" section.
 ```
 
 The deck content passed inside `<DRAFT>` is the markdown form. For `.pptx` input, render slides as plain text (one section per slide: `## Slide N: <title>` then bullets, then `<!-- speaker notes -->`). The reviewer never sees raw OOXML.
+
+When input is `.pptx` AND `python-pptx` is available, the loop substitutes `{{pptx_fixes_addendum_or_empty}}` with:
+
+```
+ALSO emit a top-level "pptx_fixes" array containing concrete edits the
+auto-writer can apply. Schema per item:
+  {"id": "<persona>-f<N>", "slide_index": <1-based int>,
+   "action": "set_notes"|"append_notes"|"replace_text"|"delete_text"|"replace_title",
+   "target": "<exact text to find — required for replace_text/delete_text>",
+   "replacement": "<new text>", "rationale": "<short reason>"}
+
+Rules:
+  - Only emit fixes you are confident about. The writer reports
+    "target text not found" as a warning, not a crash.
+  - For replace_text / delete_text, the target string must appear
+    verbatim somewhere in the deck; copy it from the <DRAFT>.
+  - Do NOT emit fixes for actions you cannot fully specify
+    (add_slide, move_slide, restyle, add_image). Surface those in
+    "weaknesses" with severity MAJOR or CRITICAL instead.
+  - If you have no machine-applicable fixes, emit "pptx_fixes": [].
+```
+
+When input is markdown (or `python-pptx` is missing), substitute the empty string. The persona file's documented schema does not include `pptx_fixes` because it is a runtime-only addendum tied to the input format.
 
 `titles_in_order` should be a Python-list-rendered array of slide titles in document order — this is the highest-leverage context for `exec-30s-skim` and `vc-partner-skim`, and gives them the artifact they actually evaluate.
 
@@ -315,11 +388,31 @@ Priority order:
 - If `back-of-room-reader` and `density-skeptic` agree the slide is unreadable, no narrative argument from `presenter-coach` saves it.
 - If `presenter-coach` and `vc-partner-skim` disagree on adding a slide vs. cutting one, prefer the one with the more specific evidence. If neither is more specific, surface to user.
 
-For markdown decks, apply fixes via Edit. For `.pptx` input without a markdown sidecar, generate a `review-stage/fix_list_round_{N}.md` with structured fixes for the user to apply manually — do NOT rewrite OOXML in v0.1.
+For markdown decks, apply fixes via Edit.
+
+For `.pptx` input, dispatch follows the v0.2 fallback order documented in "Output protocol -> .pptx editing":
+
+1. **`python-pptx` importable, no markdown sidecar (default).** Aggregate `pptx_fixes[]` from all four personas, deduplicate by `(slide_index, action, target, replacement)`, and write to `review-stage/fix_list_round_{N}.json`. Then call:
+
+   ```bash
+   bash tools/run.sh edit_pptx.py \
+     --input  review-stage/{draft.pptx | draft_round{N}.pptx} \
+     --output review-stage/draft_round{N+1}.pptx \
+     --fixes  review-stage/fix_list_round_{N}.json \
+     > review-stage/edit_pptx_round_{N}.json
+   ```
+
+   On `passed: true`, the next round's input is `draft_round{N+1}.pptx`. On `passed: false` (warnings present), still advance — record the warnings in `AUTO_REVIEW.md`. Always also emit the prose `fix_list_round_{N}.md` (the writer's manual-only counterpart, which may include `add_slide` / restyle items the writer skipped).
+
+2. **`python-pptx` importable + markdown sidecar at `review-stage/draft.md`.** Edit the sidecar via Edit; the user re-renders the .pptx between rounds.
+
+3. **`python-pptx` NOT importable.** Generate the prose `fix_list_round_{N}.md` and stop applying automated fixes; the loop logs the missing dependency in `AUTO_REVIEW.md` and tells the user `pip install python-pptx>=0.6.21` to enable round-trip editing.
 
 Re-run verification immediately after Phase C to ensure the deck is still legal before round N+1.
 
 ### Phase D: re-render
+
+For `.pptx` with `python-pptx` available (the v0.2 default): no render step. `tools/edit_pptx.py` already produced `draft_round{N+1}.pptx`; the next round consumes it directly.
 
 For `.pptx` with a markdown sidecar: regenerate the .pptx using the user's preferred tool (Marp / Slidev / pandoc) — call out the regen command in the round summary; do not run it automatically unless the user has set up an explicit `SLIDES_RENDER_CMD` env var.
 
@@ -342,7 +435,7 @@ On stop (approved or MAX_ROUNDS):
 
 1. Set `status: completed` in `REVIEW_STATE.json`.
 2. Final summary in `AUTO_REVIEW.md`: per-round score progression, list of fixes applied, list of weaknesses NOT addressed (if MAX_ROUNDS hit).
-3. If approved -> copy final draft to `review-stage/slides_approved_{scenario}_{timestamp}.{md|pptx}`.
+3. If approved -> copy the final draft to `review-stage/slides_approved_{scenario}_{timestamp}.{md|pptx}`. For `.pptx` input, "final draft" is `draft_round{N}.pptx` if round N was the approving round; for round 1 it's the original `draft.pptx` (no edits needed).
 4. If MAX_ROUNDS without approval -> present per-persona blockers and ask the user: continue manually / pivot scenario / accept as-is. Do NOT silently approve.
 
 ## Slides-specific anti-patterns the personas reject
@@ -401,8 +494,8 @@ Every Codex MCP call is traced to `review-stage/traces/slides/{date}_run{NN}/per
 
 - It does not write the deck. The deck is the author's. The loop polishes it.
 - It does not generate slides from scratch. For "give me a deck," use a separate generator (e.g., the `pptx` skill or `paper-slides`); then pipe its output through this loop.
-- It does not rewrite `.pptx` OOXML in v0.1. If the input is `.pptx` without a markdown sidecar, Phase C produces a structured fix list for the user. v0.2 may add a `python-pptx`-based writer (optional dependency).
-- It does not check visual design (color contrast, typography, layout grid). v0.1 is content + structure only. For visual design audits, use `/design-review` or `/plan-design-review`.
+- It does not add, delete, reorder, or visually restyle slides in `.pptx` input. v0.2 edits text content and speaker notes only via `tools/edit_pptx.py`. Slide-structural and visual edits surface as MAJOR/CRITICAL items in the prose fix list for the user to apply manually. v0.3 may add a slide-level writer (insert/move) once the contract is settled.
+- It does not check visual design (color contrast, typography, layout grid). v0.2 is content + structure only. For visual design audits, use `/design-review` or `/plan-design-review`.
 - It does not verify external claims (a market-size number, a benchmark result). It checks structural defensibility; the speaker is responsible for the underlying truth.
 - It does not optimize for any specific venue's house style. Conference templates, fund templates, internal house templates: out of scope.
 

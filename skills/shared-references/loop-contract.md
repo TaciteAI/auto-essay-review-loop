@@ -14,7 +14,7 @@ from research papers to arbitrary written artifacts.
 | `MAX_ROUNDS` | `4` | Format skills may override (e.g., social = 3, biz-plan = 5) |
 | `POSITIVE_THRESHOLD` | per format | See "Termination" below |
 | `REVIEWER_BACKEND` | `codex` | v0.1: Codex MCP only. v0.2+: `llm-chat`, `minimax` |
-| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: xhigh` |
+| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: medium` |
 | `OUTPUT_DIR` | `review-stage/` | All artifacts go here |
 | `STATE_FILE` | `review-stage/REVIEW_STATE.json` | Compaction recovery |
 | `REVIEW_DOC` | `review-stage/AUTO_REVIEW.md` | Cumulative log |
@@ -57,7 +57,7 @@ For each persona configured for the format:
    - System: persona's `system_prompt` field
    - User: persona's `user_prompt_template` rendered with the draft + format-specific context
 3. Call the reviewer backend:
-   - **Codex (v0.1):** `mcp__codex__codex` with `config: {"model_reasoning_effort": "xhigh"}`
+   - **Codex (v0.1):** `mcp__codex__codex` with `config: {"model_reasoning_effort": "medium"}`
    - Fresh thread per persona per round (Reviewer Independence Protocol)
 4. Save threadId only for crash recovery; never reuse for next round's review
 

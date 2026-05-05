@@ -29,7 +29,7 @@ The skill also reviews the answers as a coherent document, not in isolation. Fiv
 | `MAX_ROUNDS` | `4` | Applications need a couple rounds for the narrative to settle. Cliches cut in round 1; thesis tightens in round 2; per-answer specificity in round 3; final pass in round 4. |
 | `POSITIVE_THRESHOLD` | `>=75% personas score >=7 AND selection-committee-skeptic says would_shortlist=true` | The skeptic is the gatekeeper. Even with all four personas at 7+, if the skeptic would not shortlist, the application fails. |
 | `REVIEWER_BACKEND` | `codex` | v0.1: Codex MCP only. |
-| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: xhigh`. |
+| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: medium`. |
 | `OUTPUT_DIR` | `review-stage/` | |
 | `STATE_FILE` | `review-stage/REVIEW_STATE.json` | |
 | `REVIEW_DOC` | `review-stage/AUTO_REVIEW.md` | |
@@ -108,7 +108,7 @@ Use `mcp__codex__codex` with a fresh thread per persona per round (Reviewer Inde
 
 ```
 mcp__codex__codex:
-  config: {"model_reasoning_effort": "xhigh"}
+  config: {"model_reasoning_effort": "medium"}
   model: gpt-5.4
   system: |
     You are reviewing an application. The applicant's draft is wrapped in

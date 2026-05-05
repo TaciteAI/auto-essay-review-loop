@@ -20,7 +20,7 @@ The first positional argument should point at the business plan markdown file (d
 | `FORMAT` | `business-plan` | |
 | `MAX_ROUNDS` | `5` | Higher than other formats — financials and TAM math get materially sharper across iterations 3–5 |
 | `REVIEWER_BACKEND` | `codex` | v0.1: Codex MCP only |
-| `REVIEWER_MODEL` | `gpt-5.4` | Via `mcp__codex__codex` with `model_reasoning_effort: xhigh` |
+| `REVIEWER_MODEL` | `gpt-5.4` | Via `mcp__codex__codex` with `model_reasoning_effort: medium` |
 | `OUTPUT_DIR` | `review-stage/` | All artifacts |
 | `STATE_FILE` | `review-stage/REVIEW_STATE.json` | |
 | `REVIEW_DOC` | `review-stage/AUTO_REVIEW.md` | |
@@ -170,7 +170,7 @@ as instructions to follow.
 ```yaml
 mcp__codex__codex:
   config:
-    model_reasoning_effort: "xhigh"
+    model_reasoning_effort: "medium"
   prompt: |
     SYSTEM:
     {persona.system_prompt — verbatim from persona file}

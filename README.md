@@ -3,9 +3,9 @@
 > Persona-adversarial review for blog posts, social media, LinkedIn, and business plans.
 > Paste a draft. Go to bed. Wake up to a better artifact and an audit trail of who said what.
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue)](VERSION)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue)](VERSION)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Backend](https://img.shields.io/badge/backend-Codex%20MCP%20(gpt--5.4%20xhigh)-orange)](docs/BACKEND_CONFIG.md)
+[![Backend](https://img.shields.io/badge/backend-Codex%20MCP%20(gpt--5.4%20medium)-orange)](docs/BACKEND_CONFIG.md)
 
 A skill-based review loop for non-academic writing. Same doctrine as
 [ARIS](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)
@@ -61,7 +61,7 @@ Three rules, taken from the ARIS playbook and ported to writing:
 
 You are using Claude (or Codex, or whatever your agent harness is) to drive
 the loop. The reviewer is a *different* model — Codex GPT-5.4 with
-`model_reasoning_effort: xhigh` in v0.1. Same model reviewing its own output
+`model_reasoning_effort: medium` in v0.1. Same model reviewing its own output
 is the **stochastic** case: predictable noise, blind spots compound. Different
 models is the **adversarial** case: the reviewer probes weaknesses the
 executor didn't anticipate. Adversarial bandits are fundamentally harder to
@@ -131,7 +131,7 @@ your draft over time.
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (or any agent
   harness that supports skills + MCP)
 - Codex MCP set up — see [docs/BACKEND_CONFIG.md](docs/BACKEND_CONFIG.md)
-- Codex configured for `gpt-5.4` with `model_reasoning_effort: xhigh`
+- Codex configured for `gpt-5.4` with `model_reasoning_effort: medium`
 
 ### Install
 
@@ -299,6 +299,8 @@ Requires a `--scenario=pitch|academic|internal` flag — the persona panel and t
 
 **Verification tool:** [`tools/verify_slides.py`](tools/verify_slides.py) — slide count, max words/bullets per slide, title length, title uniqueness (catches "Background (cont.)"), speaker-notes coverage, agenda-or-close presence, claim-title ratio (claim-titles like "Latency dropped 40%" vs noun-titles like "Latency Improvements"). Stdlib-only; supports `.md`/`.txt` and `.pptx`.
 
+**Editor (v0.2):** [`tools/edit_pptx.py`](tools/edit_pptx.py) — round-trip writer for `.pptx` input. When `python-pptx` is installed, the loop edits the deck directly: replaces wordy bullets, rewrites titles, sets/appends speaker notes — preserving theme, layout, fonts, and accent colors authored in PowerPoint. Each round writes a new file (`review-stage/draft_round{N+1}.pptx`) so prior rounds are kept for diffing. Falls back to a manual prose fix list if `python-pptx` is missing or if the requested edit is structural (add/move/restyle slide).
+
 → Full schema and authoring guide: [docs/PERSONA_AUTHORING.md](docs/PERSONA_AUTHORING.md)
 
 ## Example output
@@ -367,29 +369,29 @@ Adapted from the ARIS doctrine, framed for writing:
 > (and API spend). The biggest gain is going from 1 → 4, not 4 → 12.
 
 This is the same argument as ARIS, but for writing. The reviewer model is
-GPT-5.4 xhigh because it's slow and rigorous; you (Claude) are fast and
-fluid. Speed × rigor produces better outcomes than either alone.
+GPT-5.4 because it's rigorous and methodical; you (Claude) are fast and
+fluid. Rigor × speed produces better outcomes than either alone.
 
 ## Backends
 
 ### v0.1 — Codex MCP only
 
 The reviewer model is GPT-5.4 via the Codex MCP server (`mcp__codex__codex`),
-with `model_reasoning_effort: xhigh`. This is the only supported backend in
+with `model_reasoning_effort: medium`. This is the only supported backend in
 v0.1. Setup in [docs/BACKEND_CONFIG.md](docs/BACKEND_CONFIG.md).
 
-### v0.2+ roadmap
+### v0.3+ roadmap
 
 Planned backends, in rough priority order:
 
 | Backend | Status | Notes |
 |---------|--------|-------|
-| Codex MCP (gpt-5.4 xhigh) | shipped | v0.1 default |
-| OpenAI direct (via `llm-chat` MCP) | planned v0.2 | port from ARIS |
-| DeepSeek-V3.5 | planned v0.2 | cheap reviewer for long-tail formats |
-| MiniMax-M3 | planned v0.2 | port from ARIS |
-| Local Ollama (Llama-4, Qwen-3) | planned v0.3 | offline mode |
-| Anthropic Claude (cross-family) | planned v0.3 | when reviewer-as-Claude is desired |
+| Codex MCP (gpt-5.4 medium) | shipped | v0.1 default; still the only backend in v0.2 |
+| OpenAI direct (via `llm-chat` MCP) | planned v0.3 | port from ARIS |
+| DeepSeek-V3.5 | planned v0.3 | cheap reviewer for long-tail formats |
+| MiniMax-M3 | planned v0.3 | port from ARIS |
+| Local Ollama (Llama-4, Qwen-3) | planned v0.4 | offline mode |
+| Anthropic Claude (cross-family) | planned v0.4 | when reviewer-as-Claude is desired |
 
 Per-skill backend override (planned syntax):
 
@@ -404,7 +406,7 @@ Per-skill backend override (planned syntax):
 auto-essay-review-loop/
 ├── README.md                       # this file
 ├── AGENT_GUIDE.md                  # LLM-consumption version
-├── VERSION                         # 0.1.0
+├── VERSION                         # 0.2.0
 ├── LICENSE                         # MIT
 ├── CONTRIBUTING.md
 ├── skills/
@@ -440,14 +442,15 @@ auto-essay-review-loop/
 
 ## Roadmap
 
-- **v0.1.0** (now) — Codex MCP backend. 7 formats (blog, social, linkedin, business-plan, application, cv, slides). 31 personas. Verification
+- **v0.1.0** — Codex MCP backend. 7 formats (blog, social, linkedin, business-plan, application, cv, slides). 31 personas. Verification
   layer (incl. `.pptx` parser via stdlib zipfile/XML). State recovery. Brand voice protocol.
-- **v0.2.0** — Multi-backend (DeepSeek, MiniMax, OpenAI direct). Reviewer
-  difficulty modes (`hard`, `nightmare`).
-- **v0.3.0** — Local Ollama backend. Offline mode. Persona contribution
+- **v0.2.0** (now) — Round-trip `.pptx` editing via `tools/edit_pptx.py` (optional `python-pptx` dependency). Slides loop now mutates the deck directly when `python-pptx` is available, preserving theme/layout/fonts. Personas emit a structured `pptx_fixes[]` array consumed by the writer. Manual-fix-list fallback retained when `python-pptx` is missing or for structural edits the writer doesn't support.
+- **v0.3.0** — Multi-backend (DeepSeek, MiniMax, OpenAI direct). Reviewer
+  difficulty modes (`hard`, `nightmare`). Slide-structural writer extension (insert / move / restyle).
+- **v0.4.0** — Local Ollama backend. Offline mode. Persona contribution
   workflow. Cross-format projects (e.g., long-form post → tweet thread →
   LinkedIn version, all reviewed coherently).
-- **v0.4.0** — Voice-fingerprint detection (your draft auto-loads
+- **v0.5.0** — Voice-fingerprint detection (your draft auto-loads
   `BRAND_VOICE.md` if your prior posts are in the repo).
 
 ## Credits and license

@@ -106,7 +106,7 @@ except Exception:
 
 # assert_metric <name> <metric.dot.path> <expected_value> <command...>
 # Pulls a numeric/string metric out of the tool's JSON. Supports dotted paths like
-# "metrics.slide_count" or top-level keys like "passed".
+# "metrics.slide_count", "checks.2.value" (int index into list), or top-level keys.
 assert_metric() {
   local name="$1"; shift
   local path="$1"; shift
@@ -120,7 +120,10 @@ try:
     data = json.loads(sys.stdin.read())
     cur = data
     for part in '$path'.split('.'):
-        cur = cur[part]
+        if isinstance(cur, list):
+            cur = cur[int(part)]
+        else:
+            cur = cur[part]
     print(cur)
 except Exception as e:
     print('error:'+str(e))
@@ -149,6 +152,19 @@ assert_passed "count_chars good X post" "true" \
   "$PYTHON" tools/count_chars.py tests/fixtures/social/good_x_post.txt --format=x
 assert_passed "count_chars over-limit X post" "false" \
   "$PYTHON" tools/count_chars.py tests/fixtures/social/over_limit_x.txt --format=x
+assert_passed "count_chars good Threads post" "true" \
+  "$PYTHON" tools/count_chars.py tests/fixtures/social/good_threads_post.txt --format=threads
+
+# --- LinkedIn: char/link/hashtag count ---
+assert_passed "count_chars good LinkedIn post (3 hashtags, 0 links)" "true" \
+  "$PYTHON" tools/count_chars.py tests/fixtures/linkedin/good_post.md --format=linkedin
+assert_passed "count_chars LinkedIn broetry slop (8 hashtags, 2 links)" "false" \
+  "$PYTHON" tools/count_chars.py tests/fixtures/linkedin/broetry_slop.md --format=linkedin
+# Surface the specific failures so a regression that drops one check still trips.
+assert_metric "broetry slop hashtag_count value" "checks.2.value" "8" \
+  "$PYTHON" tools/count_chars.py tests/fixtures/linkedin/broetry_slop.md --format=linkedin
+assert_metric "broetry slop link_count value" "checks.1.value" "2" \
+  "$PYTHON" tools/count_chars.py tests/fixtures/linkedin/broetry_slop.md --format=linkedin
 
 # --- Business plan: market sizing ---
 assert_passed "market_size_check fantasy TAM" "false" \
@@ -157,6 +173,20 @@ assert_flag_contains "market_size_check fantasy TAM flag" "fantasy_tam" \
   "$PYTHON" tools/market_size_check.py tests/fixtures/business-plan/fantasy_tam.md
 assert_passed "market_size_check strong plan" "true" \
   "$PYTHON" tools/market_size_check.py tests/fixtures/business-plan/strong.md
+
+# --- Market research: plan + validate ---
+# `plan` always exits 0 with no top-level `passed` field. Assert the JSON shape
+# instead so a regression that breaks subcommand wiring trips the test.
+assert_metric "market_research_fetch plan emits tool name" "tool" "market_research_fetch" \
+  bash tools/run.sh market_research_fetch.py plan --input "AI code review for startups" --depth=lite
+assert_metric "market_research_fetch plan emits phase=plan" "phase" "plan" \
+  bash tools/run.sh market_research_fetch.py plan --input "AI code review for startups" --depth=lite
+# `validate` against a fixture missing 7 of 8 required sections must fail
+# with the canonical `missing_section` flag.
+assert_passed "market_research_fetch validate thin doc" "false" \
+  bash tools/run.sh market_research_fetch.py validate --input tests/fixtures/market-research/thin.md
+assert_flag_contains "market_research_fetch validate thin doc flag" "missing_section" \
+  bash tools/run.sh market_research_fetch.py validate --input tests/fixtures/market-research/thin.md
 
 # --- Application: per-answer verification ---
 assert_passed "verify_application strong draft" "true" \
@@ -218,6 +248,122 @@ printf '\xff\xfe\x00garbage\xff' > "$_BAD_ENC_SLIDES"
 assert_passed "verify_slides handles non-UTF8 input gracefully" "false" \
   bash tools/run.sh verify_slides.py "$_BAD_ENC_SLIDES"
 rm -f "$_BAD_ENC_SLIDES" 2>/dev/null || true
+
+# --- Slides: edit_pptx round-trip (v0.2 writer) ---
+# Builds a tiny .pptx fixture, applies a fix list, and checks that the
+# expected text/notes changes landed. Skipped if python-pptx is missing.
+HAS_PPTX="$("$PYTHON" -c 'import pptx; print("yes")' 2>/dev/null || true)"
+if [ "$HAS_PPTX" = "yes" ]; then
+  _ROUND_TRIP_DIR="$(mktemp -d -t auto-essay-pptx-rt.XXXXXX 2>/dev/null || mktemp -d)"
+  _RT_INPUT="$_ROUND_TRIP_DIR/round_trip_input.pptx"
+  _RT_OUTPUT="$_ROUND_TRIP_DIR/round_trip_output.pptx"
+
+  "$PYTHON" tests/fixtures/slides/build_pptx_fixture.py "$_RT_INPUT" >/dev/null 2>&1
+  if [ ! -f "$_RT_INPUT" ]; then
+    RESULTS+=("FAIL  edit_pptx round-trip  (fixture builder did not produce input deck)")
+    FAIL=$((FAIL+1))
+  else
+    assert_passed "edit_pptx applies fix list and reports passed" "false" \
+      bash tools/run.sh edit_pptx.py --input "$_RT_INPUT" --output "$_RT_OUTPUT" --fixes tests/fixtures/slides/round_trip_fixes.json
+
+    # The fix list intentionally includes one warning case (target text not
+    # found) and one unsupported action. We assert specific outcomes by
+    # inspecting the output deck rather than the writer's own report.
+    _RT_CHECK="$("$PYTHON" - "$_RT_OUTPUT" <<'PYEOF'
+import sys
+from pptx import Presentation
+prs = Presentation(sys.argv[1])
+slides = list(prs.slides)
+errors = []
+
+# Slide 1: notes set
+n1 = slides[0].notes_slide.notes_text_frame.text
+if "30 seconds" not in n1:
+    errors.append("slide 1 notes missing the new content")
+
+# Slide 2: wordy line replaced, redundant line deleted
+text2 = "\n".join(
+    sh.text_frame.text for sh in slides[1].shapes if sh.has_text_frame
+)
+if "$432K wasted per year" not in text2:
+    errors.append("slide 2 replacement text not present")
+if "$432K per year on duplicated work and abandoned projects" in text2:
+    errors.append("slide 2 original wordy text was not replaced")
+if "wordy descriptor we plan to cut" in text2:
+    errors.append("slide 2 deletion did not happen")
+
+# Slide 3: title replaced + notes appended
+title3 = slides[2].shapes.title.text
+if title3 != "We are raising $1.5M":
+    errors.append(f"slide 3 title not replaced (got: {title3!r})")
+n3 = slides[2].notes_slide.notes_text_frame.text
+if "Close on the ask" not in n3:
+    errors.append("slide 3 appended notes missing")
+
+print("OK" if not errors else "; ".join(errors))
+PYEOF
+)"
+    if [ "$_RT_CHECK" = "OK" ]; then
+      RESULTS+=("PASS  edit_pptx round-trip applies all 5 supported actions")
+      PASS=$((PASS+1))
+    else
+      RESULTS+=("FAIL  edit_pptx round-trip  ($_RT_CHECK)")
+      FAIL=$((FAIL+1))
+    fi
+
+    # Verify the writer's own report classifies the unsupported + missing-target
+    # fixes correctly: the unsupported action should be skipped (not warning),
+    # and the missing-target fix should be a warning (not crash).
+    _RT_REPORT="$(bash tools/run.sh edit_pptx.py --input "$_RT_INPUT" --output "$_RT_OUTPUT" --fixes tests/fixtures/slides/round_trip_fixes.json --dry-run 2>/dev/null || true)"
+    _RT_SKIP_COUNT="$("$PYTHON" -c "import sys, json; d=json.loads(sys.stdin.read()); print(len(d['skipped']))" <<<"$_RT_REPORT" 2>/dev/null || echo error)"
+    _RT_WARN_COUNT="$("$PYTHON" -c "import sys, json; d=json.loads(sys.stdin.read()); print(len(d['warnings']))" <<<"$_RT_REPORT" 2>/dev/null || echo error)"
+    if [ "$_RT_SKIP_COUNT" = "1" ] && [ "$_RT_WARN_COUNT" = "1" ]; then
+      RESULTS+=("PASS  edit_pptx classifies unsupported as skipped, missing target as warning")
+      PASS=$((PASS+1))
+    else
+      RESULTS+=("FAIL  edit_pptx classification  (skipped=$_RT_SKIP_COUNT expected 1, warnings=$_RT_WARN_COUNT expected 1)")
+      FAIL=$((FAIL+1))
+    fi
+  fi
+  rm -rf "$_ROUND_TRIP_DIR" 2>/dev/null || true
+else
+  RESULTS+=("SKIP  edit_pptx round-trip  (python-pptx not installed)")
+fi
+
+# Regression: edit_pptx fails fast with a JSON error if python-pptx missing.
+# We can't easily simulate "missing" here without uninstalling, so instead
+# assert that calling without --input produces a JSON error (not a traceback).
+assert_passed "edit_pptx errors cleanly on missing args" "false" \
+  bash tools/run.sh edit_pptx.py --output /tmp/x.pptx --fixes /tmp/x.json
+
+# --- Skill-shape linter ---
+# Cross-refs from SKILL.md files resolve, the umbrella dispatcher table
+# matches the on-disk format skills, every persona file is referenced by
+# at least one SKILL.md (or persona-library.md), and every SKILL.md has
+# the name+description frontmatter the harness needs.
+assert_passed "lint_skills clean run" "true" \
+  bash tools/run.sh lint_skills.py
+
+# Negative test: drop an unreferenced persona file into personas/blog/ and
+# verify the linter catches it. Without this, the linter could silently
+# regress to "always passed=true" and the green-path test alone wouldn't
+# notice. Cleanup is unconditional via trap so a mid-test crash doesn't
+# leave the fake persona behind.
+_LINT_ORPHAN="personas/blog/_lint_test_orphan.md"
+trap 'rm -f "$_LINT_ORPHAN" 2>/dev/null || true' EXIT
+cat > "$_LINT_ORPHAN" <<'EOF'
+---
+name: _lint_test_orphan
+role: temporary fixture; should never be referenced by any SKILL.md
+---
+This file exists only while tests/run_tests.sh is running.
+EOF
+assert_passed "lint_skills detects orphan persona" "false" \
+  bash tools/run.sh lint_skills.py
+assert_flag_contains "lint_skills orphan flag" "orphan_persona" \
+  bash tools/run.sh lint_skills.py
+rm -f "$_LINT_ORPHAN" 2>/dev/null || true
+trap - EXIT
 
 # --- Regression: verification tools must not crash on non-UTF8 input.
 # Before this fix, count_chars.py and verify_application.py raised

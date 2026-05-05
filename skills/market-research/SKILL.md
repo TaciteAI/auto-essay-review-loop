@@ -33,7 +33,7 @@ Optional flags:
 | `RESEARCH_PLAN` | `market-research/RESEARCH_PLAN.json` | Query plan emitted by Phase 1, replayable for crash recovery. |
 | `RAW_DIR` | `market-research/raw/` | One JSON file per fetched source (`websearch-{slug}.json`, `webfetch-{slug}.json`). Audit trail. |
 | `SYNTHESIS_BACKEND` | `codex` | v0.1: Codex MCP only. |
-| `SYNTHESIS_MODEL` | `gpt-5.4` | Via `mcp__codex__codex` with `model_reasoning_effort: xhigh`. |
+| `SYNTHESIS_MODEL` | `gpt-5.4` | Via `mcp__codex__codex` with `model_reasoning_effort: medium`. |
 | `MIN_COMPETITORS` | `5` | Fewer than 5 named competitors (with URLs) → emit `thin_competitor_set` flag. |
 | `MIN_SIZING_SOURCES` | `2` | Fewer than 2 independent TAM/SAM citations → emit `single_source_sizing` flag. |
 | `STALENESS_BUDGET_MONTHS` | `24` | Citations older than 24 months without a corroborating recent source → emit `stale_citation` warning. |
@@ -42,11 +42,11 @@ Optional flags:
 
 | Depth | Search queries | Pages fetched | Synthesis effort | Wall-clock target |
 |-------|----------------|---------------|------------------|-------------------|
-| `lite` | ≤6 | ≤8 | xhigh | ~2 min |
-| `balanced` (default) | ≤12 | ≤20 | xhigh | ~5 min |
-| `max` | ≤24 | ≤40 | xhigh | ~12 min |
+| `lite` | ≤6 | ≤8 | medium | ~2 min |
+| `balanced` (default) | ≤12 | ≤20 | medium | ~5 min |
+| `max` | ≤24 | ≤40 | medium | ~12 min |
 
-Depth caps are advisory, not hard. The synthesis step still runs at `xhigh` regardless — depth controls breadth, not reasoning quality.
+Depth caps are advisory, not hard. The synthesis step still runs at `medium` regardless — depth controls breadth, not reasoning quality.
 
 ## Phase contract
 
@@ -161,7 +161,7 @@ Pass ALL files in `RAW_DIR/` as raw evidence to Codex. The synthesis prompt deli
 ```yaml
 mcp__codex__codex:
   config:
-    model_reasoning_effort: "xhigh"
+    model_reasoning_effort: "medium"
   prompt: |
     SYSTEM:
     You are a senior market analyst building a fact base for a startup

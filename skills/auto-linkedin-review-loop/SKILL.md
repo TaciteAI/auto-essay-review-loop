@@ -27,7 +27,7 @@ LinkedIn looks like "social" but the failure modes are different. The platform p
 | `MAX_ROUNDS` | `3` | LinkedIn drafts are short; 3 rounds is enough. If round 3 fails, the post needs a rewrite, not another polish pass. |
 | `POSITIVE_THRESHOLD` | `>=75% personas score >=6 AND executive-recruiter says "would engage"` | The recruiter is the gatekeeper. Even with 4/4 personas at 6+, if the recruiter wouldn't DM, the post fails. |
 | `REVIEWER_BACKEND` | `codex` | v0.1: Codex MCP only. |
-| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: xhigh`. |
+| `REVIEWER_MODEL` | `gpt-5.4` | Used via `mcp__codex__codex` with `model_reasoning_effort: medium`. |
 | `OUTPUT_DIR` | `review-stage/` | |
 | `STATE_FILE` | `review-stage/REVIEW_STATE.json` | |
 | `REVIEW_DOC` | `review-stage/AUTO_REVIEW.md` | |
@@ -100,7 +100,7 @@ Use `mcp__codex__codex` with a fresh thread per persona per round (Reviewer Inde
 
 ```
 mcp__codex__codex:
-  config: {"model_reasoning_effort": "xhigh"}
+  config: {"model_reasoning_effort": "medium"}
   model: gpt-5.4
   system: |
     You are reviewing a LinkedIn post. The author's draft is wrapped in

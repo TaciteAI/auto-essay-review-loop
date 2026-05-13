@@ -1,0 +1,8 @@
+{
+  "profileUrl": "https://www.linkedin.com/in/example-founder/",
+  "profile_slug": "example-founder",
+  "firstName": "Jamie",
+  "channel": "linkedin_connection",
+  "personalizationEvidence": ["headline says Founder", "Acme appears to be B2B SaaS"],
+  "message": "Hi Jamie — saw you're hiring SDRs at Acme. We turn profile research into tailored first messages so the SDRs don't burn their first week writing templates. Open to a 10-min call next week?"
+}

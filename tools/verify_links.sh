@@ -29,13 +29,19 @@ iso_timestamp() {
 
 json_escape() {
     # Minimal JSON string escape. Reads from stdin, writes to stdout.
-    # Handles: \  "  newline  carriage-return  tab.
-    sed \
-        -e 's/\\/\\\\/g' \
-        -e 's/"/\\"/g' \
-        -e ':a;N;$!ba;s/\n/\\n/g' \
-        -e 's/\r/\\r/g' \
-        -e 's/\t/\\t/g'
+    # Handles: \  "  carriage-return  tab. Newlines are converted to a
+    # literal space — we never feed multi-line input to this function (all
+    # callers pass paths, URLs, or short summary strings), and the previous
+    # GNU-sed label form (`:a;N;$!ba;s/\n/\\n/g`) is rejected by BSD sed on
+    # macOS and Alpine, polluting stderr and breaking JSON parsers in the
+    # test harness. If a multi-line escape is ever needed, switch to a
+    # python -c json.dumps helper instead.
+    tr '\n' ' ' \
+        | sed \
+            -e 's/\\/\\\\/g' \
+            -e 's/"/\\"/g' \
+            -e 's/\r/\\r/g' \
+            -e 's/\t/\\t/g'
 }
 
 slugify_url() {

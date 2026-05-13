@@ -303,6 +303,20 @@ Requires a `--scenario=pitch|academic|internal` flag — the persona panel and t
 
 → Full schema and authoring guide: [docs/PERSONA_AUTHORING.md](docs/PERSONA_AUTHORING.md)
 
+## Sibling workflows
+
+Skills that share the persona-adversarial doctrine but don't take a single draft document as input. **Not auto-detected by `/auto-essay-review-loop`** — invoke them directly.
+
+### LinkedIn outbound (`auto-linkedin-outbound-loop`)
+
+Approval-first outbound: campaign JSON in (ICP + offer + LinkedIn profile URLs), `approved_messages.csv` out. Enriches profiles via the Apify LinkedIn Profile Scraper, qualifies fit with a deterministic heuristic, drafts one first-touch message per qualified prospect, runs four outbound-specific personas (`target-customer`, `spam-filter`, `sales-leader`, `compliance-reviewer`) in a per-prospect review loop until approved or `MAX_ROUNDS=3`, then exports approved drafts. **Never sends.**
+
+```
+/auto-linkedin-outbound-loop campaigns/<name>.json
+```
+
+Different shape from the umbrella because the workflow is a pipeline, not a single-document review. See [`skills/auto-linkedin-outbound-loop/SKILL.md`](skills/auto-linkedin-outbound-loop/SKILL.md) for the full contract.
+
 ## Example output
 
 After 2 rounds on a blog post, `review-stage/AUTO_REVIEW.md` looks like:

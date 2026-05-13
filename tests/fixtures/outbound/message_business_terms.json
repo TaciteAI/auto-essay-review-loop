@@ -1,0 +1,8 @@
+{
+  "profileUrl": "https://www.linkedin.com/in/example-founder/",
+  "profile_slug": "example-founder",
+  "firstName": "Jamie",
+  "channel": "linkedin_connection",
+  "personalizationEvidence": ["headline says Founder", "Acme builds outbound tooling"],
+  "message": "Hi Jamie — we built a single source of truth for outbound ops at Acme. No more race conditions between SDRs and AEs, no black-box scoring, no white-paper noise. The age of templated outreach is over. Worth a quick chat?"
+}

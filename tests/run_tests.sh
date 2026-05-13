@@ -336,6 +336,149 @@ fi
 assert_passed "edit_pptx errors cleanly on missing args" "false" \
   bash tools/run.sh edit_pptx.py --output /tmp/x.pptx --fixes /tmp/x.json
 
+# --- LinkedIn outbound: enrich_profiles, qualify_prospect, verify_outbound_message, outbound_state ---
+#
+# These four tools form the outbound pipeline. We don't hit Apify in tests —
+# enrich_profiles is exercised only for its argument validation + missing-token
+# path. The rest run end-to-end against tests/fixtures/outbound/.
+
+# enrich_profiles: missing APIFY_TOKEN flags `missing_apify_token`.
+# The fixture campaign includes one spoofed non-LinkedIn URL so we also
+# verify the `invalid_profile_url` flag fires.
+#
+# Don't run this inside a subshell — assert_*'s RESULTS / PASS / FAIL state
+# would be lost on subshell exit. Save and restore APIFY_TOKEN around the
+# block instead, distinguishing unset-from-empty using ${VAR+set} so we
+# don't accidentally turn an originally-unset variable into an empty
+# exported one for tests further down.
+if [ "${APIFY_TOKEN+set}" = "set" ]; then
+  _APIFY_TOKEN_WAS_SET=1
+  _SAVED_APIFY_TOKEN="$APIFY_TOKEN"
+else
+  _APIFY_TOKEN_WAS_SET=0
+fi
+unset APIFY_TOKEN
+_ENRICH_OUT="/tmp/auto_outbound_test_enrich"
+assert_passed "enrich_profiles flags missing token + invalid URL" "false" \
+  bash tools/run.sh enrich_profiles.py tests/fixtures/outbound/campaign.json --out-dir="$_ENRICH_OUT"
+assert_flag_contains "enrich_profiles surfaces missing_apify_token" "missing_apify_token" \
+  bash tools/run.sh enrich_profiles.py tests/fixtures/outbound/campaign.json --out-dir="$_ENRICH_OUT"
+assert_flag_contains "enrich_profiles surfaces invalid_profile_url" "invalid_profile_url" \
+  bash tools/run.sh enrich_profiles.py tests/fixtures/outbound/campaign.json --out-dir="$_ENRICH_OUT"
+if [ "$_APIFY_TOKEN_WAS_SET" = "1" ]; then
+  export APIFY_TOKEN="$_SAVED_APIFY_TOKEN"
+fi
+unset _SAVED_APIFY_TOKEN _APIFY_TOKEN_WAS_SET
+rm -rf "$_ENRICH_OUT" 2>/dev/null || true
+
+# qualify_prospect: strong fixture qualifies (Founder + B2B SaaS + hiring SDRs
+# in about), weak fixture (no headline/role/company) is disqualified.
+_QUALIFY_OUT="$(mktemp -d -t auto-essay-qualify.XXXXXX 2>/dev/null || mktemp -d)"
+assert_passed "qualify_prospect scores the strong fixture as qualified" "true" \
+  bash tools/run.sh qualify_prospect.py tests/fixtures/outbound/normalized.json tests/fixtures/outbound/campaign.json --out-dir="$_QUALIFY_OUT"
+assert_metric "qualify_prospect emits qualified_count=1" "qualified_count" "1" \
+  bash tools/run.sh qualify_prospect.py tests/fixtures/outbound/normalized.json tests/fixtures/outbound/campaign.json --out-dir="$_QUALIFY_OUT"
+assert_metric "qualify_prospect emits rejected_count=1" "rejected_count" "1" \
+  bash tools/run.sh qualify_prospect.py tests/fixtures/outbound/normalized.json tests/fixtures/outbound/campaign.json --out-dir="$_QUALIFY_OUT"
+# qualified_prospects.json should contain the founder row at slug 'example-founder'.
+_QUAL_SLUG="$("$PYTHON" -c "import json; rows = json.load(open('$_QUALIFY_OUT/qualified_prospects.json')); print(rows[0]['profile_slug'] if rows else 'none')")"
+if [ "$_QUAL_SLUG" = "example-founder" ]; then
+  RESULTS+=("PASS  qualify_prospect: example-founder qualifies (slug present in qualified_prospects.json)")
+  PASS=$((PASS+1))
+else
+  RESULTS+=("FAIL  qualify_prospect: expected example-founder in qualified_prospects.json, got '$_QUAL_SLUG'")
+  FAIL=$((FAIL+1))
+fi
+rm -rf "$_QUALIFY_OUT" 2>/dev/null || true
+
+# verify_outbound_message: 4 fixtures, each exercising a different check.
+assert_passed "verify_outbound_message good message passes" "true" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_good.json tests/fixtures/outbound/campaign.json
+assert_passed "verify_outbound_message creepy message fails" "false" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_creepy.json tests/fixtures/outbound/campaign.json
+assert_flag_contains "verify_outbound_message flags surveillance_phrasing" "surveillance_phrasing" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_creepy.json tests/fixtures/outbound/campaign.json
+assert_flag_contains "verify_outbound_message flags sensitive_trait (marital_status)" "sensitive_trait" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_creepy.json tests/fixtures/outbound/campaign.json
+assert_flag_contains "verify_outbound_message flags fake_familiarity ('as we discussed')" "fake_familiarity" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_creepy.json tests/fixtures/outbound/campaign.json
+assert_passed "verify_outbound_message too-long message fails" "false" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_too_long.json tests/fixtures/outbound/campaign.json
+assert_flag_contains "verify_outbound_message flags message_too_long" "message_too_long" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_too_long.json tests/fixtures/outbound/campaign.json
+assert_passed "verify_outbound_message email channel fails when campaign.channels.email=false" "false" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_email_unauthorized.json tests/fixtures/outbound/campaign.json
+assert_flag_contains "verify_outbound_message flags channel_unauthorized" "channel_unauthorized" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_email_unauthorized.json tests/fixtures/outbound/campaign.json
+
+# False-positive regression: v0.1 sensitive-trait patterns fired on common
+# business terms ("single source of truth", "race condition", "black box",
+# "white paper", "age of X"). v0.2 tightened the patterns to require
+# demographic context. This fixture exercises all of those tokens — they
+# must NOT trip sensitive_trait now.
+assert_passed "verify_outbound_message does not false-positive on common business terms" "true" \
+  bash tools/run.sh verify_outbound_message.py tests/fixtures/outbound/message_business_terms.json tests/fixtures/outbound/campaign.json
+
+# outbound_state: init from a fixture qualified-prospects file, then update,
+# then resume. Validates that:
+#   - init creates a state file with the right number of rows
+#   - update mutates the named row (and rejects unknown slugs)
+#   - resume classifies approved rows into to_skip and untouched rows into to_continue
+_STATE_DIR="$(mktemp -d -t auto-essay-state.XXXXXX 2>/dev/null || mktemp -d)"
+# Build a tiny qualified fixture inline so the state tests don't depend on
+# qualify_prospect's output ordering.
+cat > "$_STATE_DIR/qualified.json" <<'EOF'
+[
+  {"profileUrl": "https://www.linkedin.com/in/alice/", "profile_slug": "alice"},
+  {"profileUrl": "https://www.linkedin.com/in/bob/",   "profile_slug": "bob"}
+]
+EOF
+assert_passed "outbound_state init creates 2-row state file" "true" \
+  bash tools/run.sh outbound_state.py init "$_STATE_DIR/qualified.json" --out-dir="$_STATE_DIR"
+assert_metric "outbound_state init emits prospect_count=2" "prospect_count" "2" \
+  bash tools/run.sh outbound_state.py init "$_STATE_DIR/qualified.json" --out-dir="$_STATE_DIR"
+
+# Update alice to approved via stdin patch.
+echo '{"status":"approved","round":2,"last_scores":{"target-customer":8}}' | \
+  bash tools/run.sh outbound_state.py update alice - --out-dir="$_STATE_DIR" >/dev/null
+# Resume should now report 1 to_skip (alice) and 1 to_continue (bob).
+_STATE_RESUME="$(bash tools/run.sh outbound_state.py resume --out-dir="$_STATE_DIR" 2>&1)"
+_TO_SKIP="$("$PYTHON" -c "import sys,json; print(len(json.loads(sys.stdin.read())['to_skip']))" <<<"$_STATE_RESUME")"
+_TO_CONT="$("$PYTHON" -c "import sys,json; print(len(json.loads(sys.stdin.read())['to_continue']))" <<<"$_STATE_RESUME")"
+if [ "$_TO_SKIP" = "1" ] && [ "$_TO_CONT" = "1" ]; then
+  RESULTS+=("PASS  outbound_state resume classifies approved=skip, qualified=continue")
+  PASS=$((PASS+1))
+else
+  RESULTS+=("FAIL  outbound_state resume  (to_skip=$_TO_SKIP expected 1, to_continue=$_TO_CONT expected 1)")
+  FAIL=$((FAIL+1))
+fi
+
+# Negative: update against an unknown slug must report passed:false with
+# the slug_not_found flag (not crash).
+assert_passed "outbound_state update on missing slug fails cleanly" "false" \
+  bash -c "echo '{}' | bash tools/run.sh outbound_state.py update no-such-slug - --out-dir=$_STATE_DIR"
+assert_flag_contains "outbound_state surfaces slug_not_found" "slug_not_found" \
+  bash -c "echo '{}' | bash tools/run.sh outbound_state.py update no-such-slug - --out-dir=$_STATE_DIR"
+
+# Corruption surfacing: a malformed JSONL row must be reported in resume
+# output (`corrupted_state_rows` flag, `malformed_rows` count), not
+# silently skipped. The good row still feeds the resume plan.
+_CORRUPT_DIR="$(mktemp -d -t auto-essay-state-corrupt.XXXXXX 2>/dev/null || mktemp -d)"
+cat > "$_CORRUPT_DIR/prospect_state.jsonl" <<'EOF'
+{"profileUrl": "https://www.linkedin.com/in/alice/", "profile_slug": "alice", "status": "qualified", "round": 0, "timestamp": "2026-05-12T00:00:00Z"}
+not-actually-json-at-all
+{"profileUrl": "https://www.linkedin.com/in/bob/", "profile_slug": "bob", "status": "approved", "round": 2, "timestamp": "2026-05-12T00:00:00Z"}
+EOF
+assert_passed "outbound_state resume reports corruption (not silent)" "false" \
+  bash tools/run.sh outbound_state.py resume --out-dir="$_CORRUPT_DIR"
+assert_flag_contains "outbound_state flags corrupted_state_rows" "corrupted_state_rows" \
+  bash tools/run.sh outbound_state.py resume --out-dir="$_CORRUPT_DIR"
+assert_metric "outbound_state malformed_rows=1" "malformed_rows" "1" \
+  bash tools/run.sh outbound_state.py resume --out-dir="$_CORRUPT_DIR"
+rm -rf "$_CORRUPT_DIR" 2>/dev/null || true
+
+rm -rf "$_STATE_DIR" 2>/dev/null || true
+
 # --- Skill-shape linter ---
 # Cross-refs from SKILL.md files resolve, the umbrella dispatcher table
 # matches the on-disk format skills, every persona file is referenced by
@@ -363,6 +506,29 @@ assert_passed "lint_skills detects orphan persona" "false" \
 assert_flag_contains "lint_skills orphan flag" "orphan_persona" \
   bash tools/run.sh lint_skills.py
 rm -f "$_LINT_ORPHAN" 2>/dev/null || true
+trap - EXIT
+
+# Negative test: create a fake sibling skill dir that the umbrella does not
+# reference. The umbrella_mentions_siblings check should fire sibling_drift.
+# Mirrors the orphan-persona pattern with unconditional trap cleanup.
+_LINT_SIBLING_DIR="skills/auto-lint-test-sibling-loop"
+trap 'rm -rf "$_LINT_SIBLING_DIR" 2>/dev/null || true' EXIT
+mkdir -p "$_LINT_SIBLING_DIR"
+cat > "$_LINT_SIBLING_DIR/SKILL.md" <<'EOF'
+---
+name: auto-lint-test-sibling-loop
+description: Temporary fixture; should never be referenced by the umbrella SKILL.md while tests/run_tests.sh is running.
+---
+
+# auto-lint-test-sibling-loop
+
+This file exists only while tests/run_tests.sh is running.
+EOF
+assert_passed "lint_skills detects unreferenced sibling skill" "false" \
+  bash tools/run.sh lint_skills.py
+assert_flag_contains "lint_skills sibling_drift flag" "sibling_drift" \
+  bash tools/run.sh lint_skills.py
+rm -rf "$_LINT_SIBLING_DIR" 2>/dev/null || true
 trap - EXIT
 
 # --- Regression: verification tools must not crash on non-UTF8 input.

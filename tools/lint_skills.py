@@ -59,7 +59,16 @@ PERSONA_FILE_RE = re.compile(r"^[a-z0-9][a-z0-9-]*\.md$")
 
 # Format directories under personas/ — also the set the umbrella table covers
 # (minus business-plan oddities handled below).
-FORMAT_DIRS = {"blog", "social", "linkedin", "business-plan", "application", "cv", "slides"}
+FORMAT_DIRS = {
+    "blog",
+    "social",
+    "linkedin",
+    "linkedin-outbound",
+    "business-plan",
+    "application",
+    "cv",
+    "slides",
+}
 
 
 def now_iso() -> str:
@@ -126,6 +135,17 @@ def check_cross_references(skill_files: list[Path]) -> tuple[dict, list[str]]:
     )
 
 
+def is_sibling_skill_dir(name: str) -> bool:
+    """True for skills like `auto-linkedin-outbound-loop` — they end in
+    `-loop` but aren't draft-review skills, so they bypass the umbrella
+    dispatcher and require a different lint contract."""
+    return (
+        name.startswith("auto-")
+        and name.endswith("-loop")
+        and not name.endswith("-review-loop")
+    )
+
+
 def check_dispatcher_table(skill_files: list[Path]) -> tuple[dict, list[str]]:
     """The umbrella SKILL.md has a `| Format | Skill name |` table near
     Phase 2. The set of `auto-*-review-loop` names in that table must match
@@ -171,6 +191,73 @@ def check_dispatcher_table(skill_files: list[Path]) -> tuple[dict, list[str]]:
          "detail": detail,
          "missing_from_table": missing_from_table,
          "extra_in_table": extra_in_table},
+        flags,
+    )
+
+
+def check_umbrella_mentions_siblings(skill_files: list[Path]) -> tuple[dict, list[str]]:
+    """Sibling skills (`auto-*-loop` minus `-review-loop`) live outside the
+    umbrella's dispatch path — the umbrella does not detect them, so users
+    have to learn the name some other way. To keep that surface honest we
+    require the umbrella SKILL.md to name every sibling on disk inside
+    backticks at least once (typically in the 'Sibling workflows' section).
+
+    Drift modes this catches:
+      - Sibling skill added on disk but never linked from the umbrella.
+      - Sibling skill removed but the umbrella still names it.
+    """
+    if not UMBRELLA_SKILL.is_file():
+        return (
+            {"name": "umbrella_mentions_siblings", "passed": False,
+             "detail": f"umbrella skill not found at {repo_relative(UMBRELLA_SKILL)}"},
+            ["dispatcher_missing"],
+        )
+
+    on_disk = sorted(
+        p.parent.name
+        for p in skill_files
+        if is_sibling_skill_dir(p.parent.name)
+    )
+
+    if not on_disk:
+        # No sibling skills today — vacuously passes. We still register the
+        # check so the JSON output documents it ran.
+        return (
+            {"name": "umbrella_mentions_siblings", "passed": True,
+             "detail": "no sibling skills on disk — nothing to mention",
+             "siblings_on_disk": [],
+             "missing_from_umbrella": [],
+             "extra_in_umbrella": []},
+            [],
+        )
+
+    text = read(UMBRELLA_SKILL)
+    mentioned = {
+        m for m in re.findall(r"`(auto-[a-z0-9-]+-loop)`", text)
+        if is_sibling_skill_dir(m)
+    }
+
+    missing_from_umbrella = sorted(set(on_disk) - mentioned)
+    extra_in_umbrella = sorted(mentioned - set(on_disk))
+
+    passed = not missing_from_umbrella and not extra_in_umbrella
+    parts: list[str] = []
+    if missing_from_umbrella:
+        parts.append(f"on disk but not in umbrella: {missing_from_umbrella}")
+    if extra_in_umbrella:
+        parts.append(f"in umbrella but not on disk: {extra_in_umbrella}")
+    detail = (
+        f"umbrella names all {len(on_disk)} sibling skill(s)"
+        if passed
+        else "; ".join(parts)
+    )
+    flags = [] if passed else ["sibling_drift"]
+    return (
+        {"name": "umbrella_mentions_siblings", "passed": passed,
+         "detail": detail,
+         "siblings_on_disk": on_disk,
+         "missing_from_umbrella": missing_from_umbrella,
+         "extra_in_umbrella": extra_in_umbrella},
         flags,
     )
 
@@ -345,6 +432,7 @@ def main() -> int:
     for fn in (
         check_cross_references,
         check_dispatcher_table,
+        check_umbrella_mentions_siblings,
         check_persona_files,
         check_persona_orphans,
         check_skill_frontmatter,
@@ -363,8 +451,13 @@ def main() -> int:
         flags.extend(fs)
 
     passed = all(c["passed"] for c in checks)
+    invariant_phrase = (
+        "skill-shape invariant"
+        if len(checks) == 1
+        else "skill-shape invariants"
+    )
     summary = (
-        f"all {len(checks)} skill-shape invariants hold across {len(skill_files)} skill(s)"
+        f"all {len(checks)} {invariant_phrase} hold across {len(skill_files)} skill(s)"
         if passed
         else "; ".join(c["detail"] for c in checks if not c["passed"])
     )

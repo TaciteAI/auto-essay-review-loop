@@ -242,6 +242,17 @@ v0.2+ will add deepseek, minimax, llm-chat, ollama. Falling back to codex.
 
 Then dispatch normally. Do not block.
 
+## Sibling workflows
+
+These are review-loop-adjacent skills that do **not** take a single draft
+document as input and are **not** auto-detected by this umbrella. They
+invoke directly. Mention them when the user describes the matching
+workflow shape, but do not dispatch to them from here.
+
+| Skill | Invocation | Input | Output |
+|-------|------------|-------|--------|
+| [`auto-linkedin-outbound-loop`](../auto-linkedin-outbound-loop/SKILL.md) | `/auto-linkedin-outbound-loop campaigns/<name>.json` | Campaign JSON (`icp` + `offer` + `profileUrls`) | `review-stage/outbound/approved_messages.csv` — persona-reviewed, qualified, approved-for-human-send LinkedIn outbound messages. Never auto-sends. |
+
 ## Examples
 
 ### Example 1 — blog post, .md

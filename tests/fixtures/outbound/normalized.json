@@ -1,0 +1,34 @@
+[
+  {
+    "profileUrl": "https://www.linkedin.com/in/example-founder/",
+    "profile_slug": "example-founder",
+    "firstName": "Jamie",
+    "fullName": "Jamie Example",
+    "headline": "Founder & CEO at Acme — Building B2B SaaS for growth teams",
+    "currentRole": "Founder & CEO",
+    "company": "Acme",
+    "location": "San Francisco",
+    "about": "Currently hiring SDRs to scale outbound. Tired of manual prospect research eating my week.",
+    "recentExperience": [],
+    "education": [],
+    "email": null,
+    "phone": null,
+    "source": "apify:test-fixture"
+  },
+  {
+    "profileUrl": "https://www.linkedin.com/in/example-noheadline/",
+    "profile_slug": "example-noheadline",
+    "firstName": "Pat",
+    "fullName": "Pat Example",
+    "headline": "",
+    "currentRole": "",
+    "company": "",
+    "location": "",
+    "about": "",
+    "recentExperience": [],
+    "education": [],
+    "email": null,
+    "phone": null,
+    "source": "apify:test-fixture"
+  }
+]

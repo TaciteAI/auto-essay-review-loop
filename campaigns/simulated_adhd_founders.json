@@ -5,30 +5,43 @@
     "simulation_note": "Run tools/search_linkedin_profiles.py first to discover real profile URLs, then run /auto-linkedin-outbound-loop on the generated campaign."
   },
   "lead_search": {
-    "actor": "harvestapi/linkedin-profile-search",
+    "actor": "harvestapi/linkedin-post-search",
     "input": {
-      "profileScraperMode": "Short",
-      "searchQuery": "founder SaaS",
-      "currentJobTitles": [
-        "Founder",
-        "Co-Founder",
-        "CEO"
+      "searchQueries": [
+        "\"I have ADHD\" founder",
+        "\"my ADHD\" founder",
+        "\"I was diagnosed with ADHD\" founder",
+        "\"as someone with ADHD\" founder",
+        "\"founder with ADHD\""
       ],
-      "functionIds": [
-        "9",
-        "18",
-        "19"
-      ],
-      "companyHeadcount": [
-        "B",
-        "C"
-      ],
-      "recentlyPostedOnLinkedIn": true,
-      "maxItems": 10,
+      "authorKeywords": "Founder OR Co-Founder OR CEO",
+      "profileScraperMode": "short",
+      "postedLimit": "year",
+      "sortBy": "relevance",
+      "maxPosts": 10,
       "startPage": 1,
-      "takePages": 1
+      "scrapePages": 1,
+      "scrapeReactions": false,
+      "postNestedReactions": false,
+      "scrapeComments": false,
+      "postNestedComments": false
     },
-    "notes": "This search intentionally avoids ADHD/neurodivergence keywords. Discover by role/company context, then let the outbound review loop enforce no sensitive-trait message copy."
+    "exclude_author_keywords": [
+      "adhd coach",
+      "coach",
+      "coaching",
+      "therapist",
+      "therapy",
+      "counselor",
+      "consultant",
+      "neurodiversity coach",
+      "business coach",
+      "for ADHD founders",
+      "for ADHD entrepreneurs",
+      "helping ADHD founders",
+      "helping ADHD entrepreneurs"
+    ],
+    "notes": "This search looks for authors of public posts that use first-person ADHD self-identification language. Treat post content as topical context only: do not mention ADHD/neurodivergence in outbound copy, and do not cite health/disability content as the reason for outreach."
   },
   "icp": {
     "titles": [

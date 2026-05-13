@@ -8,6 +8,7 @@ LinkedIn profile URLs, and writes a campaign copy with profileUrls filled.
 Usage:
     bash tools/run.sh search_linkedin_profiles.py campaigns/name.json \
         --out-dir=review-stage/outbound \
+        --campaign-out-dir=review-stage/outbound \
         --update-campaign
 
 The Apify token must be provided via APIFY_TOKEN. The token is never written
@@ -21,6 +22,7 @@ import re
 import ssl
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -62,21 +64,43 @@ def write_json(path: Path, payload) -> None:
     )
 
 
+def create_ssl_context() -> ssl.SSLContext:
+    try:
+        import certifi  # type: ignore
+    except Exception:  # noqa: BLE001
+        return ssl.create_default_context()
+    return ssl.create_default_context(cafile=certifi.where())
+
+
+def read_http_error(exc: urllib.error.HTTPError) -> str:
+    try:
+        body = exc.read().decode("utf-8", errors="replace").strip()
+    except Exception:  # noqa: BLE001
+        return ""
+    if len(body) > 600:
+        return body[:600] + "..."
+    return body
+
+
 def parse_args(argv: list[str]) -> dict:
     if len(argv) < 2:
         raise SystemExit(
             "usage: search_linkedin_profiles.py <campaign.json> "
-            "[--out-dir=...] [--update-campaign] [--timeout=180]"
+            "[--out-dir=...] [--campaign-out-dir=...] "
+            "[--update-campaign] [--timeout=180]"
         )
     args = {
         "campaign_path": argv[1],
         "out_dir": DEFAULT_OUT_DIR,
+        "campaign_out_dir": None,
         "update_campaign": False,
         "timeout_seconds": DEFAULT_TIMEOUT_SECONDS,
     }
     for a in argv[2:]:
         if a.startswith("--out-dir="):
             args["out_dir"] = a.split("=", 1)[1]
+        elif a.startswith("--campaign-out-dir="):
+            args["campaign_out_dir"] = a.split("=", 1)[1]
         elif a == "--update-campaign":
             args["update_campaign"] = True
         elif a.startswith("--timeout="):
@@ -123,7 +147,7 @@ def call_apify_actor(
         },
         method="POST",
     )
-    ctx = ssl.create_default_context()
+    ctx = create_ssl_context()
     try:
         with urllib.request.urlopen(req, timeout=timeout_seconds, context=ctx) as resp:
             raw = resp.read().decode("utf-8")
@@ -134,7 +158,11 @@ def call_apify_actor(
     except json.JSONDecodeError as exc:
         return None, f"apify returned non-JSON: {exc}", None
     except urllib.error.HTTPError as exc:
-        return None, f"HTTP {exc.code} {exc.reason}", exc.code
+        body = read_http_error(exc)
+        detail = f"HTTP {exc.code} {exc.reason}"
+        if body:
+            detail += f": {body}"
+        return None, detail, exc.code
     except urllib.error.URLError as exc:
         return None, f"URLError: {exc.reason}", None
     except TimeoutError:
@@ -152,6 +180,22 @@ def iter_strings(value):
     elif isinstance(value, list):
         for nested in value:
             yield from iter_strings(nested)
+
+
+def canonical_profile_url(raw: str) -> str | None:
+    raw = raw.strip()
+    if not raw:
+        return None
+    parsed = urllib.parse.urlparse(raw)
+    if parsed.scheme not in ("http", "https"):
+        return None
+    host = parsed.netloc.lower()
+    if host not in ("linkedin.com", "www.linkedin.com") and not host.endswith(".linkedin.com"):
+        return None
+    path = parsed.path.rstrip("/")
+    if not re.match(r"^/in/[A-Za-z0-9\-_%]+$", path, flags=re.IGNORECASE):
+        return None
+    return f"https://www.linkedin.com{path}/"
 
 
 def extract_profile_urls(records: list[dict]) -> list[str]:
@@ -176,10 +220,9 @@ def extract_profile_urls(records: list[dict]) -> list[str]:
             raw = rec.get(key)
             if not isinstance(raw, str):
                 continue
-            url = raw.strip()
-            if not PROFILE_URL_RE.match(url):
+            normalized = canonical_profile_url(raw)
+            if not normalized:
                 continue
-            normalized = url.rstrip("/") + "/"
             if normalized in seen:
                 continue
             seen.add(normalized)
@@ -189,16 +232,99 @@ def extract_profile_urls(records: list[dict]) -> list[str]:
         if found_for_record:
             continue
         for raw in iter_strings(rec):
-            url = raw.strip()
-            if not PROFILE_URL_RE.match(url):
+            normalized = canonical_profile_url(raw)
+            if not normalized:
                 continue
-            normalized = url.rstrip("/") + "/"
             if normalized in seen:
                 continue
             seen.add(normalized)
             urls.append(normalized)
             break
     return urls
+
+
+def normalize_keywords(value) -> list[str]:
+    if isinstance(value, list):
+        return [str(v).strip().lower() for v in value if str(v).strip()]
+    if isinstance(value, str):
+        parts = re.split(r"\s+\bOR\b\s+|[,|]", value, flags=re.IGNORECASE)
+        return [p.strip().lower() for p in parts if p.strip()]
+    return []
+
+
+def author_profile_blob(rec: dict) -> str:
+    parts: list[str] = []
+    author = rec.get("author")
+    if isinstance(author, dict):
+        parts.extend(iter_strings(author))
+
+    # Profile-search actors do not always nest identity fields under author.
+    for key in (
+        "name",
+        "fullName",
+        "full_name",
+        "headline",
+        "summary",
+        "title",
+        "currentRole",
+        "currentPositions",
+        "currentPosition",
+        "positions",
+        "experience",
+        "linkedinUrl",
+        "url",
+        "profileUrl",
+    ):
+        value = rec.get(key)
+        if value is not None:
+            parts.extend(iter_strings(value))
+    return " | ".join(parts)
+
+
+def filter_records(records: list[dict], exclude_keywords: list[str]) -> tuple[list[dict], list[dict]]:
+    if not exclude_keywords:
+        return records, []
+
+    kept: list[dict] = []
+    excluded: list[dict] = []
+    for rec in records:
+        if not isinstance(rec, dict):
+            kept.append(rec)
+            continue
+        blob = author_profile_blob(rec)
+        lowered = blob.lower()
+        hit = next((kw for kw in exclude_keywords if kw in lowered), None)
+        if not hit:
+            kept.append(rec)
+            continue
+        author = rec.get("author") if isinstance(rec.get("author"), dict) else {}
+        excluded.append(
+            {
+                "excluded_keyword": hit,
+                "author_name": author.get("name") if isinstance(author, dict) else rec.get("name"),
+                "profile_url": extract_profile_urls([rec])[:1],
+                "author_profile_text": blob[:500],
+            }
+        )
+    return kept, excluded
+
+
+def resolve_campaign_out_dir(discovery_dir: Path, explicit: str | None) -> Path:
+    if explicit:
+        return Path(explicit)
+    # Phase-aware default for run folders:
+    #   runs/<id>/01_discovery -> runs/<id>/00_campaign
+    if discovery_dir.name == "01_discovery":
+        sibling = discovery_dir.parent / "00_campaign"
+        if sibling.exists() or discovery_dir.parent.name:
+            return sibling
+    return discovery_dir
+
+
+def generated_campaign_path(campaign_path: Path, discovery_dir: Path, campaign_dir: Path) -> Path:
+    if campaign_dir != discovery_dir:
+        return campaign_dir / "campaign.discovered.json"
+    return discovery_dir / f"{campaign_path.stem}.discovered.json"
 
 
 def main(argv: list[str]) -> int:
@@ -213,6 +339,7 @@ def main(argv: list[str]) -> int:
 
     campaign_path = Path(args["campaign_path"])
     out_dir = Path(args["out_dir"])
+    campaign_out_dir = resolve_campaign_out_dir(out_dir, args["campaign_out_dir"])
     if not campaign_path.exists():
         sys.stdout.write(
             json.dumps(
@@ -248,6 +375,7 @@ def main(argv: list[str]) -> int:
     lead_search = campaign.get("lead_search") or {}
     actor = lead_search.get("actor") or DEFAULT_ACTOR
     actor_input = lead_search.get("input") or {}
+    exclude_keywords = normalize_keywords(lead_search.get("exclude_author_keywords"))
     token = os.environ.get("APIFY_TOKEN", "").strip()
 
     checks = [
@@ -278,6 +406,7 @@ def main(argv: list[str]) -> int:
             "timestamp": now_iso(),
             "input_file": str(campaign_path),
             "out_dir": str(out_dir),
+            "campaign_out_dir": str(campaign_out_dir),
             "actor": actor,
             "passed": False,
             "checks": checks,
@@ -300,6 +429,7 @@ def main(argv: list[str]) -> int:
             "timestamp": now_iso(),
             "input_file": str(campaign_path),
             "out_dir": str(out_dir),
+            "campaign_out_dir": str(campaign_out_dir),
             "actor": actor,
             "passed": False,
             "checks": checks
@@ -317,23 +447,31 @@ def main(argv: list[str]) -> int:
         sys.stdout.write(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
         return 1
 
-    urls = extract_profile_urls(records)
+    filtered_records, excluded_records = filter_records(records, exclude_keywords)
+    urls = extract_profile_urls(filtered_records)
     out_dir.mkdir(parents=True, exist_ok=True)
+    campaign_out_dir.mkdir(parents=True, exist_ok=True)
     raw_path = out_dir / "searched_profiles.raw.json"
+    filtered_path = out_dir / "searched_profiles.filtered.json"
+    excluded_path = out_dir / "excluded_search_records.json"
     urls_path = out_dir / "discovered_profile_urls.json"
-    generated_campaign_path = out_dir / f"{campaign_path.stem}.discovered.json"
+    generated_campaign = generated_campaign_path(campaign_path, out_dir, campaign_out_dir)
     write_json(raw_path, records)
+    write_json(filtered_path, filtered_records)
+    write_json(excluded_path, excluded_records)
     write_json(urls_path, urls)
 
     generated = dict(campaign)
     existing = [
-        u.rstrip("/") + "/"
+        normalized
         for u in (campaign.get("profileUrls") or [])
-        if isinstance(u, str) and PROFILE_URL_RE.match(u.strip())
+        if isinstance(u, str)
+        for normalized in [canonical_profile_url(u)]
+        if normalized
     ]
     merged = list(dict.fromkeys(existing + urls))
     generated["profileUrls"] = merged[: int(campaign.get("max_prospects") or len(merged))]
-    write_json(generated_campaign_path, generated)
+    write_json(generated_campaign, generated)
     if args["update_campaign"]:
         write_json(campaign_path, generated)
 
@@ -351,6 +489,16 @@ def main(argv: list[str]) -> int:
                 "detail": f"{len(urls)} LinkedIn profile URL(s) extracted",
                 "value": len(urls),
             },
+            {
+                "name": "exclude_author_keywords",
+                "passed": True,
+                "detail": (
+                    f"{len(excluded_records)} record(s) excluded by "
+                    f"{len(exclude_keywords)} author keyword(s)"
+                ),
+                "value": len(excluded_records),
+                "keywords": exclude_keywords,
+            },
         ]
     )
     passed = bool(urls)
@@ -360,13 +508,16 @@ def main(argv: list[str]) -> int:
         "timestamp": now_iso(),
         "input_file": str(campaign_path),
         "out_dir": str(out_dir),
+        "campaign_out_dir": str(campaign_out_dir),
         "actor": actor,
         "passed": passed,
         "checks": checks,
         "flags": [] if passed else ["no_profile_urls_found"],
         "raw_output": str(raw_path),
+        "filtered_output": str(filtered_path),
+        "excluded_output": str(excluded_path),
         "urls_output": str(urls_path),
-        "generated_campaign": str(generated_campaign_path),
+        "generated_campaign": str(generated_campaign),
         "updated_campaign": str(campaign_path) if args["update_campaign"] else None,
         "profile_url_count": len(urls),
         "summary": f"found {len(urls)} profile URL(s)",

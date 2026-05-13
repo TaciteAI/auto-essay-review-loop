@@ -64,7 +64,7 @@ Optional top-level fields:
 - `max_prospects`: hard cap per run (default 25).
 - `apify_actor`: default `dev_fusion/Linkedin-Profile-Scraper`.
 - `message_channel`: default `linkedin_connection`; allowed values: `linkedin_connection` / `linkedin_dm` / `email` / `phone`. `email` and `phone` are only honored when `channels.email` / `channels.phone` is `true`. The verifier and enricher both enforce this; the docs and tools are kept in sync deliberately.
-- `lead_search`: optional Apify discovery config used when `profileUrls` is empty. Shape: `{"actor": "harvestapi/linkedin-profile-search", "input": {...}}`. The search actor must return LinkedIn profile URLs; the loop writes a generated campaign with `profileUrls` filled before enrichment.
+- `lead_search`: optional Apify discovery config used when `profileUrls` is empty. Shape: `{"actor": "harvestapi/linkedin-profile-search", "input": {...}}` or a post-search actor such as `harvestapi/linkedin-post-search`. The search actor must return LinkedIn profile URLs directly or inside author/profile fields; the loop writes a generated campaign with `profileUrls` filled before enrichment.
 
 ## Constants
 
@@ -75,9 +75,10 @@ Optional top-level fields:
 | `REVIEWER_BACKEND` | `codex` | v0.1: Codex MCP only, matching the rest of the repo. |
 | `REVIEWER_MODEL` | `gpt-5.4` | Via `mcp__codex__codex` with `model_reasoning_effort: medium`. |
 | `PARALLEL_PERSONAS` | `true` | Dispatch all 4 personas concurrently per prospect-round. |
-| `OUTPUT_DIR` | `review-stage/outbound/` | |
-| `STATE_FILE` | `review-stage/outbound/prospect_state.jsonl` | One row per prospect; managed by `tools/outbound_state.py`. |
-| `REVIEW_DOC` | `review-stage/outbound/AUTO_REVIEW.md` | Cumulative log, appended per prospect-round. |
+| `OUTPUT_BASE_DIR` | `review-stage/outbound/` | |
+| `RUN_DIR` | `review-stage/outbound/runs/{timestamp}_{campaign}/` | One folder per outbound run. |
+| `STATE_FILE` | `{RUN_DIR}/prospect_state.jsonl` | One row per prospect; managed by `tools/outbound_state.py`. |
+| `REVIEW_DOC` | `{RUN_DIR}/AUTO_REVIEW.md` | Cumulative log, appended per prospect-round. |
 | `MAX_PROSPECTS` | `25` | Hard cap; configurable via `campaign.max_prospects`. |
 | `HUMAN_APPROVAL_REQUIRED` | `true` | Approved messages are queued for the user, never sent. |
 | `AUTO_SEND` | `false` | Hard rule. No code path may flip this. |
@@ -101,8 +102,14 @@ These are the strongest part of this skill. Do not weaken them:
 
 1. Resolve `campaign.json` from `$ARGUMENTS` (file or directory).
 2. Validate top-level shape: must have `icp`, `offer`, and either `profileUrls` (non-empty list) or `lead_search.input`.
-3. Resolve `OUTPUT_DIR` (default `review-stage/outbound/`). Create if missing.
-4. Run `bash tools/run.sh outbound_state.py resume --out-dir=review-stage/outbound`.
+3. Create a run folder:
+   ```bash
+   bash tools/run.sh init_outbound_run.py campaigns/<name>.json \
+       --base-dir=review-stage/outbound \
+       --name=<name>
+   ```
+   Use the returned `run_dir` for the rest of the pipeline.
+4. Run `bash tools/run.sh outbound_state.py resume --out-dir={RUN_DIR}`.
    - If a prior state file exists, the resume plan classifies prospects into `to_skip` / `to_continue` / `to_restart`. Print one line:
      ```
      Resuming: 8 to continue, 4 already terminal, 2 will restart (stale or status unknown).
@@ -118,16 +125,17 @@ These are the strongest part of this skill. Do not weaken them:
 If `profileUrls` is empty and `campaign.lead_search.input` exists, run:
 
 ```bash
-bash tools/run.sh search_linkedin_profiles.py campaigns/<name>.json \
-    --out-dir=review-stage/outbound
+bash tools/run.sh search_linkedin_profiles.py {RUN_DIR}/00_campaign/campaign.input.json \
+    --out-dir={RUN_DIR}/01_discovery \
+    --campaign-out-dir={RUN_DIR}/00_campaign
 ```
 
 This reads `$APIFY_TOKEN`, runs the configured search actor, writes
-`review-stage/outbound/discovered_profile_urls.json`, and writes a generated
-campaign copy at `review-stage/outbound/<name>.discovered.json` with
+`{RUN_DIR}/01_discovery/discovered_profile_urls.json`, and writes a generated
+campaign copy at `{RUN_DIR}/00_campaign/campaign.discovered.json` with
 `profileUrls` filled. Continue the pipeline using that generated campaign.
 
-Recommended search actor:
+Recommended profile-search actor:
 
 ```json
 {
@@ -142,18 +150,40 @@ Recommended search actor:
 }
 ```
 
+For campaigns that need authors who have publicly posted about a topic, use a
+post-search actor and extract author profile URLs:
+
+```json
+{
+  "actor": "harvestapi/linkedin-post-search",
+  "input": {
+    "searchQueries": ["\"ADHD\" founder", "\"executive function\" founder"],
+    "authorKeywords": "Founder OR Co-Founder OR CEO",
+    "profileScraperMode": "short",
+    "postedLimit": "year",
+    "maxPosts": 10,
+    "scrapeReactions": false,
+    "scrapeComments": false
+  }
+}
+```
+
+Sensitive-topic rule: public post content may qualify topical relevance, but
+outbound messages must not infer or mention health, disability, ADHD,
+neurodivergence, or any other protected/sensitive trait.
+
 ### Phase 1 — enrich
 
 ```bash
-bash tools/run.sh enrich_profiles.py campaigns/<name>.json \
-    --out-dir=review-stage/outbound
+bash tools/run.sh enrich_profiles.py {RUN_DIR}/00_campaign/campaign.discovered.json \
+    --out-dir={RUN_DIR}/02_enrichment
 ```
 
 Reads `$APIFY_TOKEN` from env. If missing, the tool's JSON contains `flags: ["missing_apify_token"]` — surface the message and stop. **Do not write the token into any file.**
 
 Produces:
-- `review-stage/outbound/enriched_profiles.raw.json` — verbatim Apify output.
-- `review-stage/outbound/enriched_profiles.normalized.json` — normalized to the schema below.
+- `{RUN_DIR}/02_enrichment/enriched_profiles.raw.json` — verbatim Apify output.
+- `{RUN_DIR}/02_enrichment/enriched_profiles.normalized.json` — normalized to the schema below.
 
 Normalized record schema:
 
@@ -182,15 +212,15 @@ Normalized record schema:
 
 ```bash
 bash tools/run.sh qualify_prospect.py \
-    review-stage/outbound/enriched_profiles.normalized.json \
-    campaigns/<name>.json \
-    --out-dir=review-stage/outbound \
+    {RUN_DIR}/02_enrichment/enriched_profiles.normalized.json \
+    {RUN_DIR}/00_campaign/campaign.discovered.json \
+    --out-dir={RUN_DIR}/03_qualification \
     --min-score=6
 ```
 
 Produces:
-- `review-stage/outbound/qualified_prospects.json` — score ≥ `min_score`, no hard disqualifiers.
-- `review-stage/outbound/rejected_prospects.json` — everything else, with explicit reasons.
+- `{RUN_DIR}/03_qualification/qualified_prospects.json` — score ≥ `min_score`, no hard disqualifiers.
+- `{RUN_DIR}/03_qualification/rejected_prospects.json` — everything else, with explicit reasons.
 
 If `qualified_count == 0`, stop and surface the rejection examples to the user. Persona reviews are expensive; do not run them on no-fit prospects.
 
@@ -198,8 +228,8 @@ If `qualified_count == 0`, stop and surface the rejection examples to the user. 
 
 ```bash
 bash tools/run.sh outbound_state.py init \
-    review-stage/outbound/qualified_prospects.json \
-    --out-dir=review-stage/outbound
+    {RUN_DIR}/03_qualification/qualified_prospects.json \
+    --out-dir={RUN_DIR}
 ```
 
 Creates `prospect_state.jsonl` with one row per qualified prospect, status=`qualified`, round=0. Skip this step if Phase 0 resumed an existing state file.
@@ -210,7 +240,7 @@ Creates `prospect_state.jsonl` with one row per qualified prospect, status=`qual
 
 For each prospect in `to_continue` (resume plan) or every row in `prospect_state.jsonl` (fresh start):
 
-1. **Draft.** Generate a candidate message using the [Drafting prompt](#drafting-prompt-first-touch-message) below. Append the candidate as a JSONL row to `review-stage/outbound/candidate_messages.jsonl`.
+1. **Draft.** Generate a candidate message using the [Drafting prompt](#drafting-prompt-first-touch-message) below. Append the candidate as a JSONL row to `{RUN_DIR}/04_messages/candidate_messages.jsonl`.
 2. **Update state.** `outbound_state.py update <slug>` with `status="drafting"`, `message_hash=sha256(message)`.
 3. **Inner loop (rounds 1..MAX_ROUNDS):** phases A → B → B.7 → C → E from `loop-contract.md`. Details below.
 4. **Terminate the prospect.** On approval, append to `approved_messages.jsonl` and write the state row with `status="approved"`. On MAX_ROUNDS without approval, append to `rejected_messages.jsonl` with the persona blockers and write `status="rejected"`.
@@ -232,7 +262,7 @@ After every prospect terminates:
      messages approved:   N
      messages rejected:   N
    Approved messages queued for human approval at:
-     review-stage/outbound/approved_messages.csv
+     {RUN_DIR}/06_exports/approved_messages.csv
    Nothing has been sent.
    ```
 
@@ -253,7 +283,7 @@ Constraints:
 - At least one item in `personalizationEvidence[]`, drawn from the normalized profile record. **No invented facts.**
 - Channel from `campaign.message_channel`, defaulting to `linkedin_connection`.
 
-Output one JSONL record per prospect to `review-stage/outbound/candidate_messages.jsonl`:
+Output one JSONL record per prospect to `{RUN_DIR}/04_messages/candidate_messages.jsonl`:
 
 ```json
 {
@@ -345,7 +375,7 @@ If `PARALLEL_PERSONAS = true`, dispatch all 4 calls concurrently and await all r
 Fresh thread per persona per round per prospect. Save the full prompt + verbatim response to:
 
 ```
-review-stage/outbound/traces/{date}_run{NN}/{profile_slug}/persona-{name}-round-{N}.{prompt,response}.txt
+{RUN_DIR}/traces/{date}_run{NN}/{profile_slug}/persona-{name}-round-{N}.{prompt,response}.txt
 ```
 
 Append a row to `MANIFEST.md` per [`output-manifest.md`](../shared-references/output-manifest.md) **immediately** after each write — not at end of round.
@@ -368,7 +398,7 @@ For each candidate message:
 
 ```bash
 bash tools/run.sh verify_outbound_message.py \
-    review-stage/outbound/<slug>_message.json \
+    {RUN_DIR}/04_messages/per_prospect/<slug>_message.json \
     campaigns/<name>.json
 ```
 
@@ -441,25 +471,43 @@ Then update the state row:
 
 ```bash
 echo '{"status":"approved","round":N,"last_scores":{...},"last_verdicts":{...},"message_hash":"sha256:..."}' \
-  | bash tools/run.sh outbound_state.py update <slug> - --out-dir=review-stage/outbound
+  | bash tools/run.sh outbound_state.py update <slug> - --out-dir={RUN_DIR}
 ```
 
 ## Outputs
 
 ```
 review-stage/outbound/
-├── enriched_profiles.raw.json
-├── enriched_profiles.normalized.json
-├── qualified_prospects.json
-├── rejected_prospects.json
-├── candidate_messages.jsonl
-├── approved_messages.jsonl
-├── approved_messages.csv
-├── rejected_messages.jsonl
-├── prospect_state.jsonl
-├── AUTO_REVIEW.md
-├── MANIFEST.md
-└── traces/{date}_run{NN}/{profile_slug}/persona-{name}-round-{N}.{prompt,response}.txt
+├── latest -> runs/{timestamp}_{campaign}
+└── runs/{timestamp}_{campaign}/
+    ├── 00_campaign/
+    │   ├── campaign.input.json
+    │   └── campaign.discovered.json
+    ├── 01_discovery/
+    │   ├── searched_profiles.raw.json
+    │   ├── searched_profiles.filtered.json
+    │   ├── excluded_search_records.json
+    │   └── discovered_profile_urls.json
+    ├── 02_enrichment/
+    │   ├── enriched_profiles.raw.json
+    │   └── enriched_profiles.normalized.json
+    ├── 03_qualification/
+    │   ├── qualified_prospects.json
+    │   └── rejected_prospects.json
+    ├── 04_messages/
+    │   ├── candidate_messages.jsonl
+    │   ├── candidate_messages.csv
+    │   └── per_prospect/<slug>_message.json
+    ├── 05_verification/
+    │   └── <slug>_verify.json
+    ├── 06_exports/
+    │   ├── approved_messages.jsonl
+    │   ├── approved_messages.csv
+    │   └── rejected_messages.jsonl
+    ├── prospect_state.jsonl
+    ├── AUTO_REVIEW.md
+    ├── MANIFEST.md
+    └── traces/{date}_run{NN}/{profile_slug}/persona-{name}-round-{N}.{prompt,response}.txt
 ```
 
 `approved_messages.csv` columns:
@@ -480,7 +528,7 @@ profileUrl,firstName,company,channel,message,reasonMatchedIcp,personalizationEvi
 ## What this skill does NOT do
 
 - **It does not send.** Approved messages export to CSV. The user sends.
-- **It does not discover prospects.** Inputs are LinkedIn profile URLs the user already has. Use Sales Navigator, search, or a CRM upstream.
+- **Discovery is optional.** If `profileUrls` is empty and `lead_search.input` is present, the workflow can discover LinkedIn profile URLs first. Otherwise inputs are profile URLs the user already has.
 - **It does not run multi-touch sequences.** One first-touch message per prospect per run. For sequences, run again later with different `message_channel`/`tone`.
 - **It does not fabricate evidence.** Personalization comes only from enriched profile data and campaign context.
 - **It is not dispatched by the umbrella.** Outbound is a sibling workflow; `/auto-essay-review-loop` only handles draft documents.

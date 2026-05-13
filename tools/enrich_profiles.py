@@ -93,6 +93,24 @@ def write_json(path: Path, payload) -> None:
     )
 
 
+def create_ssl_context() -> ssl.SSLContext:
+    try:
+        import certifi  # type: ignore
+    except Exception:  # noqa: BLE001
+        return ssl.create_default_context()
+    return ssl.create_default_context(cafile=certifi.where())
+
+
+def read_http_error(exc: urllib.error.HTTPError) -> str:
+    try:
+        body = exc.read().decode("utf-8", errors="replace").strip()
+    except Exception:  # noqa: BLE001
+        return ""
+    if len(body) > 600:
+        return body[:600] + "..."
+    return body
+
+
 def validate_urls(urls: list[str]) -> tuple[list[str], list[str]]:
     """Return (valid_urls, invalid_urls). Dedupes valid URLs preserving order."""
     seen = set()
@@ -151,7 +169,7 @@ def call_apify(
         },
         method="POST",
     )
-    ctx = ssl.create_default_context()
+    ctx = create_ssl_context()
     try:
         with urllib.request.urlopen(req, timeout=timeout_seconds, context=ctx) as resp:
             raw = resp.read().decode("utf-8")
@@ -165,7 +183,11 @@ def call_apify(
                 ), resp.status
             return parsed, None, resp.status
     except urllib.error.HTTPError as e:
-        return None, f"HTTP {e.code} {e.reason}", e.code
+        body = read_http_error(e)
+        detail = f"HTTP {e.code} {e.reason}"
+        if body:
+            detail += f": {body}"
+        return None, detail, e.code
     except urllib.error.URLError as e:
         return None, f"URLError: {e.reason}", None
     except TimeoutError:

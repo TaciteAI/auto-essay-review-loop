@@ -1,6 +1,6 @@
 ---
 name: auto-linkedin-outbound-loop
-description: Approval-first LinkedIn outbound workflow. Takes a campaign config (ICP + offer + LinkedIn profile URLs), enriches profiles via the Apify LinkedIn Profile Scraper, qualifies fit, drafts one personalized first-touch message per prospect, runs four outbound-specific personas (target-customer, spam-filter, sales-leader, compliance-reviewer) in a per-prospect review loop until approved or MAX_ROUNDS, then exports approved messages for human send. Never auto-sends. Use when the user wants to run a persona-reviewed cold outbound batch, review cold messages, or "outbound review loop on this campaign". Sibling of auto-linkedin-review-loop (which reviews public LinkedIn posts).
+description: Approval-first LinkedIn outbound workflow. Takes a campaign config (ICP + offer + LinkedIn profile URLs, or optional Apify lead_search discovery), creates a phase-organized run folder, enriches profiles via Apify, qualifies fit, drafts one personalized first-touch message per prospect, runs four outbound-specific personas (target-customer, spam-filter, sales-leader, compliance-reviewer) in a per-prospect review loop until approved or MAX_ROUNDS, then exports approved messages for human send. Never auto-sends. Use when the user wants to run a persona-reviewed cold outbound batch, review cold messages, discover prospects, or run "outbound review loop on this campaign". Sibling of auto-linkedin-review-loop (which reviews public LinkedIn posts).
 allowed-tools: Bash(*), Read, Grep, Glob, Write, Edit, mcp__codex__codex
 ---
 
@@ -9,7 +9,7 @@ allowed-tools: Bash(*), Read, Grep, Glob, Write, Edit, mcp__codex__codex
 Multi-prospect outbound pipeline. The flow is:
 
 ```
-campaign.json → enrich (Apify) → qualify (heuristic) →
+campaign.json → optional discover (Apify) → enrich (Apify) → qualify (heuristic) →
 draft message → per-prospect review loop (4 personas, ≤3 rounds) →
 verify (objective gates) → export approved CSV/JSONL
 ```
@@ -28,6 +28,7 @@ Accept either:
 
 1. A campaign JSON file path: `/auto-linkedin-outbound-loop campaigns/acme.json`
 2. A directory containing `campaign.json` and (optionally) `profiles.txt`
+3. An existing run directory containing `RUN.json` to resume/continue
 
 If neither is provided, ask the user once for a campaign path.
 
@@ -48,12 +49,27 @@ If neither is provided, ask the user once for a campaign path.
     "promise": "turn profile research into tailored first messages",
     "proof": "messages pass target-customer, spam, sales, and compliance review"
   },
-  "profileUrls": [
-    "https://www.linkedin.com/in/example-person/"
-  ],
+  "profileUrls": ["https://www.linkedin.com/in/example-person/"],
   "channels": {"email": false, "phone": false},
   "tone": "direct, low-pressure, founder-to-founder",
   "max_prospects": 25
+}
+```
+
+If `profileUrls` is empty, the campaign may instead include `lead_search`:
+
+```json
+{
+  "lead_search": {
+    "actor": "harvestapi/linkedin-profile-search",
+    "input": {
+      "profileScraperMode": "Short",
+      "searchQuery": "founder SaaS",
+      "currentJobTitles": ["Founder", "Co-Founder", "CEO"],
+      "maxItems": 10
+    },
+    "exclude_author_keywords": ["coach", "consultant"]
+  }
 }
 ```
 
@@ -88,7 +104,7 @@ Optional top-level fields:
 These are the strongest part of this skill. Do not weaken them:
 
 - **Never send messages automatically.** No path. Approved messages go to a CSV for the user to review and send manually.
-- **Never invent personalization evidence.** Use only enriched profile data, campaign context, and user-provided notes. Citing a fact that isn't in `enriched_profiles.normalized.json` is fabrication.
+- **Never invent personalization evidence.** Use only enriched profile data, campaign context, user-provided notes, and discovery evidence saved in `{RUN_DIR}/01_discovery/`. Citing a fact that is not present in run artifacts is fabrication.
 - **No sensitive inferences.** Health, age, family status, ethnicity, religion, politics, sexual orientation, disability, marital status — not in the message, not even as a reason for reaching out.
 - **No surveillance phrasing.** "I saw you viewed…", "I noticed you are probably…", "based on your personal life…" — all auto-fail. `verify_outbound_message.py` enforces this.
 - **No fake familiarity.** "As we discussed", "following up on our call", "nice to meet you again" — verify_outbound_message.py auto-fails these too.
@@ -100,29 +116,34 @@ These are the strongest part of this skill. Do not weaken them:
 
 ### Phase 0 — bootstrap
 
-1. Resolve `campaign.json` from `$ARGUMENTS` (file or directory).
-2. Validate top-level shape: must have `icp`, `offer`, and either `profileUrls` (non-empty list) or `lead_search.input`.
-3. Create a run folder:
+1. Resolve input from `$ARGUMENTS`.
+   - If it is an existing `{RUN_DIR}` containing `RUN.json`, resume that run and load paths from `RUN.json`.
+   - If it is a directory containing `campaign.json`, use that campaign.
+   - Otherwise treat it as a campaign JSON file path.
+2. Validate campaign shape: must have `icp`, `offer`, and either `profileUrls` (non-empty list) or `lead_search.input`.
+3. For a new campaign input, create a run folder:
    ```bash
    bash tools/run.sh init_outbound_run.py campaigns/<name>.json \
        --base-dir=review-stage/outbound \
        --name=<name>
    ```
    Use the returned `run_dir` for the rest of the pipeline.
-4. Run `bash tools/run.sh outbound_state.py resume --out-dir={RUN_DIR}`.
+4. Set `ACTIVE_CAMPAIGN={RUN_DIR}/00_campaign/campaign.input.json`.
+5. Run `bash tools/run.sh outbound_state.py resume --out-dir={RUN_DIR}`.
    - If a prior state file exists, the resume plan classifies prospects into `to_skip` / `to_continue` / `to_restart`. Print one line:
      ```
      Resuming: 8 to continue, 4 already terminal, 2 will restart (stale or status unknown).
      ```
-   - If no state file exists, continue to Phase 1.
-5. Cost warning: if `len(profileUrls) > 10`, print:
+   - If no state file exists, continue to Phase 0.5 when discovery is needed, otherwise Phase 1.
+6. Cost warning: if the active campaign has `len(profileUrls) > 10`, print:
    ```
    ~{N × 4 personas × MAX_ROUNDS} Codex calls expected for this run.
    ```
 
 ### Phase 0.5 — discover profile URLs, optional
 
-If `profileUrls` is empty and `campaign.lead_search.input` exists, run:
+If `ACTIVE_CAMPAIGN` has empty `profileUrls` and `campaign.lead_search.input`
+exists, run:
 
 ```bash
 bash tools/run.sh search_linkedin_profiles.py {RUN_DIR}/00_campaign/campaign.input.json \
@@ -134,6 +155,10 @@ This reads `$APIFY_TOKEN`, runs the configured search actor, writes
 `{RUN_DIR}/01_discovery/discovered_profile_urls.json`, and writes a generated
 campaign copy at `{RUN_DIR}/00_campaign/campaign.discovered.json` with
 `profileUrls` filled. Continue the pipeline using that generated campaign.
+After successful discovery, set `ACTIVE_CAMPAIGN={RUN_DIR}/00_campaign/campaign.discovered.json`.
+
+If `ACTIVE_CAMPAIGN` already has profile URLs, skip Phase 0.5 and keep
+`ACTIVE_CAMPAIGN={RUN_DIR}/00_campaign/campaign.input.json`.
 
 Recommended profile-search actor:
 
@@ -175,7 +200,7 @@ neurodivergence, or any other protected/sensitive trait.
 ### Phase 1 — enrich
 
 ```bash
-bash tools/run.sh enrich_profiles.py {RUN_DIR}/00_campaign/campaign.discovered.json \
+bash tools/run.sh enrich_profiles.py {ACTIVE_CAMPAIGN} \
     --out-dir={RUN_DIR}/02_enrichment
 ```
 
@@ -213,7 +238,7 @@ Normalized record schema:
 ```bash
 bash tools/run.sh qualify_prospect.py \
     {RUN_DIR}/02_enrichment/enriched_profiles.normalized.json \
-    {RUN_DIR}/00_campaign/campaign.discovered.json \
+    {ACTIVE_CAMPAIGN} \
     --out-dir={RUN_DIR}/03_qualification \
     --min-score=6
 ```
@@ -399,7 +424,7 @@ For each candidate message:
 ```bash
 bash tools/run.sh verify_outbound_message.py \
     {RUN_DIR}/04_messages/per_prospect/<slug>_message.json \
-    campaigns/<name>.json
+    {ACTIVE_CAMPAIGN}
 ```
 
 Checks: `message_length`, `evidence_count`, `forbidden_claims`, `channel_authorized`. Failures generate CRITICAL fix items — they bypass persona consensus (a 10/10 persona score does not override a 312-char connection note or a "based on your personal life" trigger).
@@ -482,7 +507,7 @@ review-stage/outbound/
 └── runs/{timestamp}_{campaign}/
     ├── 00_campaign/
     │   ├── campaign.input.json
-    │   └── campaign.discovered.json
+    │   └── campaign.discovered.json        # only when discovery ran
     ├── 01_discovery/
     │   ├── searched_profiles.raw.json
     │   ├── searched_profiles.filtered.json
@@ -519,6 +544,8 @@ profileUrl,firstName,company,channel,message,reasonMatchedIcp,personalizationEvi
 ## Failure modes
 
 - **APIFY_TOKEN missing.** `enrich_profiles.py` flags this immediately; surface to user and halt. Do not proceed with an empty enrichment.
+- **Discovery actor requires approval.** Apify can return `full-permission-actor-not-approved`; surface the `approvalUrl` from the tool output and halt until the user approves the actor in Apify.
+- **TLS certificate failure.** The Apify helpers prefer `certifi` when installed and otherwise fall back to Python's default certificate store. If verification still fails, fix the local CA store; do not disable TLS verification.
 - **All chunks failed at Apify.** `failed_chunks` in the tool's JSON lists which URLs and why. Decide with the user whether to retry the run or trim the URL list.
 - **No qualified prospects.** Surface the first 5 rejection reasons. Either the ICP is wrong or the URL list was scraped from the wrong cohort.
 - **Persona converges fast (3/10 → 9/10 in one round).** Likely reviewer contamination. Sanity check: confirm fresh thread, confirm no "since last round" leaked into the prompt. The independence protocol exists for this.

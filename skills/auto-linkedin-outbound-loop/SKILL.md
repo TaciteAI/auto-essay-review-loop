@@ -64,6 +64,7 @@ Optional top-level fields:
 - `max_prospects`: hard cap per run (default 25).
 - `apify_actor`: default `dev_fusion/Linkedin-Profile-Scraper`.
 - `message_channel`: default `linkedin_connection`; allowed values: `linkedin_connection` / `linkedin_dm` / `email` / `phone`. `email` and `phone` are only honored when `channels.email` / `channels.phone` is `true`. The verifier and enricher both enforce this; the docs and tools are kept in sync deliberately.
+- `lead_search`: optional Apify discovery config used when `profileUrls` is empty. Shape: `{"actor": "harvestapi/linkedin-profile-search", "input": {...}}`. The search actor must return LinkedIn profile URLs; the loop writes a generated campaign with `profileUrls` filled before enrichment.
 
 ## Constants
 
@@ -99,7 +100,7 @@ These are the strongest part of this skill. Do not weaken them:
 ### Phase 0 — bootstrap
 
 1. Resolve `campaign.json` from `$ARGUMENTS` (file or directory).
-2. Validate top-level shape: must have `icp`, `offer`, `profileUrls` (non-empty list).
+2. Validate top-level shape: must have `icp`, `offer`, and either `profileUrls` (non-empty list) or `lead_search.input`.
 3. Resolve `OUTPUT_DIR` (default `review-stage/outbound/`). Create if missing.
 4. Run `bash tools/run.sh outbound_state.py resume --out-dir=review-stage/outbound`.
    - If a prior state file exists, the resume plan classifies prospects into `to_skip` / `to_continue` / `to_restart`. Print one line:
@@ -111,6 +112,35 @@ These are the strongest part of this skill. Do not weaken them:
    ```
    ~{N × 4 personas × MAX_ROUNDS} Codex calls expected for this run.
    ```
+
+### Phase 0.5 — discover profile URLs, optional
+
+If `profileUrls` is empty and `campaign.lead_search.input` exists, run:
+
+```bash
+bash tools/run.sh search_linkedin_profiles.py campaigns/<name>.json \
+    --out-dir=review-stage/outbound
+```
+
+This reads `$APIFY_TOKEN`, runs the configured search actor, writes
+`review-stage/outbound/discovered_profile_urls.json`, and writes a generated
+campaign copy at `review-stage/outbound/<name>.discovered.json` with
+`profileUrls` filled. Continue the pipeline using that generated campaign.
+
+Recommended search actor:
+
+```json
+{
+  "actor": "harvestapi/linkedin-profile-search",
+  "input": {
+    "profileScraperMode": "Short",
+    "searchQuery": "founder SaaS",
+    "currentJobTitles": ["Founder", "Co-Founder", "CEO"],
+    "companyHeadcount": ["B", "C"],
+    "maxItems": 10
+  }
+}
+```
 
 ### Phase 1 — enrich
 

@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "purpose": "Simulation fixture for auto-linkedin-outbound-loop",
+    "outbound_rule": "Messages may cite only facts present in enriched profile data. Do not infer or mention health, disability, neurodivergence, ADHD, age, family status, or any other protected/sensitive trait. If a prospect explicitly mentions ADHD or neurodivergence on-profile, treat it only as fit context for review, not as message copy.",
+    "simulation_note": "Run tools/search_linkedin_profiles.py first to discover real profile URLs, then run /auto-linkedin-outbound-loop on the generated campaign."
+  },
+  "lead_search": {
+    "actor": "harvestapi/linkedin-profile-search",
+    "input": {
+      "profileScraperMode": "Short",
+      "searchQuery": "founder SaaS",
+      "currentJobTitles": [
+        "Founder",
+        "Co-Founder",
+        "CEO"
+      ],
+      "functionIds": [
+        "9",
+        "18",
+        "19"
+      ],
+      "companyHeadcount": [
+        "B",
+        "C"
+      ],
+      "recentlyPostedOnLinkedIn": true,
+      "maxItems": 10,
+      "startPage": 1,
+      "takePages": 1
+    },
+    "notes": "This search intentionally avoids ADHD/neurodivergence keywords. Discover by role/company context, then let the outbound review loop enforce no sensitive-trait message copy."
+  },
+  "icp": {
+    "titles": [
+      "Founder",
+      "Co-Founder",
+      "CEO",
+      "Founding",
+      "Managing Director"
+    ],
+    "company_stage": "Pre-seed to Series B",
+    "company_size": "1-80",
+    "industry": "technology, software, SaaS",
+    "pain": "context switching, missed follow-through, admin drag, scattered priorities, calendar overload, deep work getting crowded out by operating work",
+    "buying_trigger": "hiring first ops person, investor diligence, launching a new product, onboarding first managers, moving from builder to scaled operator"
+  },
+  "offer": {
+    "product": "Founder ops playbook + lightweight operating systems for high context-switch weeks",
+    "promise": "fewer dropped balls between deep-work blocks without forcing an enterprise ops cadence onto an early team",
+    "proof": "used with founder-led teams; workflow design only, no medical claims"
+  },
+  "profileUrls": [
+  ],
+  "channels": {
+    "email": false,
+    "phone": false
+  },
+  "tone": "direct, respectful, founder-to-founder; no clinical language, no sensitive-trait references, no diagnosis or identity flattery, no fake familiarity",
+  "max_prospects": 3,
+  "message_channel": "linkedin_connection"
+}
